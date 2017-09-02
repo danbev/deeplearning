@@ -1,10 +1,10 @@
 
-COMPILE_TEST = clang++ -std=c++11 -O0 -g -I`pwd`/deps/googletest/googletest/include  lib/libgtest.a -o out/cctest
+COMPILE_TEST = clang++ -std=c++11 -O0 -g -I`pwd`/deps/googletest/googletest/include  -I./src lib/libgtest.a -o out/cctest
 
 out/cctest: test/main.cc out
-	$(COMPILE_TEST) $<
+	$(COMPILE_TEST) $< test/simple_network_test.cc src/simple-network.cc
 
-list-gtests: test/main
+list-gtests: 
 	./out/cctest --gtest_list_tests
 
 out: 
