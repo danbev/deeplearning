@@ -1,7 +1,7 @@
 #ifndef SRC_NEURAL_NETWORK_H_
 #define SRC_NEURAL_NETWORK_H_
 
-int simple_network(int input, int weight);
+double simple_network(double input, double weight);
 
 #endif // SRC_NEURAL_NETWORK_H_
 

@@ -1,7 +1,6 @@
 #include "neural-network.h"
-#include <array>
 #include <iostream>
 
-int simple_network(int input, int weight) {
+double simple_network(double input, double weight) {
   return input * weight;
 }

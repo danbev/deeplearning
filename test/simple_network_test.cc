@@ -1,10 +1,9 @@
 #include "gtest/gtest.h"
 #include "neural-network.h"
-#include <iostream>
 
 TEST(SimpleNetwork, simple) {
-  int input = 100;
-  int result = simple_network(input, 10);
-  std::cout << "result :" << result << '\n';
-  EXPECT_EQ(true, true);
+  double input = 8.5;
+  double weight = 0.1;
+  double result = simple_network(input, weight);
+  EXPECT_DOUBLE_EQ(result, 0.85);
 }
