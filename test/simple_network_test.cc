@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "neural-network.h"
+#include "simple-network.h"
 
 TEST(SimpleNetwork, simple_network) {
   double input = 8.5;

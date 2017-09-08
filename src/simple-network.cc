@@ -1,4 +1,4 @@
-#include "neural-network.h"
+#include "simple-network.h"
 #include <iostream>
 
 double simple_network(double input, double weight) {
