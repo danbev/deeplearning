@@ -138,7 +138,10 @@ these weights determined? I think this is what parameters are for
 Take all the activations from the prevoius layer and sum them:
 weigh1 activation1 + ... +weightn activationn
 
-We usually want our weighted some to be a value between 0-1 so we put it through a function like
+This done for each neuron which make sense as all the neurons are connected. This value is then often
+squashed into av value between 0.0-1.0. Also a bias is added before squashing but for about that later.
+
+We usually want our weighted sum to be a value between 0-1 so we put it through a function like
 a Sigmoid function which "squashes" the value to be between 0-1 where very positive values end up 
 close to 1 and very negative valuses end up close to 0. How we configure these weights, the values
 we give them are the parameters we have to tweek this layer.
@@ -158,7 +161,33 @@ Learning is about finding the right weights and biases so that the system will s
 
 ### Gradient decent
 
+=======
+### Cost function
+Trying to manually configure all the weights and bias would be a huge undertaking. What we want is for the 
+computer to learn how to make the adjustments itself. Kind of like the example where we want to program a 
+robot to advance towards a target, take one step, evaluate if it is closer or further way, and the adjust
+appropriately. For example, say that we know that the result should have evaluated to the number 3, this
+would give an array of:
+[0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+And lets say the result of our randomly configured net work produced:
+[0.42, 0.29, 0.18, 0.83, 0.71, 0.01, 0.63, 0.83, 0.99, 0.60]
 
+[0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+[0.42, 0.29, 0.18, 0.83, 0.71, 0.01, 0.63, 0.83, 0.99, 0.60]
+
+0.1764 <- (0.42 - 0.00)^2 +
+0.0841 <- (0.29 - 0.00)^2 +
+0.0324 <- (0.18 - 0.00)^2 +
+0.0289 <- (0.83 - 1.00)^2 +
+0.5041 <- (0.71 - 0.00)^2 +
+0.0001 <- (0.01 - 0.00)^2 +
+0.3969 <- (0.63 - 0.00)^2 +
+0.0289 <- (0.83 - 0.00)^2 +
+0.9801 <- (0.99 - 0.00)^2 +
+0.3600 <- (0.60 - 0.00)^2 +
+= 2.8529
+A small sum is produces when the network is working better and is closer to its target, and larger when it is
+off. And that is only for a single digit. 
 
 
 ### Supervised Machine Learning
