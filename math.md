@@ -1,6 +1,5 @@
 ### Linear algebra
 
-
 #### Scalar
 In linear algebra the numbers that are used are called scalars because they are used to scale value. A scalar
 value is just a number, it does not tell you anything else. Compare this with a vector which has a scale and
@@ -51,6 +50,41 @@ which simply means "the whole". So the integral is all those small bits.
 
 ### Area of a rectangle
 To find the area of a triangle, multiply the base by the height, and then divide by 2. 
+Notice that base times hight is the same as we do for calculating the area of a rectangle:
+
+3x2 :
+        3
+  +---+---+---+
+  |   |   |   |
+2 +---+---+---+
+  |   |   |   |
+  +---+---+---+
+
+So the area of a rectangle is base times hight (a x b). So I guess that any multiplcation with two terms 
+can be considered be calculating the area of a rectangle (the product is the area).
+
+If we were to draw a line from the lower left corner to the top right corner we would have two triangles. They would 
+both be half of the area of the rectangle. 
+
+If we take the same rectangle and tilt it to the right.
+
+        +---+---+---+
+       /   /   /   /
+      +---+---+---+
+     /   /   /   /
+    +---+---+---+
+This means that we can again draw a diagonal line and get two triangles from a paralellogram.
+
+All triangles with the base a and hight b have the same area. So, no matter how you stretch or the triangle, as
+long as you don't change the base or hight the area will remain the same. Just think about the rectangle that we 
+started with, which we then tilted but the area remained the same. 
+
+Every parallelogram can be subdivided into triangles so we can therefore calculate the area by adding up the 
+areas for each triangle. For example, if you want to determine if two polygons have the same area you could 
+start by cutting them up into triangles. Then creating rectangles of each triangle and stacking them together.
+The put both of these rectangled next to each other and you can compare them.
+
+
 The division by 2 comes from the fact that a parallelogram can be divided into 2 triangles
 
     1                   b * h
@@ -70,6 +104,35 @@ A = - * b * h    or A = -----
   10.0
 
 ### Area of a circle
+Think of a round pizza which has been sliced into pieces. Now each piece is rounded at the non-pointed end but
+the smaller slices we cut the smaller this rounded part is. Now imagine that we can all of these slices and 
+put them next to each other. The we tilt them to the left, leaving the base and hight the same so we are not
+changing the area of each. 
+
+   |\...
+a  | \...
+   |  \...
+   |   \...
+   ------...
+   (     ) <-- rounded part
+       b
+
+So we there have a rectangle which we know we can calculate using the base times hight divided by two.
+We can call a r instead for the radius and b, C for the curcumfurence.
+So that gives us:
+       1
+Area = - r x C
+       2 
+
+But I learned that the area is:
+Area = PI x r^2
+
+Well this is because the circumference is defined as 2 x PI x r
+
+       1
+Area = - r x (2xPIxr)
+       2 
+
 If want to find the area of a circle you can imagine that you make small inner circles/rings to divide it.
 Then imagine that you straighten them out so that they are straight lines and standing next to 
 each other. The thinkness of each circle when standing up and it now looks like a long rectangle we can 
@@ -149,15 +212,90 @@ Natural numbers and zero {0, 1, 2, 3, 4,...}
 Whole numbers and their negatives {..., -3, -2, -1, 0, 1, 2, 3,...}
 
 * Rational numbers
-Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0.
+Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0. 
 nominator          1
 ---------          -
 denominator        2
 
-(a ratio is a relationship between two numbers indicating how many times the first number contains the second)
+(a ratio is a relationship between two numbers indicating how many times the first number contains the second) which
+is why these numbers are called retionaly numbers.
 
 * Irrational numbers
-Numbers that cannot be written as a ratio of two integers. Any non-terminating, n
+Numbers that cannot be written as a ratio of two integers. Any non-terminating number.
+
+
+### Multiplication and Division
+Take 2 x 4 = 8 which can be throught of as 2 + 2 + 2 + 2, or 4 + 4:
++--+ +--+ +--+ +--+
+|  | |  | |  | |  |
++--+ +--+ +--+ +--+
++--+ +--+ +--+ +--+
+|  | |  | |  | |  |
++--+ +--+ +--+ +--+
+and 8 / 4 = 2. We are asking how many groups of 4 go in 8
+and 8 / 2 = 4. We are asking how many groups of 2 go in 8
+
+1
+- x 3 = 1 
+3
+
++--+   +--+   +--+    3    
+|x | + |x | + |x |  = -  = 1
++--+   +--+   +--+    3
++-----------+
+| x | x | x |
++-----------+
+
+
+1
+- is the same as 1/3. One of three, or how many groups of one go in three.
+3
++--+--+--+
++x |  |  |
++--+--+--+
+
+
+3
+- x 4
+4
+
++--+--+--+--+
+|x |x |x |  |
++--+--+--+--+
++--+--+--+   +--+--+--+   +--+--+--+   +--+--+--+
+|x |x |x | + |x |x |x | + |x |x |x | + |x |x |x | = 12
++--+--+--+   +--+--+--+   +--+--+--+   +--+--+--+
+
+12
+-- = 3
+4
+
+3   2
+- x -
+4   3
+
++--+--+--+--+
+|x |x |x |  |
++--+--+--+--+
+
+17x18
+             10                7
+   +----------------------+----------+
+   |                      |          |
+ 10|    100               |   70     |
+   |                      |          |
+   |                      |          |
+   |                      |          |
+   |                      |          |
+   |                      |          |
+   +----------------------+----------+
+   |                      |          |
+ 8 |     80               |   56     |
+   |                      |          |
+   +----------------------+----------+
+
+100 + 70 + 80 + 56 = 306
+
 
 ### Equality Properties
 The Addition, Subtraction, Multiplication, and Division Properties of Equality all say that two sides of an 
@@ -234,4 +372,106 @@ And the 4 is those 3 blocks 4 times:
 	+----+----+----+----+
 
                   4
+
+### Fractions
+
+Recall that one or a whole is 
+
+  +--------------+
+  |              |
+  +--------------+
+
+1
+_ :
+2
+  +--------------+
+  |      |       |
+  +--------------+
+
+Remember that we are asking how many groups are in something.
+
+8
+-   how may groups of four go in eight
+4
+  +-----------------------+
+  |  |  |  |  |  |  |  |  |
+  +-----------------------+
+
+3   4            3
+- / -            -
+5   7            5
+               -----  how many groups of 4/7 go in 3/5
+                 4
+                 -
+                 7
+
+When divide fractions, why have we learned to invert the second fraction and multiply?
+
+3   4
+- / -
+5   7
+
+3 / 4   4      12/4
+----- * - =   ------
+5 / 7   4     20 / 7
+
+  3     7      21
+----- * - =   -----
+20/7    7      
+
++----+----+----+----+----+
+| x  | x  | x  |    |    |
++----+----+----+----+----+
+
++----+----+----+----+----+----+----+
+| x  | x  | x  | x  |    |    |    |
++----+----+----+----+----+----+----+
+
+
+   10
+   -- = x   10 = 2x
+    2
+
+    C
+    - = PI  C = PI*d
+    d
+
+### Negative numbers
+Think in terms of piles and holes instead of positive and negative numbers.
+
+  +--+  +--+
+  |  |  |  |
+  |  |  |  |
+--+  +--+  +---------+  +--+  +-----------
+                     |  |  |  |
+                     |  |  |  |
+                     +--+  +--+
+
+
+### Cards
+Make two piles of 10 cards, one with only black cards and one with only red cards
+Take 4 cards from the red pile and mix them with the black pile. 
+
+Suffle the black pile and then take out 4 cards and place the on the red pile. 
+Both piles will have the same number of foreign cards in them. The red might have 2 black, then the black will have 2 reds etc.
+Will they always be equal? 
+
+             Pile 1        Pile 2
+
+             10 Red Cards  10 Black Cards
+
+             Pile 1        Pile 2
+           +------------+------------+
+           |            |            |  Pile 1 will have B number of foreign black cards in it.
+Black Cards|     B      |    10-B    |  
+           |            |            |  Pile 2 will B number of card missing as they are now in pile 1.
+           +-------------------------+
+           |            |            |  
+Red Cards  |            | 10-(10-B)  |  
+           |            |            |
+           +-------------------------+
+
+
+                          10 + -10 + B = B
+So both piles will have the same number of foreign cards in them.
 
