@@ -1,4 +1,143 @@
+
+### Place value
+                              10000   1000   100     10       1
+ +------+------+------+------+------+------+------+------+------+
+ |      |      |      |      |      |      |      |      |      |
+ +------+------+------+------+------+------+------+------+------+
+
+
+### Tuple
+A tuple is a finite ordered list of elements. The elements do not have to be of the same type.
+Example of a five-tuple:
+(1, 2, 4, 5, "something")
+Compare this to a list that is an ordered collection of values of the _same type_ which is immutable.
+
+An array is of fixed size and with values of the _same type_, just like a list, but is mutable.
+
 ### Linear algebra
+Vectors play an important part in linear algebra. A vector is a tuple.
+v = (v1, v2, v3)
+
+v1, v2, and v3 are scalar values. Scalars are single dimension, so it can hold any number of that dimension.
+The are a variable and the value is within it:
+v1 --> (1 or 2 or three...)
+
+Adding vectors of the same length simply addes c = (a1 + b1, a2 + b2).
+Subtracting vectors of the same length simply addes c = (a1 - b1, a2 - b2).
+Multiplying vectors of the same length simply addes c = (a1 * b1, a2 * b2).
+Dividing vectors of the same length simply addes c = (a1 / b1, a2 / b2).
+
+### Vector dot product
+c = (a1 * b1 + a2 * b2)
+
+A vector can be multiplied by a scalar using:
+c = (s * a1, s * a2) 
+This does not create a single value but instead returns a modified (or new) vector that has now been scaled.
+
+### Vector Norm
+The L1 norm is the sum of all absolut vector values
+```python
+from numpy import array
+from numpy.linalg import norm
+print(norm([-1, 2, 2], 1))
+```
+```console
+5
+```
+
+The l2 norm is the square root of the sum of the squared vector values.
+
+The max norm is (Linf) and is calculated by returning the max absolut value of the vector:
+```python
+from numpy import inf
+from numpy import array
+from numpy.linalg import norm
+print(norm(array([1, 2, 3]), inf))
+```
+```console
+3
+```
+
+### Matrix
+A matrix is a two-dimensional array of scalars one or more colums and one or more rows.
+
+A vector, for example 
+```python
+v = array([ 1, 2, 3 ]);
+```
+can be considered a matrix with one row and 3 columns.
+
+A multi dimensional matrix could look like this, 4x3 (4 rows and three columns):
+```python 
+from numpy import array
+A = array([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [10, 11, 12]
+        ])
+print(A)
+```
+
+Just remember that like a vector, a matrix is only storing values which represent a 
+compact way of storing data. These are probably implemented as arrays (continous 
+memory slots, very simplified, but this means that access times are fast as it
+iterating the values as they will be prefectched and cached).
+
+Just like we can perform operations on vectors we can also do this on matrices.
+
+Adding two matrices of the same size is done by adding element by element and creates
+a new matrix:
+C = (a1,1 + b1,1, a1,2 + b1,2, a1,3, b,1,3
+     a2,1 + b2,1, a2,2 + b2,2, a2,3, b,2,3)
+
+Subtraction works the same way as above.
+
+
+#### Matric multiplication
+Multiplication is done like addition/substraction using element by element multiplication
+and is also called Hadamard product and is not to be confused with the matrix product.
+It is named after French mathematician Jacques Hadamard.
+
+Matrix dot product:
+
+A = (a1,1 , a1,2
+     a2,1 , a2,2
+     a3,1 , a3,2)
+
+B = (b1,1 , b1,2
+     b2,1 , b2,2)
+
+C = ( 
+      (a1,1 * b1,1) + (a1,2 * b2,1) , (a1,1 * b1,2) + (a1,2 * b2,2)
+      (a2,1 * b1,1) + (a2,2 * b2,1) , (a2,1 * b1,2) + (a2,2 * b2,2)
+      (a3,1 * b1,1) + (a3,2 * b2,1) , (a3,1 * b1,2) + (a3,2 * b2,2)
+    )
+
+```python
+A = array([
+        [1, 2],
+        [3, 4],
+        [5, 6]])
+B = array([
+        [1, 2],
+        [3, 4]])
+C = A.dot(B)
+print(C)
+```
+So this will do
+C = (1 * 1 + 2 * 3 = 7  , 1 * 2 + 2 * 4 = 10
+     3 * 1 + 4 * 3 = 15 , 3 * 2 + 4 * 4 = 22
+     5 * 1 + 6 * 3 = 23 , 5 * 2 + 6 * 4 = 34
+
+C = (7, 10
+     15, 22
+     23, 34)
+
+Notice the order of the multiplication which start by multiplying the first element in the first row
+with the first element in the first row of B. Then multiply the second element in the first row of A
+with the first element of row 2 in B.
+
 
 #### Scalar
 In linear algebra the numbers that are used are called scalars because they are used to scale value. A scalar
@@ -39,6 +178,10 @@ And B ends a 4 so y would be 4:
 [2, 4]
 
 
+The operation can be used in machine learning to calculate the weighted sum of a vector. The dot product is calculated as follows:
+c=(a1 ×b1 +a2 ×b2 +a3 ×b3) 
+or
+c = (a1b1 + a2b2 + a3b3)
 
 ### Calculus
 Can help find the slope of a line which is useful.
@@ -474,4 +617,31 @@ Red Cards  |            | 10-(10-B)  |
 
                           10 + -10 + B = B
 So both piles will have the same number of foreign cards in them.
+
+
+### Groups
+A collection of objects that together with one operation (think addition, mutiplication etc) have the
+following properties:
+* Associative
+* Identity
+* Inverse
+
+Lets take an example, the set of all integers with the operator +:
+Associative: a + (b + c) = (a + b) + c
+Identity: a + 0 = 0 + a = a
+Inverse: a + (-a) = (-a) + a = 0
+
+### Fields
+A set of elements where we can add, subtract, multiply and divide. But since subtraction is adding negatives and
+division is multiplication of fractions we only mention addition and multiplication.
+The are all commutative:
+Rations are fields.
+Reals numbers are fields.
+Complex numbers are fields.
+
+
+### XOR
+
+
+### Matrix
 
