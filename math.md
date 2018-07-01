@@ -1,9 +1,246 @@
+## Learning Linear Algrbra
+This document is a collection of math notes.
+
+Is about "doing math" with vectors and linear transformations instead of numbers and functions.
+
+### Fundamentals
+When solving an equation just remember that as long as you perform the same operations on both sides
+of the equals sign both sides are still equal.
+
+#### Numbers
+##### Natural Numbers
+Counting numbers {1, 2, 3, 4,...}.
+The symbol that is used is a capital N in blackboard bold.
+
+##### Whole numbers
+Natural numbers and zero {0, 1, 2, 3, 4,...}
+The symbol is a captial W in blackboard bold.
+
+##### Intger numbers
+Whole numbers and their negatives {..., -3, -2, -1, 0, 1, 2, 3,...}
+The symbol for integers is a captial Z (Zahlen is a German word for number) in blackboard bold.
+
+The symbols  is a capital R in blackboard bold.
+##### Rational numbers
+Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0.
+nominator          1
+---------          -
+denominator        2
+
+(a ratio is a relationship between two numbers indicating how many times the first number contains
+the second) which is why these numbers are called retionaly numbers.
+
+The symbol for rational numbers is a capital Q in blackboard bold.
+
+##### Irrational numbers
+Numbers that cannot be written as a ratio of two integers. Any non-terminating number.
+
+##### Real numbers
+Combining irrational numbers with rationals gives what a set which is called the real numbers.
+The symbols is a capital R in blackboard bold.
+
+##### Complex numbers
+We can't take the square root of a negative number and for this we need complex numbers.
+The symbols is a capital C in blackboard bold.
+TODO: more details about complex numbers.
+
+
+### Multiplication and Division
+Take 2 x 4 = 8 which can be throught of as 2 + 2 + 2 + 2, or 4 + 4:
+```
++--+ +--+ +--+ +--+
+|  | |  | |  | |  |
++--+ +--+ +--+ +--+
++--+ +--+ +--+ +--+
+|  | |  | |  | |  |
++--+ +--+ +--+ +--+
+```
+and 8 / 4 = 2. We are asking how many groups of 4 go in 8.
+and 8 / 2 = 4. We are asking how many groups of 2 go in 8
+
+```
+1
+- x 3 = 1 
+3
+```
+
+```
++--+   +--+   +--+    3    
+|x | + |x | + |x |  = -  = 1
++--+   +--+   +--+    3
++-----------+
+| x | x | x |
++-----------+
+```
+
+
+1
+- is the same as 1/3. One of three, or how many groups of one go in three.
+3
+```
++--+--+--+
++x |  |  |
++--+--+--+
+```
+
+3
+- x 4
+4
+```
++--+--+--+--+
+|x |x |x |  |
++--+--+--+--+
++--+--+--+   +--+--+--+   +--+--+--+   +--+--+--+
+|x |x |x | + |x |x |x | + |x |x |x | + |x |x |x | = 12
++--+--+--+   +--+--+--+   +--+--+--+   +--+--+--+
+```
+
+17x18
+```
+             10                7
+   +----------------------+----------+
+   |                      |          |
+ 10|    100               |   70     |
+   |                      |          |
+   |                      |          |
+   |                      |          |
+   |                      |          |
+   |                      |          |
+   +----------------------+----------+
+   |                      |          |
+ 8 |     80               |   56     |
+   |                      |          |
+   +----------------------+----------+
+```
+
+100 + 70 + 80 + 56 = 306
+
+### Exponential
+Is the act of multiplying things together many times:
+```
+10^0 = 1 *          = 1
+10^1 = 1 * 10       = 10
+10^2 = 1 * 10*10    = 100
+10^3 = 1 * 10*10*10 = 1000
+```
+Is defined as a^n = aaa...a (n times).
+
+Negative exponents meant divide by:
+```
+10^-0 = 1 /          = 1
+10^-1 = 1 / 10       = 0.1
+10^-2 = 1 / 10*10    = 0.01
+10^-3 = 1 / 10*10*10 = 0.001
+```
+
+```
+2^-0 = 1 /                 = 1
+2^-1 = 1 / 2               = 1/2
+2^-2 = 1 / 2 * 2           = 1/4
+2^-3 = 1 / 2 * 2 * 2       = 1/9
+2^-4 = 1 / 2 * 2 * 2 * 2   = 1/16
+```
+
+Fractional exponents:
+a^1/2 = 2sqrt(a) What times itself  2 times is a? 
+
+Notice that the 2 is the root index which tells us how many times itself our answer must
+be multiplied with itself to give a.
+
+So for example
+4^1/2 = 2sqrt(4^1) = 2 because 2 * 2 = 4
+2^2 = 4
+
+The 2 in front of sqrt, which is really above the radical symbol is the root index which tells us how many
+times itself our answer must be multiplied by itself to give 4.
+
+8^1/3 = 3sqrt(8^1) = 2 because 2 * 2 * 2 = 8
+
+8^1/3 = 3sqrt(8^1) = 2 
+Reverse: 2^3   = 8 
+
+5^4/3 = 3sqrt(5^4) = 3sqrt(5*5*5*5) = 3sqrt(625) = 8,549879
+5^4/3 = 3sqrt(5^4) = (3sqrt(5))^4 = 8,549879
+
+### Operator precedence
+* Expontents and roots
+* Products and division
+* Addition and subtraction
+
 
 ### Place value
-                              10000   1000   100     10       1
- +------+------+------+------+------+------+------+------+------+
- |      |      |      |      |      |      |      |      |      |
- +------+------+------+------+------+------+------+------+------+
+                              10000         1000      100       10       1
+ +------+------+------+------+----------+---------+--------+--------+---------+
+ |      |      |      |      |          |         |        |        |         |
+ +------+------+------+------+----------+---------+--------+--------+---------+
+                              10^4=10000 10^3=1000 10^2=100 10^1=10  10^0 = 1
+
+### Memory layout multi-deminsional arrays
+
+#### Row-major
+For a two demensional arrays (matrices) the first rows, then the second etc as continous memory.
+```
+int arr[3,3] = { { 1, 2, 3}, 
+                 { 4, 5, 6},
+                 { 7, 8, 9}
+               };
+ 0  1  2   3  4  5   6  7  8
+[1][2][3] [4][5][6] [7][8][9]
+```
+
+Notice that incrementing a pointer to the first element will move one column.
+So to index a specific entry in a row we use:
+```c++
+offset = row_index * number_of_columns + column_index
+```
+
+For example [1][2]:
+```c++
+offset = 1 * 3 + 2
+offset = 5
+```
+
+#### Column-major
+Puts the first column in continuous memory, then the second etc.
+```
+ 0  1  2   3  4  5   6  7  8
+[1][4][7] [2][5][8] [3][6][9]
+```
+
+Notice that incrementing a pointer to the first element will move one row.
+So to index a specific entry in a row we use:
+```c++
+offset = column_index * number_of_rows + row_index
+```
+For example [1][2]:
+```c++
+offset = 2 * 3 + 1
+offset = 7
+```
+
+The numpy.array constructor can be used to create multi-dimensional arrays. One of the parameters 
+it accepts is order, which is either "C" for C-style layout (row-major) or "F" for Fortran-style 
+layout (column-major). "C" is the default. 
+
+```python
+>>> from numpy import array
+>>> arr = array([[1, 2, 3], [4, 5, 6], [7, 8, 9]], dtype='uint8', order='C')
+>>> arr
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]], dtype=uint8)
+>>> '  '.join(str(ord(x)) for x in arr.data)
+'1  2  3  4  5  6  7  8  9'
+```
+And with Fortran order:
+```python
+>>> arr = array([[1, 2, 3], [4, 5, 6], [7, 8, 9]], dtype='uint8', order='F')
+>>> '  '.join(str(ord(x)) for x in arr.data)
+'1  4  7  2  5  8  3  6  9'
+```
+
+The memory layout is important for performance reasons and and caching in the CPU must be taken
+into consideration.
 
 
 ### Tuple
@@ -12,29 +249,52 @@ Example of a five-tuple:
 (1, 2, 4, 5, "something")
 Compare this to a list that is an ordered collection of values of the _same type_ which is immutable.
 
+### Vector
+The word vector comes from latin vhere and means means to carry. A vector [1,2] takes the point at 
+[0,0] and carries it to [1,2].
+Is a tuple of values (one or more) called scalars.
+
 An array is of fixed size and with values of the _same type_, just like a list, but is mutable.
+
+There is a concept of a unit vectors in the x direction (i hat which is an i with a ^ above it) and the unit
+vector in the y direction (y hat).
+Take the vector [3,2], is really saying scale the unit x vector by 3, and the unit y vector by 2. 
 
 ### Linear algebra
 Vectors play an important part in linear algebra. A vector is a tuple.
 v = (v1, v2, v3)
 
 v1, v2, and v3 are scalar values. Scalars are single dimension, so it can hold any number of that dimension.
-The are a variable and the value is within it:
+They are a variable and the value is within it:
 v1 --> (1 or 2 or three...)
 
-Adding vectors of the same length simply addes c = (a1 + b1, a2 + b2).
-Subtracting vectors of the same length simply addes c = (a1 - b1, a2 - b2).
-Multiplying vectors of the same length simply addes c = (a1 * b1, a2 * b2).
-Dividing vectors of the same length simply addes c = (a1 / b1, a2 / b2).
+Adding vectors of the same length simply adds c = (a1 + b1, a2 + b2).
+Subtracting vectors of the same length simply substracts c = (a1 - b1, a2 - b2).
+Multiplying vectors of the same length simply multiplies c = (a1 * b1, a2 * b2).
+Dividing vectors of the same length simply divides c = (a1 / b1, a2 / b2).
 
 ### Vector dot product
 c = (a1 * b1 + a2 * b2)
 
+```python
+>>> from numpy import array
+>>> a = array([1,2,3])
+>>> b = array([1,2,3])
+>>> c = a.dot(b)
+>>> c
+14
+```
+So that would be:
+c = (1 * 1 + 2 * 2 + 3 * 3) = 15
+c = (1 + 4 + 9) = 15
+
 A vector can be multiplied by a scalar using:
 c = (s * a1, s * a2) 
-This does not create a single value but instead returns a modified (or new) vector that has now been scaled.
+This does not create a single value but instead returns a modified (or creates a new) vector that has now been scaled.
 
 ### Vector Norm
+Norms are a measure of distance. I think this refers to the distance between points in multiple dimensions.
+
 The L1 norm is the sum of all absolut vector values
 ```python
 from numpy import array
@@ -65,7 +325,20 @@ A vector, for example
 ```python
 v = array([ 1, 2, 3 ]);
 ```
-can be considered a matrix with one row and 3 columns.
+is only one dimentional matrix with 3 column. You should really see it as:
+[ 1,
+  2,
+  3]
+
+For this to be the other way, a single row and three columns:
+```python
+>>> array([ 1, 2, 3 ]).shape
+(3,)
+>>> array([[ 1, 2, 3 ]]).shape
+(1, 3)
+```
+This would be a 2d matrix and each row has a one dimentional vector which contains the columns.
+
 
 A multi dimensional matrix could look like this, 4x3 (4 rows and three columns):
 ```python 
@@ -344,100 +617,8 @@ and the absolute value of -5 is 5. The symbol use it a pipe character, the numbe
 7.5 = 7.5
 
 
-### Real numbers
-* Natural Numbers
-Counting numbers {1, 2, 3, 4,...}.
-
-* Whole numbers
-Natural numbers and zero {0, 1, 2, 3, 4,...}
-
-* Intgers
-Whole numbers and their negatives {..., -3, -2, -1, 0, 1, 2, 3,...}
-
-* Rational numbers
-Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0. 
-nominator          1
----------          -
-denominator        2
-
-(a ratio is a relationship between two numbers indicating how many times the first number contains the second) which
-is why these numbers are called retionaly numbers.
-
-* Irrational numbers
-Numbers that cannot be written as a ratio of two integers. Any non-terminating number.
 
 
-### Multiplication and Division
-Take 2 x 4 = 8 which can be throught of as 2 + 2 + 2 + 2, or 4 + 4:
-+--+ +--+ +--+ +--+
-|  | |  | |  | |  |
-+--+ +--+ +--+ +--+
-+--+ +--+ +--+ +--+
-|  | |  | |  | |  |
-+--+ +--+ +--+ +--+
-and 8 / 4 = 2. We are asking how many groups of 4 go in 8
-and 8 / 2 = 4. We are asking how many groups of 2 go in 8
-
-1
-- x 3 = 1 
-3
-
-+--+   +--+   +--+    3    
-|x | + |x | + |x |  = -  = 1
-+--+   +--+   +--+    3
-+-----------+
-| x | x | x |
-+-----------+
-
-
-1
-- is the same as 1/3. One of three, or how many groups of one go in three.
-3
-+--+--+--+
-+x |  |  |
-+--+--+--+
-
-
-3
-- x 4
-4
-
-+--+--+--+--+
-|x |x |x |  |
-+--+--+--+--+
-+--+--+--+   +--+--+--+   +--+--+--+   +--+--+--+
-|x |x |x | + |x |x |x | + |x |x |x | + |x |x |x | = 12
-+--+--+--+   +--+--+--+   +--+--+--+   +--+--+--+
-
-12
--- = 3
-4
-
-3   2
-- x -
-4   3
-
-+--+--+--+--+
-|x |x |x |  |
-+--+--+--+--+
-
-17x18
-             10                7
-   +----------------------+----------+
-   |                      |          |
- 10|    100               |   70     |
-   |                      |          |
-   |                      |          |
-   |                      |          |
-   |                      |          |
-   |                      |          |
-   +----------------------+----------+
-   |                      |          |
- 8 |     80               |   56     |
-   |                      |          |
-   +----------------------+----------+
-
-100 + 70 + 80 + 56 = 306
 
 
 ### Equality Properties
@@ -644,4 +825,39 @@ Complex numbers are fields.
 
 
 ### Matrix
+
+
+
+A list in Python is just an ordered collection of items which can be of any type. By comparison an array is an 
+ordered collection of items of a single type
+```python
+>>> l = [1,2,3]
+>>> l
+[1, 2, 3]
+>>> l[0]
+1
+>>> l[2]
+3
+>>> for d in l:
+...	d
+1
+2
+3
+```
+
+### Degrees vs Radian
+Degrees came about (they think) from the observation that looking at a point in the sky, it would 
+move a certain distance per day. The number of these movments was counted to 360 for a whole year.
+This is very specific to observations on earth and not specifically tied to math. For example, 
+if someone on another planet did this they would not use this system. That is where radians come
+in.
+360 is totally arbitrary, chosen simply because the Babylonians preferred multiples of 60.
+As it turns out, there’s a better way. But to explore it, we’ve got to lift ourselves out of this rut of thinking. 
+No more dividing the circle into some arbitrary number of units.
+
+### Radian
+Take the radius and make an arc with the same lenght, this is one radian. Half a circle is a little more than
+3 radians. It is actually exactly 3PI.
+
+
 
