@@ -167,6 +167,53 @@ Reverse: 2^3   = 8
 * Products and division
 * Addition and subtraction
 
+### Algebra
+Is all about manipulating numbers and variables.
+
+The expression:
+x = abc
+We say that x factors into a, b and c. a, b, and c are the factors of x.
+
+
+#### Polynomials
+Poly comes from greek and means many.
+nomial comes from the latin word nomen which means name. In math we deal with terms instead of names.
+Examples:
+10x^7 - 9x^2 + 15x^3 + 9
+6
+
+Not a polynominal:
+10x^-7 - 9x^4 + 15x^3 + 9
+10x^-7 - 9x^4 + 15x^3 + 9x^0
+6x^0
+
+Terms:
+10x^-7, - 9x^4, 15x^3, 9x^0
+Coefficients
+10, -9, 15, 9
+
+A polynominal is the sum of a finite number of terms where each term has a coefficient, being multiplied
+by a variable, being raised to a non-negative integer power.
+There has to be non-negative powers for it to be a polynominal.
+
+The difference between a point (px py) and a vector (vx, vy) is that a point always originates (is drawn)
+starting from the origin. This might not be the case for vectors.
+
+### Functions
+
+#### Line 
+f(x) = mx + b
+m = slope of the line which is the change in y / change in x, or delta y and delta x
+
+b = the y intercept
+
+(-3, 5) (2, -6)
+
+m = -6 - 5     -11
+    ------- =  ---
+     2 - (-3)       
+
+
 
 ### Place value
                               10000         1000      100       10       1
@@ -607,20 +654,6 @@ Describes the distance of a number from 0 without considering the direction (-=l
 and the absolute value of -5 is 5. The symbol use it a pipe character, the number and a pipe character:
 |5|
 
-### Algebra
-   3x = x + 5 = 
-   -1   -1      2x = 5  = x =  2.5
-                ------
-                  2
-
-2.5 * 3 = 2.5 + 5 
-7.5 = 7.5
-
-
-
-
-
-
 ### Equality Properties
 The Addition, Subtraction, Multiplication, and Division Properties of Equality all say that two sides of an 
 equation remain equal if you perform the same operation to each side of the equation, as long as you do not 
@@ -770,6 +803,41 @@ Think in terms of piles and holes instead of positive and negative numbers.
                      |  |  |  |
                      |  |  |  |
                      +--+  +--+
+			    opposite of one
+
+2 + (opposite)2 = 0
+
+-2 = opposite 2
+
+3 + (-2) = 1
+3 - 2 = 1
+
+(-2) + (-2) = -4
+
+(-3) + 1 = -2
+(-3) + (-1) = -4
+(-3) - 1 = -4
+
+It is so much easier to just use addition and think of opposite piles instead of subtraction.
+"Subtraction is the addition of the opposite"
+
+5 - 3 = 
+5 + (-3) = 2 (5 piles plus 3 holes)
+
+4 - 6 =
+4 + (-6) = -2
+
+-(3 + (-2) = 
+-3 + 2 = 1
+
+-(5 - 4 + 1 -7)
+ -5 = 4 - 1 + 7
+
+-(x - y) = 
+ -x + y 
+
+(8 -w) - (9 - w)
+ 8 + (-w)  + (-9) + w
 
 
 ### Cards
