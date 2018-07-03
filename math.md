@@ -199,7 +199,52 @@ There has to be non-negative powers for it to be a polynominal.
 The difference between a point (px py) and a vector (vx, vy) is that a point always originates (is drawn)
 starting from the origin. This might not be the case for vectors.
 
+Degree of a polynominal is the largest exponent of that variable:
+4x
+The Degree is 1 (4^1)
+
+4x^3 + 2x^2 - 7
+The x^3 makes it Degree 3
+
+Degree		Name		Example
+0               Constant	6
+1		Linear		x+3
+2		Quadratic	x^2-x+2
+3		Cubic		x^3-x^2+5
+4		Quartic		6x^4-x^3+x-2
+5		Quintic		x^5-3x^3+x^2+8
+
+
 ### Functions
+
+#### Even Functions
+Not to be confused with even numbers.
+Think for a f(x) = x^2 and its graph. It is symmetric to the y axis, even on both sides, (1, 1), (-1, 1).
+f(x) = x^2
+
+f(1) = 1^2   = 1
+f(-1) = 1^2  = 1
+f(2) = 2^2   = 4
+f(-2) = 2^2  = 4
+
+A function is even if:
+f(x) = f(-x)
+f(1) = f(-1)
+
+This could any function that is symetric and not just for x^2
+
+
+#### Odd Functions
+Not to be confused with odd numbers.
+
+f(x) = x^3
+f(1) = 1^3   = 1
+f(-1) = -1^3 = -1
+f(2) = -2^3  = 8
+f(-2) = -2^3  = -8
+
+A function is odd if:
+f(x) = -f(-x)
 
 #### Line 
 f(x) = mx + b
