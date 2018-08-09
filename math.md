@@ -344,6 +344,7 @@ Compare this to a list that is an ordered collection of values of the _same type
 ### Vector
 The word vector comes from latin vhere and means means to carry. A vector [1,2] takes the point at 
 [0,0] and carries it to [1,2].
+Vectors are built from components which are ordinary numbers.
 Is a tuple of values (one or more) called scalars.
 
 An array is of fixed size and with values of the _same type_, just like a list, but is mutable.
@@ -351,6 +352,230 @@ An array is of fixed size and with values of the _same type_, just like a list, 
 There is a concept of a unit vectors in the x direction (i hat which is an i with a ^ above it) and the unit
 vector in the y direction (y hat).
 Take the vector [3,2], is really saying scale the unit x vector by 3, and the unit y vector by 2. 
+
+Vector addition can be though of as taking the other vector and placing it at the point of the first one.
+(1,2) + (3,4) = (1 + 3, 2 + 4) = (4, 6)
+We can think of this as first walking (1,2) and then from that position walking (3,4). We get to know the new
+location and how to walk there by following the coordinates, but the lenght (walking in a straight line) is 
+not known. For this we need the lenght which we will look at shortly.
+
+Vector subtraction can be though 
+(1,2) - (3,4) = (1 - 3, 2 - 4) = (-1, -2)
+So we start at (1,2) but this time imagine the point/arrow pointing the other way. So starting from 1 on the
+x-axis we walk two steps backwards to (-1,2) and then from there walk downwards -2 on the y-axis.
+
+Scaling a vector is just multiplying x and y with a constant value. Think of this as streching the vector by
+increasing the x axis and then the y-axis. 
+Scaling can also be done in the negative direction in which case the vector will point in the opposite direction.
+
+Dot product:
+The dot product is about finding similarites as it uses the same dimensions, x with x,
+y with y etc. This is measuring similarities.
+
+          bx    by   
+	+-----+-----+
+    ax	| Dot |     |
+	+-----+-----+
+    ay	|     | Dot |
+	+-----+-----+
+
+(1,2) * (3,4) = 1x3 + 2x4 = 3 + 8 = 11
+
+Notice that the result is a number and not a new or modified vector.
+If the vector a * vector b = 0, then vector a and b are perpendicular:
+
+      a ^
+        |
+        |
+        |
+        |
+        +------------->
+                      b
+
+The symbol for a perpendicular vector is an upside down capital T.
+So the above check could be used to check if two vectors are perpendicular, which means do that form a right
+triangle (90 degrees). This for when we vector a and be are in a plane.
+
+Example:
+->           ->
+a = (7, 14)  b = (2, -1)
+->   ->
+a  *  b = 7*2 + 14*-1 = 14 -14 = 0  it is perpendicular
+
+        ^
+        |                    a (7, 14) imaging an arrow from the origin
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        +------------------------>
+        |
+        |   b (2, -1)
+        |              
+
+
+If the vectors point in the same direction , then
+cos (eulers totient)
+
+
+Length:
+  ->                     ->
+||U||^2 = x^2 + v^2 => ||U|| = sqrt(x^2 = y^2)
+
+This is using the pythagoras theorem.
+
+                                    +
+                                   / |
+                                  /  |
+                   hypo          /   | vy
+                                /    |
+                               /     |
+                              +------+
+                                 vx
+
+What we are intrested in is the length of this vector, that is we want to know the length of the hypo.
+
+x^2 + y^2 = c^2
+1^2 + 2^2 = c^2 
+1   + 4   = 5
+          
+1^2 + y^2 = 5^2
+
+Cross product:
+Is only defined for three-dimensional vectors like (ux, ux, uz)
+->
+u = (ux, uy, uz)
+->
+v = (vx, vy, vz)
+
+(uy*vz - uz*vy, uz*vx - ux*uz, ux*vy - uy*vx) 
+
+TODO: figure out what we are actually calculating here. The output of the cross product is vector that is prependicular to 
+both vectors.
+Hmm, thinkin about this we have two vectors a and b in a plane. If a is pointing in the x direction, and b in the y direction
+then the resulting vector will be pointing in the z direction:
+
+^   ^   ^
+i x j = k
+
+So the new vector is supposted to be a new 90 degree angle vector drawn from both a and b. But that is not really possible
+to do with a two dimensional plane. But if it can go out towards you, or in away from you then it is possible.
+
+Why is this computing the way it does. If we think about the coordinates (x,y,z) I would have guessed that
+we would be multiplying x with x and y with y etc. This is because the cross product is the interaction 
+between different dimensions (so not x with x etc).
+We are trying to measure cross-interactions. Take the Area of which is a*b, this is actually using two
+different dimensions a and b, or if you can see them as x and y. The cross product is using three 
+dimensions.
+
+^   ^   ^
+i x j = k
+
+^   ^   ^
+j x k = i
+
+^   ^   ^
+i x k = j
+
+          bx    by    bz
+	+-----+-----+-----+
+    ax	| Dot |Cross|Cross|
+	+-----+-----+-----+
+    ay	|Cross| Dot |Cross|
+	+-----+-----+-----+
+    az	|Cross|Cross| Dot |
+	+-----+-----+-----+
+
+(1, 0, 0) x (0, 1, 0) = (0, 0, 1)
+
+          bx    by    bz
+	+-----+-----+-----+
+    ax	|  1  |  0  |  0  |
+	+-----+-----+-----+
+    ay	|  0  |  1  |  0  |
+	+-----+-----+-----+
+    az	|  0  |  0  |  1  |
+	+-----+-----+-----+
+
+We are crossing something in the x dimension with something in the y dimension which gives something in the
+z dimension.
+
+We can write down the pattern: xyzxyz
+
+->  ->   ->  ->    -> ->
+a * b  = b * a  = |a||b| cos theta
+->  ->             -> ->           ->                                                       ->   ->
+a x b           = |a||b| sin theta n       // n = unit vector that is perpendicular to both a and b
+
+
+       a /
+        /
+       /
+      /------------>
+                   b
+Now a and b are on the same plane, for something to be perpendicular to both of them this vector would have
+to either coming out upwards or downwards.
+
+
+#### Basis
+This is the unit of the coordinate system whith x, y, and z are scaled by.
+
+### Imaginary numbers
+We can take the quare root of -1 but this is useful sometimes in math so an number was introduced to allow this:
+The definition is :
+i^2 = -1
+
+i^0 = 1
+i^1 = i
+i^2 = -1
+i^3 = i^2 * i = -1 * i = -i
+i^4 = i^2 * i^2 = -1 * -1 = 1
+i^4 = i^3 * i = -i * -1 = 1
+Notice that i^4 is the same as i^0!
+i^5 = i^4 * i = 1 * i = i
+Notice that i^5 is the same as i^1!
+i^6 = i^5 * i = 1 * i = i * 1 = -1
+Notice that i^6 is the same as i^2!
+This cycle continues.
+
+
+
+### Complex numbers
+Are similar to vectors and we can add and subtract complex numbers like vectors. The also have components, length,
+and direction.
+A complex number has a real part and an imaginary part:
+z = 5 + 3i
+The real part is 5 and written as Re(z) = 5
+The imaginary part is 3i and written as Im(z) = 3
+
+We can visualize this:
+      Im  ^
+          |
+         3|        z(5,3)
+          |        |
+          |        |
+------------------------>
+          |        5   Re
+          |
+          |
+          |
+
+The above is called a complex plane.
+
+We can add complex numbers together by using the follwing:
+Lets take two complex numbers,
+a = 2 + 3i
+c = 4 + 5i
+
+(2 + 3i) + (4 + 5i) = (2 + 4) + (3 + 5)i = (6 + 8i)
 
 ### Linear algebra
 Vectors play an important part in linear algebra. A vector is a tuple.
@@ -971,6 +1196,51 @@ No more dividing the circle into some arbitrary number of units.
 ### Radian
 Take the radius and make an arc with the same lenght, this is one radian. Half a circle is a little more than
 3 radians. It is actually exactly 3PI.
+
+
+### Trigonometry
+
+### sine/cosine
+Think of sine, cosine as the y and x axis of a dome. Sine is where we hang a screen and x is the lenght from 
+us the screen will be. The closer to the origin from 0.0 - 1.0 on the x axis, the larger the screen.
+As we make the screen larger (y moves towards 1) the distance (x moves towards 0) decreases.
+
+Remember that the trig functions sine, cosine, and tangent all deal with percentages. 
+Having a exact hight (for y which is related to sine) does not say much about the hight at all in fact.
+If it is 50 cm is that a small or a big "screen" relative to the whole circle (the "dome"). But if we know that 50
+is 80% then we know much more.
+
+Cosine is the ratio between the x axis and hypo.
+
+### Tangent/secant
+Imaging you have a wall that starts just outside the circle, almost touching a point on the x-axis furthest to the right.
+We are going to hang our screen on the wall. Regard less of the height on the wall we choose to hang it, it will always
+be the same distance from us, so x is fixed at 1.
+The hight of this wall is called the tangent (and represnts the y axis just like sine). The distance to the wall is one
+as we are thinking of the unit circle. But it will always be the radius. 
+Now, imagine placing a ladder from the origin of the circle (dome) to a point on the wall because this is before the time
+when there was a remote control and we have to be able to switch channels. This is the SeCant (hypo). Perhaps the memonic
+Switch Channel might help to indicate that we have to climb the ladder to switch channels.
+Notice that we can place the the screen infinitly high in contrast to then we were hanging it inside the dome, there we could
+only go to the hight of the dome. The lowest it can go is just link inside the dome which is 0. 
+if x = 0 then tangent will be 0, and secant will be 1 as the ladder will basically be lying flat on the ground.
+
+
+### Cotangent/Cosecant
+For this imagine a ceiling on top of the dome, which much like the wall (tangent) almost touches the highest y point.
+We could hang our screen on the ceiling. The y axis is the high of the screen is fixed in this case at one and will
+not change, just like the distance to the wall was fixed.
+What the distance to the wall in this case can vary as we can chose different points on the x axis to hang the screen, 
+this distance is the cotangent. 
+And the ladder we need to switch channels would be called the cosecant much the same as the secant for the wall senario.
+
+
+Now lets mix all of these together, what I mean here is that they all can be in the same circle at the same time.
+This is a really nice visual representation and interactive app which allow one to play around with the values:
+https://web.archive.org/web/20150511220229/http://www.touchmathematics.org:80/topics/trigonometry
+
+
+
 
 
 
