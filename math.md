@@ -1,4 +1,4 @@
-## Learning Linear Algrbra
+## Learning Linear Algebra
 This document is a collection of math notes.
 
 Is about "doing math" with vectors and linear transformations instead of numbers and functions.
@@ -341,11 +341,15 @@ Example of a five-tuple:
 (1, 2, 4, 5, "something")
 Compare this to a list that is an ordered collection of values of the _same type_ which is immutable.
 
+
+
 ### Vector
 The word vector comes from latin vhere and means means to carry. A vector [1,2] takes the point at 
 [0,0] and carries it to [1,2].
 Vectors are built from components which are ordinary numbers.
 Is a tuple of values (one or more) called scalars.
+A vector has a magnitude which is the length of the line segment. 
+A vector has a direction which is angle the line forms with the positive x-axis.
 
 An array is of fixed size and with values of the _same type_, just like a list, but is mutable.
 
@@ -590,6 +594,18 @@ Subtracting vectors of the same length simply substracts c = (a1 - b1, a2 - b2).
 Multiplying vectors of the same length simply multiplies c = (a1 * b1, a2 * b2).
 Dividing vectors of the same length simply divides c = (a1 / b1, a2 / b2).
 
+#### Linear dependent
+A set of vectors are linear dependent if a vector in the set is a linear combination of other
+vectors in the set. 
+This will be the case if
+c1v1 + c2v2 + c3c3 + ... cnvn = [0 ... n] (this is supposed to be a zero vector)
+
+So the will be linear independant if the above is not true.
+
+### Determinant
+This is calculating the area between two vectors which is a parallelogram. Draw the parallelogram and then 
+look a the sides and give them lables. You see that we can take the area of the rectangle. 
+
 ### Vector dot product
 c = (a1 * b1 + a2 * b2)
 
@@ -684,7 +700,7 @@ C = (a1,1 + b1,1, a1,2 + b1,2, a1,3, b,1,3
 Subtraction works the same way as above.
 
 
-#### Matric multiplication
+#### Matrix multiplication
 Multiplication is done like addition/substraction using element by element multiplication
 and is also called Hadamard product and is not to be confused with the matrix product.
 It is named after French mathematician Jacques Hadamard.
@@ -727,6 +743,42 @@ C = (7, 10
 Notice the order of the multiplication which start by multiplying the first element in the first row
 with the first element in the first row of B. Then multiply the second element in the first row of A
 with the first element of row 2 in B.
+
+  +-  -+ +-+
+  |1  1| |0|
+  |0  1| |1|
+  +-  -+ +-+
+The matrix above represents a transformation. The first column of the matrix is i hat and the second is j hat.
+We are going to take the vector and transform it. Visualize what i hat and j hat look like.
+  i hat:            j hat
+    |                 | ^
+    |                 | |
+ ----->---        ---------
+    |                 |
+    |                 |
+
+And our vector is:
+    ^
+    |
+ ---------
+    |
+    |
+
+### Determinatant
+Determinant is the area of the parallelogram between two vectors. If this is zero then they basically make a line, 
+this is a negative value then the parallelogram has been flipped (x an y have swapped places). 
+I'm not sure about all the uses of this but one might be to calculate the area destroyed by an explosion in a game 
+perhaps.
+
+### Inverse matrix
+
+### Column space
+
+### Null space
+
+### Rank
+
+### Transformation between dimensions
 
 
 #### Scalar
@@ -1240,7 +1292,4 @@ This is a really nice visual representation and interactive app which allow one 
 https://web.archive.org/web/20150511220229/http://www.touchmathematics.org:80/topics/trigonometry
 
 
-
-
-
-
+### Tensor
