@@ -374,7 +374,25 @@ Scaling can also be done in the negative direction in which case the vector will
 
 Dot product:
 The dot product is about finding similarites as it uses the same dimensions, x with x,
-y with y etc. This is measuring similarities.
+y with y etc. 
+What we are doing is trying find the projection of one vector upon the other and then 
+multipyling them together. This will give us the "force" they both have in the same
+direction. This uses the dot product which can be calculated in two ways, one is using
+the components:
+
+vector a dot vector b = ax*bx + by*by
+
+and the other is using the geographical version:
+vector a dot vector b = ||a|| ||b|| cosine theta
+where theta is the angle between the vectors.
+But how does one get the angle if it is not known? 
+
+theta = arccos     a dot b
+               ( ------------ )
+                  ||a|| ||b||
+
+
+This is measuring similarities.
 
           bx    by   
 	+-----+-----+
@@ -1293,3 +1311,79 @@ https://web.archive.org/web/20150511220229/http://www.touchmathematics.org:80/to
 
 
 ### Tensor
+
+### Newton
+Force = mass * accelleration
+
+The unit of mass is kg.
+The unit of acceleration is m/sec^2
+
+Lets say we have an object that weighs 2 kilograms.
+And the acceleration is 4m/s^2
+F = (2kg)  4m        8 kgm (8 kg * m)
+    -----  ---  =   -----------------  = 8kgm/s^2
+      1    s^2             s^1
+
+Saying 8kgm/s^2 is mouthful so this is said to be 8 newton, 8N.
+
+
+Mass
+Is the amount of matter in an object. It does not matter where this mass is, it will be the 
+same. SI unit of mass is kg.
+
+Weight
+Is the measure of the gravitational pull on an object.
+W = m x g  (acceleration due to gravity)
+This is almost identical to the the force and the unit is also the same, Newton.
+
+Work
+Is Force times distance:
+W = F * d
+
+
+### Slope
+Change in y 
+-----------  = percentage
+Change in x
+
+Take a triangle with a base of 3 and a hight of 2. Find the change by:
+2/3 = 0.66666
+So the hight will increase with 0.66 percent for x.
+So for 
+x = 3, 3 * 2/3 = 2
+x = 6, 6 * 2/3 = 4
+
+
+A sphere is the most space-efficient shape — it gives the most volume for the least surface area. No matter if you’re an elephant or mouse, you’ll conserve the most heat by curling into a ball.
+
+### Activation functions
+#### Identity
+f(x) = x
+
+#### Binary step
+f(x) = { 0 for x < 0
+         1 for x >= 0
+So all positive input gives one and all negative input gives 0. Used in classifiers where you want to classify between 1 and 0. Think classification of cats,
+either it is a cat or not a cat.
+
+#### Logistical or Sigmoid
+"Sigma like" as the curve is has looks almost like an S (sigma).
+
+         1
+f(x) = -----
+       1 + e^-x
+
+Takes the input and maps it between 0 and one. So if the input is very large (or very small (negative)) this will constrain the output to 
+still be between zero and one.
+
+#### ReLU
+f(x) = { 0 for x < 0
+         1 for x >= 0
+
+How is this different to the binary step function?
+
+
+#### Leaky ReLU
+
+
+#### SoftMax
