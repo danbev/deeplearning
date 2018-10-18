@@ -17,8 +17,6 @@ void LinearRegression::calculate() {
   } 
   double x_mean = x_sum / data_.size();
   double y_mean = y_sum / data_.size();
-  std::cout << "x_mean=" << x_mean << '\n';
-  std::cout << "y_mean=" << y_mean << '\n';
 
   double xy_area_sums = 0;
   double x_squared = 0;
@@ -29,8 +27,6 @@ void LinearRegression::calculate() {
   if (x_squared != 0) {
     slope_ = xy_area_sums / x_squared;
     y_intercept_ = y_mean - (slope_ * x_mean);
-    std::cout << "slope=" << slope_ << '\n';
-    std::cout << "y_intercept=" << y_intercept_ << '\n';
   }
 }
 
