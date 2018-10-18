@@ -12,13 +12,14 @@ class LinearRegression {
  public:
    LinearRegression() = default;
    ~LinearRegression() = default;
-   LinearRegression add(point p);
-   double m() { return m_; }
-   double b() { return b_; }
+   LinearRegression* add(point p);
+   double estimate(int x) const;
+   double slope() const;
+   double y_intercept() const;
  private:
    std::vector<point> data_;
-   double m_;
-   double b_;
+   double slope_ = 0;
+   double y_intercept_ = 0;
    void calculate();
 };
 
