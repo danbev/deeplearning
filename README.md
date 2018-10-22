@@ -108,7 +108,7 @@ to every node in the second layer.
       [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  
         0    1    2    3    4    5    6    7     8    9
 
-So in our case upon we have oen image with a human written digit. This will fire all the neurons in the
+So in our case upon we have an image with a human written digit. This will fire all the neurons in the
 first layer as this is how things get into the network. But not all neurons will fire in the next layer as
 this depends on their activation values. You can think of this as the first layer splitting/detecting small
 patterns in and activating on them. The next layer would splitt/detect further but this time putting together
@@ -214,6 +214,27 @@ This can be combined with supervised/unsupervised algorithms and using a fixed n
 ### Non-Parametric 
 This can be combined with supervised/unsupervised algorithms and using an infinte number of parameters which is determined by the input data.
 
+
+Ax = b
+A is the input data matrix.
+b is the column vector of outcomes for each row in the A matrix.
+x is the weights which is a vector of parameters.
+
+### Connection weights
+Weights on connections in a neural network are coefficients that scale (amplify or minimize) the input signal to a given neuron in the network. 
+
+
+### Bias
+Biases are scalar values added to the input to ensure that at least a few nodes per layer are activated regardless of signal strength. 
+Biases allow learning to happen by giving the network action in the event of low signal. They allow the network to try new interpretations 
+or behaviors. Biases are generally notated b, and, like weights, biases are modified throughout the learning process.
+
+### Activation
+The functions that govern the artificial neuron’s behavior are called activation functions. The transmission of that input is known as forward propagation. 
+Activation functions transform the combination of inputs, weights, and biases. Products of these transforms are input for the next node layer. 
+Many (but not all) nonlinear transforms used in neural networks transform the data into a convenient range, such as 0 to 1 or –1 to 1. 
+When an artificial neuron passes on a nonzero value to another artificial neuron, it is said to be activated.
+
 ### Adding Google Test
 
     $ mkdir lib
@@ -224,4 +245,86 @@ This can be combined with supervised/unsupervised algorithms and using an infint
     $ c++ -std=c++11 -I`pwd`/../include -I`pwd`/../ -pthread -c `pwd`/../src/gtest-all.cc
     $ ar -rv libgtest.a gtest-all.o
     $ cp libgtest.a ../../../../lib
+
+
+### Linear Regression using Least Squared Criterion
+We are trying to find a line where the distance to our data points is as small as possible.
+This is done by drawing a line and calculating the
+
+y = mx + b
+or in statistics:
+^
+y = b0 + b1x
+b/beta0 are the y-intercept and b/beta1 is the slope of the line
+y-hat indicates that this is an approximation.
+
+The formula for calculating beta1 (the slope) is:
+      sum ( (x-x_mean) (y - y_mean) )
+b1 = ------------------------------
+      sum ( (x - x_mean)^2
+
+What we are doing is finding the area of the points and summing them up. Then we are divding this
+with the area of the distance to the x mean.
+
+For b0/b/y_intercept we are taking the calculated slope from above and multiplying that 
+with the x mean. 
+
+So we have two ways to move the line, the slope and also the y intercepts. Our goal is to move the
+line so that the area between the points and the line are as small as possible.
+We can add new points and also use the `estimate` function to get an estimated y value for a specified
+x value.
+
+#### Logistic regression
+
+y-hat = P(y=1|x) 
+Parameters: w (a vector in Rx), b (just a number)
+
+So with the input parameter x and the paremeters w and b we should generate the output y-hat.
+The function will be:
+y-hat = sigmoid(wx + b)
+
+We need a cost function to calculate the w and b parameters.
+So we are trying to get w and b to be good estimates so that y-hat can be classified.
+We also need an error function that tells us how well the prediction is.
+
+Loss function is for a single training example.
+L(y-hat, y) = -( y * log(y-hat) + (1 - y) log(1 - y-hat))
+
+Lets take a closer look at the above:
+y * log y-hat
+The logarithm is asking what the value of y-hat was raised to. For example, say y-hat was 16 then this would be:
+log 16 = 4 (if we are using the base 2 which I think is the default when not specified).
+We take that value an multiply it against y which is the known correct value for y.
+Then we add this to 1-y * log(1 - y-hat)
+
+Now, the result, y, will be either 1 or 0.
+When y = 1:
+= -( y * log(y-hat) + (1 - y) log(1 - y-hat))
+= -( 1 * log(y-hat) + (1 - 1) log(1 - y-hat))
+= -(     log(y-hat) + (0)     log(1 - y-hat))
+= -log(y-hat)
+
+And when y = 0:
+= -( 0 * log(y-hat) + (1 - 0) log(1 - y-hat))
+= -(                + (1) log(1 - y-hat))
+= -((1) log(1 - y-hat))
+= -(log(1 - y-hat))
+
+Remember that y-hat will be the result of the sigmoid function above.
+
+Cost function is for the entire training set.
+           1
+J(w, b) = --- Sum( L(y-hat(i), y(i)))
+           m
+The J function is implemented using Gradient Decent.
+
+loop {
+  w = w - learning_rate * dj(w)/dw
+}
+The learning_rate is denoted as alpha, and we take that times the derivative at point w.
+Notice that if the dirivative/slope is postive we will be subtracting w.
+
+### Gradient Decent
+
+Partial Derivative
 
