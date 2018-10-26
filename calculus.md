@@ -59,6 +59,8 @@ change in y / change in x
 
 so our average rate of change of that interval and is the secant line between the points.
 
+
+
 #### Rules
 Power rule:
 d/dx (x^n) = nx^n-1, n != 0
@@ -135,5 +137,8 @@ The gradient is the direction (given by the direction of the vector) of steepest
 the vector tells the steepness, 
 if it is not very long it is a shallow asenct and if it is long it is steeper.
 
+
+### Quotient rule
+f( 
 
 
