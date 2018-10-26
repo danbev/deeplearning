@@ -16,3 +16,7 @@ double sigmoid(double t) {
   double result = 1/(1 + pow(e, (t * -1)));
   return result;
 }
+
+double sigmoid_prime(double sigmoid) {
+  return sigmoid * (1 - sigmoid);
+}

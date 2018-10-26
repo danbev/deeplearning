@@ -11,3 +11,8 @@ TEST(Util, sigmoid) {
   EXPECT_DOUBLE_EQ(sigmoid(0), 0.5);
   EXPECT_DOUBLE_EQ(sigmoid(8), 0.99966464986953363);
 }
+
+TEST(Util, sigmoid_prime) {
+  double s = sigmoid(0);
+  EXPECT_DOUBLE_EQ(sigmoid_prime(s), 0.25);
+}
