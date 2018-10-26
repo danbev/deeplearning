@@ -324,7 +324,110 @@ loop {
 The learning_rate is denoted as alpha, and we take that times the derivative at point w.
 Notice that if the dirivative/slope is postive we will be subtracting w.
 
-### Gradient Decent
+### Sigmoid
+The forumla for the sigmoid function is:
+   1
+ ------
+ 1 + e^-x
 
-Partial Derivative
+sigmoid(-3) = 0.047
+sigmoid(-2) = 0.11
+sigmoid(-1) = 0.26
+sigmoid(0)  = 0.5
+sigmoid(1)  = 0.73
+sigmoid(2)  = 0.88
+sigmoid(20) = 0.9999..
 
+If we visualize this the curve will be S-shaped. So higher are closer to 1 and lower values
+are closer to 0. This mapping of input values to output values between 0 and 1 can be useful
+when doing binary classification.
+
+If we want to find out the rate of change for a particular point we can take the derivative:
+So we nudge the x value of interest, say 0 just a little, like 0.001 and then calculate the
+slope of the tanget line between these two points:
+
+         f(x + dx) - f(x)     f(0 + 0.001) - f(0)    0.50025 - 0.5
+df/dx =  ---------------- =   ------------------- =  ------------- = 0.25
+              dx                   0.0001               0.0001
+
+We want a function that we can plug in any x value and get the rate of change at that point, this
+is where we want have a derivative function. How do we derive that for the sigmoid function?
+
+We can rewrite the sigmoid function like this if we like:
+  1
+-------  = (1 + e^-x)^-1
+1 + e^-x
+
+f(x) = (1 + e^-x)^-1
+
+We can use the chain rule here: 
+f(g(x)) is f`(g(x)) * g`(x)
+
+So lets break this up in to the outer/inner functions:
+outer = (1 + e^-x )^-1
+inner = (1 + e^-x)
+f`(x) = outer`(x) * inner`(x)
+
+outer`(x) = -1(1 + e^-x)^-2
+          =      -1
+           ----------------
+              (1 + e^-x)^2
+
+inner`(x) = (1 + e^-x)            // 1 is a constant and has not slope so it is zero 
+          = (0 + e^-x)
+          = e^-x                 // now this is also a compound function with an outer
+                                 // function of e^-x and an inner of -x
+                                 // If you think of -x as being -1x the derivtive of that 
+                                 // would be -1
+          = e^-x * (-1)
+          = -e^-x
+
+So that would leave us with:
+f`(x) = -1(1 + e^-x)^-2 * (-e^-x)
+or
+              -1
+f`(x) =  ------------- * -e^-x
+          (1 + e^-x)^2
+
+We can multiply -e^x-x with -1 and get:
+
+              e^-x
+      =  ------------- 
+          (1 + e^-x)^2
+
+We can add 1 and subtract one to the numerator. 
+
+
+          e^-x + 1 - 1
+      =  ------------- 
+          (1 + e^-x)^2
+
+This will not change the result as this is zero but it does allow us to 
+rewrite this as
+
+           1 + e^-x             1
+      =  -------------  -  ------------
+          (1 + e^-x)^2     (1 + e^-x)^2
+
+Now, we can cancel out one of the (1 + e^-x) from the denominator:
+
+              1                  1
+      =  -------------  -  ------------
+          (1 + e^-x)       (1 + e^-x)^2
+
+And notice that we have the sigmoid formula - the sigmoid forula squared!
+ 
+     =  sigmoid(x) - sigmoid(x)^2
+              
+So we can write this as:
+sigmoid(x)(1 - sigmoid(x)) as that would expand to
+
+              1                  1
+      =  -------------  -  ------------
+          (1 + e^-x)       (1 + e^-x)^2
+
+
+One thing to note is that the derivative of the sigmoid function can be expressed
+in terms of the function itself. This is useful as it means when the derivative is
+used in backpropagation the result of the sigmod function can be cached and then
+reused without having to calculate it again, improving the performance.
