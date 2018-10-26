@@ -8,6 +8,7 @@ When solving an equation just remember that as long as you perform the same oper
 of the equals sign both sides are still equal.
 
 #### Numbers
+
 ##### Natural Numbers
 Counting numbers {1, 2, 3, 4,...}.
 The symbol that is used is a capital N in blackboard bold.
@@ -142,7 +143,7 @@ Negative exponents meant divide by:
 ```
 
 Fractional exponents:
-a^1/2 = 2sqrt(a) What times itself  2 times is a? 
+a^1/2 = 2sqrt(a) What times itself 2 times is a? 
 
 Notice that the 2 is the root index which tells us how many times itself our answer must
 be multiplied with itself to give a.
@@ -161,6 +162,116 @@ Reverse: 2^3   = 8
 
 5^4/3 = 3sqrt(5^4) = 3sqrt(5*5*5*5) = 3sqrt(625) = 8,549879
 5^4/3 = 3sqrt(5^4) = (3sqrt(5))^4 = 8,549879
+
+Rules:
+
+Example the sigmoid function:
+
+  1
+----
+1 + e^-x
+
+Our first step above is to rewrite this as a negative exponent instead of devision
+  1
+----     =  (1 + e^-x)^-1
+1 + e^-x
+
+So we now have:
+(1 + e^-x)^-1
+
+It is not very nice to have a negative exponent so we can get rid of that using the reciprical:
+x^-m = 1/x^m
+
+    1
+-----------
+(1 + e^-x)^1
+
+Now, this can be viewed as two functions
+     1             u(x)         <--- one function
+y = ------------   ----
+    (1 + e^-x)^1   v(x)         <--- one function
+
+So we can use the Quotient rule:
+        u(x)       u`(x) v(x) - u(x) * v`(x)
+f(x) = -----  =   --------------------------
+        v(x)           [v(x)]^2
+
+  u`(x) v(x) - u(x) * v`(x)
+ ---------------------------
+         [v(x)]^2
+
+The nominator is 1, a constant so it's derivative is 0:
+u(x) = 1
+u`(x) = 0
+v(x) = (1 + e^-x)^1
+v`(x) = 
+
+To take the derivative of v(x) we need to use the chain rule.
+
+#### Chain Rule
+Can be used when you have a function can be viewed as a compsition of multiple functions.
+Look at this as you have an outer function and an inner function, and you can take each separately
+and multiply them
+
+y = (3x + 1)^2
+The inner function in this case is (3x + 1), lets call it g. Calling g(x) will evaluate the body of the 
+function which in this case calculated 3x + 1.
+The outer function in this case is ()^2, lets call it h. Calling h(x) will evaluate (3x + 1)^2 and it
+will not execute g(). 
+This allows us to then have h() * g()
+Note that the functions should be the derivaties multiplied.
+
+Lets see if an example can clear this up a little. 
+f(x) = (3x + 1)^2
+inner` = 3x + 1  = 3
+outer` = (3x + 1)^2           // power rule 
+outer` = 2(3x)            
+We can apply the power rule to the outer function:
+f`(x) = 2(3x + 1) * (3)
+
+
+Example of exponent containing x:
+f(x) = e^x         which is the same as e^1x
+This is a compound expression with an inner and outer function.
+The outer function is e^1x and the inner is just the exponent part 1x
+We can then use the chain rule:
+The derivative of e^1x is just e^1x.
+The derivative of 1x is just 1
+f`(x) = e^1x * (1)  =  e^1x = e^x
+
+Now if this was instead e^-1x the process is the same as above only it will give:
+f`(x) = e^-1x * (-1)  =  -e^-1x = -e^-x
+
+h(x) = (sin(x)^2
+h`(x) = df/dx = 
+
+Notice that the left hand side is already in the 1/b^n form and we are writing it in the other form.
+(1 + e^-x) is the value of b in this case. But why is there
+
+1
+- = 2^-1 = 0.5
+2
+
+              1         1
+16^-3/4 =  ------ =  ----------  = 0.125
+           16^3/4    (16^1/4)^3
+
+f(x) = -4 3sqrt(x)
+Which is the same as 
+f(x) = -4 x^1/3
+And now we can use the power rule:
+f(x) = -4 * 1/3  x^(1/3 - 1)
+f(x) = -4 * 1/3  x^(1/3 - 3/3)
+f(x) = -4/3  x^-2/3
+
+
+
+
+Reciprical: 
+A number whose numerator and denominator have been flipped:
+2    3
+- => -
+3    2
 
 ### Operator precedence
 * Expontents and roots
@@ -249,8 +360,7 @@ f(x) = -f(-x)
 #### Line 
 f(x) = mx + b
 m = slope of the line which is the change in y / change in x, or delta y and delta x
-
-b = the y intercept
+b = the y intercept when x is 0
 
 (-3, 5) (2, -6)
 
@@ -1373,9 +1483,13 @@ either it is a cat or not a cat.
 f(x) = -----
        1 + e^-x
 
+The symbol for sigmoid looks like q Q but turned upside down and rotated.
+
 Takes the input and maps it between 0 and one. So if the input is very large (or very small (negative)) this will constrain the output to 
 still be between zero and one.
-
+         1               1
+f(14) = -----        = ------
+        1 + (e^-14)    
 #### ReLU
 f(x) = { 0 for x < 0
          1 for x >= 0
@@ -1387,3 +1501,52 @@ How is this different to the binary step function?
 
 
 #### SoftMax
+
+
+### Probability
+
+Notation:
+y-hat = P(y=1|x) 
+y-hat will tell us the probability that the x is of some specific type, for example if it is a picture of a
+cat then the value of y-hat would be 1.
+
+
+### E
+
+
+
+### Useful rules
+  1
+---- = 1x^-n
+ x^n
+
+2/4^3 = 2 * 4^-3
+This works both ways, so if you have a negative exponent you can rewrite it
+
+Product rules:
+a^n * a^m = a^n+m
+a^n * b^n = (a * b)^n
+
+Quotient rules:
+a^n / a^m = a^n-m
+a^n / b^n = (a / b)^n
+
+        u(x)       u`(x) v(x) - u(x) * v`(x)
+f(x) = -----  =   --------------------------
+        v(x)           [v(x)]^2
+
+Power rules:
+(b^n)^m = b^n*m
+b^n^m = b(n^m)      2^3^2 = 2(3^2) = 512
+
+m * sqrt(b^n) = b^n/m
+b^1/n = n * sqrt(b)
+
+Negative exponents:
+b^-n = 1/b^n
+
+### Add one, subtract one
+So I ran into this when looking into deriving the sigmoid function and at one stage +1 and -1 
+were added to simplify the expression.
+
+
