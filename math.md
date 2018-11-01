@@ -212,6 +212,7 @@ To take the derivative of v(x) we need to use the chain rule.
 Can be used when you have a function can be viewed as a compsition of multiple functions.
 Look at this as you have an outer function and an inner function, and you can take each separately
 and multiply them
+The derivative of f(g(x)) is f`(g(x)) * g`(x) 
 
 y = (3x + 1)^2
 The inner function in this case is (3x + 1), lets call it g. Calling g(x) will evaluate the body of the 
