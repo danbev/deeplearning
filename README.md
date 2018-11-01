@@ -25,18 +25,18 @@ It is computed by assigning an importance value each input a input. So the outpu
 by all the sum of these values, which are called weights. If the weighted sum is less than or
 greater than some threshold value that determines the output 0 or 1.
 
-x (1) --(6)--->  +------------+
-x (0) --(3)--->  | Perceptron | ---> output
-x (1) --(3)--->  +------------+
+x1 (1) --w1=6--->  +------------+
+x2 (0) --w2=3--->  | Perceptron | ---> output
+x3 (1) --w3=3--->  +------------+
 
-output = 0 if Sum of w1x1, w2x2, w3x3 <= threshold for this perceptron
-output = 1 if Sum of w1x1, w2x2, w3x3 > threshold for this perceptron
+output = 0 if w1x1 + w2x2 + w3x3 <= threshold for this perceptron
+output = 1 if w1x1 + w2x2 + w3x3 > threshold for this perceptron
 
-output = 0 if Sum of 6x1, 3x0, -3x1 > 4
-
-Now, normally there would be many perceptrons and the output from the would be the input to the 
+Now, normally there would be many perceptrons and the output would be the input to the 
 next layers perceptrons. All output in the first layer will be inputs to all of the second layers
 perceptrons.
+
+The above can also be written as:
          +--
 output = | 0 if w*x + b <= 0
          | 1 if w*x + b > 0
@@ -159,9 +159,6 @@ total: 13.002
 
 Learning is about finding the right weights and biases so that the system will solve the problem at hand.
 
-### Gradient decent
-
-=======
 ### Cost function
 Trying to manually configure all the weights and bias would be a huge undertaking. What we want is for the 
 computer to learn how to make the adjustments itself. Kind of like the example where we want to program a 
@@ -235,18 +232,6 @@ Activation functions transform the combination of inputs, weights, and biases. P
 Many (but not all) nonlinear transforms used in neural networks transform the data into a convenient range, such as 0 to 1 or –1 to 1. 
 When an artificial neuron passes on a nonzero value to another artificial neuron, it is said to be activated.
 
-### Adding Google Test
-
-    $ mkdir lib
-    $ mkdir deps ; cd deps
-    $ git clone git@github.com:google/googletest.git
-    $ cd googletest/googletest
-    $ mkdir build ; cd build
-    $ c++ -std=c++11 -I`pwd`/../include -I`pwd`/../ -pthread -c `pwd`/../src/gtest-all.cc
-    $ ar -rv libgtest.a gtest-all.o
-    $ cp libgtest.a ../../../../lib
-
-
 ### Linear Regression using Least Squared Criterion
 We are trying to find a line where the distance to our data points is as small as possible.
 This is done by drawing a line and calculating the
@@ -291,11 +276,14 @@ Loss function is for a single training example.
 L(y-hat, y) = -( y * log(y-hat) + (1 - y) log(1 - y-hat))
 
 Lets take a closer look at the above:
-y * log y-hat
-The logarithm is asking what the value of y-hat was raised to. For example, say y-hat was 16 then this would be:
+(y * log y-hat)
+The logarithm is asking what the value of y-hat was raised to. 
+For example, say y-hat was 16 then this would be:
 log 16 = 4 (if we are using the base 2 which I think is the default when not specified).
-We take that value an multiply it against y which is the known correct value for y.
-Then we add this to 1-y * log(1 - y-hat)
+
+We take that value and multiply it against y which is the known correct value for y.
+Then we add this to (1 - y) log(1 - y-hat)
+Remember that y-hat will be the result of the sigmoid function above.
 
 Now, the result, y, will be either 1 or 0.
 When y = 1:
@@ -309,8 +297,6 @@ And when y = 0:
 = -(                + (1) log(1 - y-hat))
 = -((1) log(1 - y-hat))
 = -(log(1 - y-hat))
-
-Remember that y-hat will be the result of the sigmoid function above.
 
 Cost function is for the entire training set.
            1
@@ -431,3 +417,150 @@ One thing to note is that the derivative of the sigmoid function can be expresse
 in terms of the function itself. This is useful as it means when the derivative is
 used in backpropagation the result of the sigmod function can be cached and then
 reused without having to calculate it again, improving the performance.
+
+### Computation graph
+In a neural network we have two stages, a forward stage where the output of the network
+is computed. This is followed by a backward stage which is where we compute gradients/derivatives.
+
+J(a, b, c) = 3(a + bc)
+
+Lets named the following functions for the above:
+u = bc
+v = a + u
+J = 3 v
+
+
+a ----------------------+
+                        |   
+b \     +----------+    +-->+-----------+        +---------+
+   ---->| u = bc   | ------>| v = a + u | -----> | J = 3v  |
+c /     +----------+        +-----------+        +---------+
+
+So lets say a = 5, b = 3, and c = 2. That would give us:
+u = 6
+v = 11
+J = 33
+
+In this case J would be the cost function that we are trying to minimize and this is done in the 
+forward phase. 
+
+a ----------------------+
+                        |   
+b \     +----------+    +-->+-----------+        +---------+
+   ---->| u = bc   | ------>| v = a + u | -----> | J = 3v  |
+c /     +----------+        +-----------+        +---------+
+
+Now, lets say we want to compute the J`(v)
+J`(v) = 3
+Take the value of v and nudge it a little, how would that change the value of J?
+J = 3v
+v = 11 and if we nudge it to 11.001 that will make J become 33.003
+
+dJ
+-- = 3
+dv
+
+After doing this we have gone back one step in the computation graph.
+
+Now, lets see what happens if we change a. Well this will change v which in turn 
+will change J. So if we nudge a:
+a = 5.001
+v = 11.001
+J = 33.001
+
+dJ       dJ dJ
+-- = 3 = -- -- = (3)(1)
+da       gv da
+
+(This is the chain rule in work here).
+The reason that dj/da is one is because when we increase a, v changes by the same amount, hence 1:
+dv
+-- = 1
+da 
+
+Now, lets see what happens if we change a. Well this will change v which in turn 
+will change J. So if we nudge a:
+u = 6.001
+v = 11.001
+J = 33.001
+
+dJ        dJ  dJ
+-- = 3 =  --  -- = (3)(1)
+du        dv  du
+
+Let's now change the value of b to see how that affects the slope of J:
+dJ   dJ  dJ
+-- = --  -- = (3)(2) = 6
+db   du  dd
+
+b = 3.001
+u = bc = (3.001)(2) = 6.002
+v = 5 + 6.002
+J = (11.002)(3) = 33.006 
+
+Notice that we are using the derivative computed in previous steps (in the back propagation that is)
+for ones earlier in the computation graph. I think this is the whole reason for the 
+back propagation phase.
+So the forward phase computes the cost and the back propagation to compute derivatives.
+
+What have we got so far:
+z = w^Tx + b
+y-hat = a = sigmoid(z)       // note that a is the output of the logistic regression
+loss(a, y) = -(y log(a) + (1 - y) log( 1 - a))
+
+Note that w^T is the transpose of the weights and then taking the dot product with x, so that
+becomes (w(1) * x(1) + w(2) + x(2)) + b.
+
+X(1) ---->
+W(1) ---->  +-----------------------------+       +------------------------+      +------------+
+X(2) ---->  | z = w(1)x(1) + w(2)x(2) + b | ----> | y-hat = a = sigmoid(z) | ---> | loss(a, y) |
+W(2) ---->  +-----------------------------|       +------------------------+      +------------+
+b    ---->
+
+The paremeters in the above case are w anb b, and these are the values that we want to modify in
+order to reduct the output value of the loss function.
+
+Derivative of dL/da:
+dL(a, y)    y    1 - y
+-------- =  - +  -----
+   da       a    1 - a
+
+How is that derived from -(y log(a) + (1 - y) log( 1 - a)) ? 
+Recall that the derivative of a was: sigmoid(x) - sigmoid(x)^2
+
+Derivative of dL/dz:
+dL(a, y)    dl    da
+-------- =  -- *  --  = a - y
+   dz       da    dz
+
+dL
+-- = x(1) * dz
+dw(1)
+
+dL
+-- = x(2) * dz
+dw(2)
+
+dL
+-- = dz
+db
+
+w(1) = w(1) - learning_rate * dw(1)
+w(2) = w(2) - learning_rate * dw(2)
+b = b - learning_rate * db
+
+Cost function
+            1
+J(w, b) =  --- Sum(loss(y_hat^i, y^i))
+            m 
+
+### Adding Google Test
+
+    $ mkdir lib
+    $ mkdir deps ; cd deps
+    $ git clone git@github.com:google/googletest.git
+    $ cd googletest/googletest
+    $ mkdir build ; cd build
+    $ c++ -std=c++11 -I`pwd`/../include -I`pwd`/../ -pthread -c `pwd`/../src/gtest-all.cc
+    $ ar -rv libgtest.a gtest-all.o
+    $ cp libgtest.a ../../../../lib
