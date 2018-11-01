@@ -3,7 +3,7 @@
 #include <util.h>
 #include <cmath>
 
-double LogisticRegression::sum() const {
+double LogisticRegression::z() const {
   double sum = 0;
   for (int i = 0; i < training_data_.size(); i++) {
     sum += training_data_[i].x * weights_[i];
@@ -13,7 +13,7 @@ double LogisticRegression::sum() const {
 }
 
 double LogisticRegression::predict_y_hat(int idx) const {
-  return sigmoid(training_data_[idx].x * weights_[idx] + bias_);
+  return sigmoid(z());
 }
 
 void LogisticRegression::cost() {

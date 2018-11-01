@@ -22,11 +22,11 @@ class LogisticRegression {
        training_data_(training_data), weights_(weights),
        learning_rate_(learning_rate), bias_(bias) {};
    ~LogisticRegression() = default;
-   double bias() const;
-   double sum() const;
+   double z() const;
    double predict_y_hat(int idx) const;
    double loss(double y_hat, double y) const;
    void cost();
+   double bias() const;
  private:
    std::vector<entry> training_data_;
    std::vector<double> weights_;
