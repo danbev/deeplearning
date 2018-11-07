@@ -2,17 +2,18 @@
 #include <iostream>
 #include <util.h>
 #include <cmath>
+#include <vector>
 
 double LogisticRegression::z() const {
   double sum = 0;
   for (int i = 0; i < training_data_.size(); i++) {
-    sum += training_data_[i].x * weights_[i];
+    sum += training_data_[i] * weights_[i];
   }
   sum += bias_;
   return sum;
 }
 
-double LogisticRegression::predict_y_hat(int idx) const {
+double LogisticRegression::predict_y_hat() const {
   return sigmoid(z());
 }
 
@@ -21,12 +22,16 @@ void LogisticRegression::cost() {
   double loss_sum = 0.0;
   double db = 0;
   std::vector<double> d_weights(weights_.size());
+
+  double y_hat = predict_y_hat();
+
   for (int i = 0; i < training_data_.size(); i++) {
-    double y_hat = predict_y_hat(i);
-    loss_sum += loss(y_hat, training_data_[i].y);
-    double derivative = y_hat - training_data_[i].y; 
+
+    loss_sum += loss(y_hat, test_data_[i]);
+
+    double derivative = y_hat - test_data_[i]; 
     for (int y = 0; y < d_weights.size(); y++) {
-      d_weights[y] += training_data_[y].x * derivative;
+      d_weights[y] += training_data_[y] * derivative;
     }
     db += derivative;
   }
@@ -57,4 +62,8 @@ double LogisticRegression::loss(double y_hat, double y) const {
 
 double LogisticRegression::bias() const {
   return bias_;
+}
+
+std::vector<double> LogisticRegression::weights() const {
+  return weights_;
 }
