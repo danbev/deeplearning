@@ -222,9 +222,39 @@ Weights on connections in a neural network are coefficients that scale (amplify 
 
 
 ### Bias
+Per neuron basis, so each neuron has it's own value. Remember that this is one of the values that
+can be altered so that the network can learn (the other values are the weights). 
+
+Each neuron receives the weighted sum from the previous layer (note that this means all the input
+values and their weights: (w1*x1 + w2*x2+...+wn*xN).
+neuron(double sum);
+Now, what the neuron does is it computes/determines whether is should output a value to the next
+layer. It does so using an activation function, for example ReLu or Sigmoid or any of the others.
+
+So, take the following network that does not use biases:
+Input     Weights        Neuron (inside the function)
+x1 = 1 ---(-0,55)---->   double sum = 1 * (-0,55) + 2 * 0.1; // -0,35   
+x2 = 2 ---(0.1)------>   double output = relu(sum); // 0
+
+With out a bias this neuron would not activate (well the outputu will be 0 and the will not affect
+the next layer as anything weight multipled with it will be 0 and that 0 will be added to the 
+next layers weighted sum which will not do anything).
+In this case the threshold is anything below zero will cause the neuron to output zero. But what if
+we wanted to move this threshold, like say it is acceptable that any value equal to or greater than
+-1 should be allowed.
+
+So, take the following network with biases:
+Input     Weights        Neuron (inside the function) b = 1
+x1 = 1 ---(-0,55)---->   double sum = 1 * (-0,55) + 2 * 0.1 + b; // 0,65
+x2 = 2 ---(0.1)------>   double output = relu(sum); // 0.65
+
+We set the bias to the opposite of the acceptable value, like in the above case we are saying
+that the threshold should be -1 or larger and we set the bias to 1.
+
 Biases are scalar values added to the input to ensure that at least a few nodes per layer are activated regardless of signal strength. 
 Biases allow learning to happen by giving the network action in the event of low signal. They allow the network to try new interpretations 
 or behaviors. Biases are generally notated b, and, like weights, biases are modified throughout the learning process.
+
 
 ### Activation
 The functions that govern the artificial neuron’s behavior are called activation functions. The transmission of that input is known as forward propagation. 
@@ -564,3 +594,12 @@ J(w, b) =  --- Sum(loss(y_hat^i, y^i))
     $ c++ -std=c++11 -I`pwd`/../include -I`pwd`/../ -pthread -c `pwd`/../src/gtest-all.cc
     $ ar -rv libgtest.a gtest-all.o
     $ cp libgtest.a ../../../../lib
+
+
+### Single Instruction Multiple Data
+Modern CPU's support [SIMD](https://github.com/danbev/learning-assembly#single-instruction-multiple-data-simd) and this can be useful for operations like the dot product. Instead of looping through 
+an array which is what I initially did (I've left this code in the source for comparision) we 
+can use a single operator for this.
+
+
+
