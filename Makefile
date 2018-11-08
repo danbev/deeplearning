@@ -19,7 +19,7 @@ out/gd: src/gradient-decent.cc src/gradient-decent.h test/gradient-decent_test.c
 out/lr: src/logistic-regression.cc \
 	src/logistic-regression.h \
 	test/logistic-regression_test.cc | out
-	$(COMPILE_TEST) -mavx  test/main.cc test/logistic-regression_test.cc src/util.cc src/logistic-regression.cc -o $@
+	$(COMPILE_TEST) -mavx -Wunused-variable  test/main.cc test/logistic-regression_test.cc src/util.cc src/logistic-regression.cc -o $@
 
 .PHONY: test
 test: 

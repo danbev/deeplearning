@@ -4,43 +4,43 @@
 #include <cmath>
 #include <vector>
 
-double LogisticRegression::z() const {
+double loop_dot(std::vector<double> x, std::vector<double> w, double b) {
   double sum = 0;
-  for (int i = 0; i < training_data_.size(); i++) {
-    sum += training_data_[i] * weights_[i];
+  for (int i = 0; i < x.size(); i++) {
+    sum += x[i] * w[i];
   }
-  sum += bias_;
+  sum += b;
   return sum;
 }
 
-double LogisticRegression::predict_y_hat() const {
-  return sigmoid(z());
+// For a single training entry
+double LogisticRegression::predict_y_hat(std::vector<double> x) const {
+  return sigmoid(loop_dot(x, weights_, bias_));
 }
 
+// For the entire training set
 void LogisticRegression::cost() {
   // train the paremeters, the weights and the bias...
   double loss_sum = 0.0;
   double db = 0;
   std::vector<double> d_weights(weights_.size());
 
-  double y_hat = predict_y_hat();
+  for (int i = 0; i < training_set_.size(); i++) {
+    double y_hat = predict_y_hat(training_set_[i].x);
+    loss_sum += loss(y_hat, training_set_[i].y);
 
-  for (int i = 0; i < training_data_.size(); i++) {
-
-    loss_sum += loss(y_hat, test_data_[i]);
-
-    double derivative = y_hat - test_data_[i]; 
+    double derivative = y_hat - training_set_[i].y; 
     for (int y = 0; y < d_weights.size(); y++) {
-      d_weights[y] += training_data_[y] * derivative;
+      d_weights[y] += training_set_[i].y * derivative;
     }
     db += derivative;
   }
 
   // compute the averages
-  loss_sum /= training_data_.size();
-  db /= training_data_.size();
+  loss_sum /= training_set_.size();
+  db /= training_set_.size();
   for (int i = 0 ; i < d_weights.size(); i++) {
-    d_weights[i] /= training_data_.size();
+    d_weights[i] /= training_set_.size();
   }
   // update the weights and the bias
   for (int i = 0; i < weights_.size(); i++) {
