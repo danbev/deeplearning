@@ -1551,3 +1551,68 @@ So I ran into this when looking into deriving the sigmoid function and at one st
 were added to simplify the expression.
 
 
+### log-odds
+Remember that odds are the ration of something happening to something not happening.
+I win 5 out of 8 games games. Of the total of 8 games I'll win five.
+   5
+ ---- = 1.7
+   3
+
+Probability is the ratio of something happening to everything that could happen. So if I win 1/4 games that would be:
+    5                   5
+---------         =   ----- = 0.625
+5 win loose 3           8
+
+Notice the difference in the values here.
+The probability of loosing would be:
+3/8
+This can be calculated from the winning probability by subtracting the probability from 1:
+     5     8     5
+1 - --- = --- - --- =  1 - 0.625 = 0.375
+     8     8     8
+
+ratio of the probability of winning
+-----------------------------------
+to (1 - the probability of winning)
+
+This is often simplified to:
+   p              p = probability of winning
+ ----
+ (1 - p)
+
+5/8     5
+--- =  --- = 1.7
+3/8     3
+
+So that is odds, but what are the log of the odds?
+Well the odds of loosing will always be between 0 and 1, and the odds of winning 1 to infinity.
+For example, 
+if the odds are 1 to 6, 1/6 = 0.17
+if the odds are 6 to 1, 6/1 = 6
+
+    |                         |
+|----|----|----|----|----|----|----|
+0    1    2    3    4    5    6    7
+
+Look at the length(magnitude) of these compared to each other. Using the log function will allow 
+this to become more symetrical:
+
+log(1/6) = -1.79
+log(6) = 1.79
+
+        |               |
+ |----|----|----|----|----|----|----|
+-3   -2   -1    0    1    2    3    4
+
+Note that the length(magnitude) is not the same (same distance from zero).
+
+So, we can calculate the log of the odds using counts or probabilities:
+                
+log(odds) = log(1/6) = log(p/(1-p) = log(1/6) = -1.79
+                       \_________/
+                       logit function which is the log of the probabilities and used
+                       in logistic regression.
+
+### Sums/products
+The symbol ∑ is the summation symbol, like a for look which adds up the components inside.
+The symbol π (capital PI, coproduct) is similar but multiplies instead. 
