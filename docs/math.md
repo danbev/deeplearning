@@ -1616,3 +1616,11 @@ log(odds) = log(1/6) = log(p/(1-p) = log(1/6) = -1.79
 ### Sums/products
 The symbol ∑ is the summation symbol, like a for look which adds up the components inside.
 The symbol π (capital PI, coproduct) is similar but multiplies instead. 
+
+### Stochastic
+Means something that is randomly determined. 
+
+### Descrete vs continuous
+Descrete (distinct) is data that can only take a certain value, like number of students in a class (
+you can't have half a student).
+Continuous data can take any value (within a range), like a persons height.
