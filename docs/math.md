@@ -1575,6 +1575,9 @@ ratio of the probability of winning
 -----------------------------------
 to (1 - the probability of winning)
 
+Remember that the max probability is 1 so if we take 1 minus probability of winning we get
+the probability of the event not occuring, in our case not winning.
+
 This is often simplified to:
    p              p = probability of winning
  ----
