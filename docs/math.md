@@ -171,7 +171,7 @@ Example the sigmoid function:
 ----
 1 + e^-x
 
-Our first step above is to rewrite this as a negative exponent instead of devision
+Our first step above is to rewrite this as a negative exponent instead of division:
   1
 ----     =  (1 + e^-x)^-1
 1 + e^-x
@@ -1546,11 +1546,56 @@ b^1/n = n * sqrt(b)
 Negative exponents:
 b^-n = 1/b^n
 
+2^-3 = 1/2^3
+
 ### Add one, subtract one
 So I ran into this when looking into deriving the sigmoid function and at one stage +1 and -1 
 were added to simplify the expression.
 
 
+
+
+### odds
+       P(occuring)            p
+odds = -----------        = ------
+        P(not occuring)     (1 - p)
+
+The later is called the logit function which is the log of the probabilities and used in 
+logistic regression.
+
+              0.5
+odds(heads) = --- = 1 or 1:1
+              0.5 
+
+### odds-ratio
+Is the ratio of two odds.
+Fair coin flip:
+           1 
+P(heads) = - = 0.5
+           2
+
+               0.5
+odds(heads) =  --- = 1 or 1:1
+               0.5
+
+Loaded coin flip:
+            7
+P(heads) = --- = 0.7
+            10
+                 0.7
+odds(heads) =    --- = 2.333
+                 0.3
+
+              odds_1     p1/(1-p1)
+adds ratio = ------- =   ---------
+              odds_2     p2/(1-pw)
+               
+             0.7/0.3    0.7   0.5   0.35
+odds ratio = ------- =  --- * --- = ---- = 2.333
+             0.5/0.5    0.3   0.5   0.15
+
+The odds of getting "heads" on the loaded coin are 2.333 times greater than with the fair coin.
+           
 ### log-odds
 Remember that odds are the ration of something happening to something not happening.
 I win 5 out of 8 games games. Of the total of 8 games I'll win five.
@@ -1616,6 +1661,38 @@ log(odds) = log(1/6) = log(p/(1-p) = log(1/6) = -1.79
                        logit function which is the log of the probabilities and used
                        in logistic regression.
 
+log here is the natural log of the odds ration (ln).
+logit:
+                p
+ln(odds) -> ln(---)  is logit(p) of ln(p) - ln(1-p) = logit(p)
+               1-p
+
+And recall that log_e^x = ln x.
+
+The inverse of the logit function is:
+               p                            1         e^a
+logit(p) = ln(----)        logit^-1(a) = -------- =  --------
+              1-p                        1 + e^-a     1 + e^a
+
+How did we get to that last simplification?  
+
+      1              1          1 * 2^3                   2^3
+  ---------  =  ----------- =   --------             =  --------
+  1 + 2^-3       1     1              1    1             2^3 + 1
+                 - +  ---       2^3 * - + --- * 2^3
+                 1    2^3             1    2^3
+
+I think the point here is that when you want to get rid of the fraction in the denominator
+you have to take into account that the denominator is the whole term (1 + 1/2^3 in this case).
+
+Logit is sometimes called the mean function:
+
+          1         e^a
+μy|x = -------- =  --------
+       1 + e^-a     1 + e^a
+
+The mean of y given x is the same as the inverse logit we say above.
+
 ### Sums/products
 The symbol ∑ is the summation symbol, like a for look which adds up the components inside.
 The symbol π (capital PI, coproduct) is similar but multiplies instead. 
@@ -1627,3 +1704,88 @@ Means something that is randomly determined.
 Descrete (distinct) is data that can only take a certain value, like number of students in a class (
 you can't have half a student).
 Continuous data can take any value (within a range), like a persons height.
+
+
+### Statistics
+What if you have a function say f(x) for which we have multiple values. Imagine a scatterplot where
+there are multiple different values for x = 4. What value should be returned?
+f(4) = E(Y|X=4)
+Read as the expected value of y when x equals 4. Expected in this case mean average, like if I pass
+in 4 I'd expect it to be a value of 4. We can only output a single value for y remember.
+This is called a regression function and is a curve of all these average values.
+But what if there are now values for a given x, like that particulare point does not have any values to average?
+For this we can use N(x) which stands for Neighborhood of x.
+
+
+### Bernoulli distribution
+P(X=x) = p^x (1 - p)^(1-x)
+This is basically a short hand way of writing:
+P(success) = p
+P(failure) - 1 - p
+P(X=1) = p^1 * (1 - p)^(1-1) = p * (1 - p)^0 = p * 1 = p
+P(X=0) = p^0 * (1 - p)^(1-1) = 1 * (1 - p)^0 = 1 - p
+
+### Variance
+The average of the squared differences from the Mean
+1. Calculate the Mean (sum of numbers/count)
+2. For each number subtract the mean and square the result which is the squared differenct
+   Find the distance to the mean (think of it a a line)
+3. Calculate the average for those squares
+
+Example:
+600 + 470 + 170 + 430 + 300 / 5 = 394
+σ² = (600 - 394)² + (470 - 394)² + (170 - 394)² + (430 - 394)² + (300 - 394)² / 5 
+   =    42436     +    5776      +    50176     +    1295      +  8836 / 5
+   = 108520 / 5 
+   = 21704
+
+So the standard deviation is the square root of 21704.
+
+### Why square
+In these cases we are adding up differences from the mean and say we have:
+     3|
+2 |   |
+  |   |
+----------------------
+-2| -3|
+  |   |
+      |
+2 + 3 + (-2) + (-3) = 0
+
+But what if we use absolute values instead:
+2 + 3 + |-2| + |-3| = 10
+      
+     5|
+      |
+ 3|   |
+  |   |
+  |   |
+----------------------
+-1| -1|
+
+sqrt(2^2 + 3^2 + 2^2 + 3^2) = 5.099
+sqrt(3^2 + 5^2 + 1^2 + 1^2 = 6
+While this difference is not much (mostly because of the number I chose) there is a difference.
+The difference is bigger when the values are more spread out.
+
+
+
+### Standard Deviation
+Is a measure of how spread out numbers are. Deviation means how far from the normal.
+
+
+### Terms
+#### Feature
+Like a column in a table.
+Synonyms: attribute, input, predictator, variable
+
+#### Outcome 
+The outcome of the of an experiment or study.
+Synonyms: dependant variable, response, target, output
+
+#### Records
+A row in the table.
+Synonyms: case, example, instance, observation, pattern, sample.
+
+
+
