@@ -268,9 +268,115 @@ This is done by drawing a line and calculating the
 
 y = mx + b
 or in statistics:
+y = β0 + β1x + ε
+
+ε = elipson
+
 ^
-y = b0 + b1x
-b/beta0 are the y-intercept and b/beta1 is the slope of the line
+y = β0 + β1x
+β0 is the y-intercept population parameter.
+β1 is the slope of the line population parameter.
+ε is our error term and is the unexplained variation in y. What does this mean?
+
+E(y) = β0 + β1x
+
+The expected mean or value of y for a given value of x.
+  ^
+  |
+  |--------------
+y |------->         y will be the mean for x
+  |-------|------
+  |       |
+  |       |
+  ---------------------->
+          x
+
+Lets say you have multiple data entries for point x and not just one. What we do is we calculate
+the mean of those points and say that is what y would be if we are given x. 
+Now, what if there are not points at all for x? Then we can look at the neighbors and caclulate
+the means of them and take that mean (I think). So we are always estimating/approximating.
+Y is the mean of a distribution around the y's for x.
+
+E = β0 + 0(x) 
+E(y) = 3 + 2x
+x = 0;
+E(y) = 3 + 2x
+E(y) = 3 + 0
+E(y) = 3
+  ^
+  |
+y |---------------------------------------->
+  |       |
+  |       |
+  |       |
+  ---------------------->
+          x
+
+
+E(y) = β0 - β1x
+Means that the slope will be negative down from the left.
+Notice that the sign and the value of β1 determines the slope.
+
+Now, if we knew the population parameters, β0 and β1 (the y-intercept and the slope, we could
+use the equation directly. But in real life we almost never have this information but only have
+sample data and have to estimate the values for the parameters. For sample data the equation looks
+like:
+y_hat = b0 + b1x
+y_hat is the point estimator of E(y). The mean value of y for the given x
+
+When using linear regression with two variables we are always comparing that with the result of
+when we pretent that there is no second variable (x = 0), which will make the slope/β1 0.
+y = β0 + β1
+β0 represents the ideal y-intercept if you have plotted/graphed the entire population.
+So we are stating that all x and y are related according to a straight line. But not all points
+will be exactly on this straight line. There is going to be some deviation which is represented
+as epsilon ε in the Population Regression Function:
+y = β0 + β1 + ε
+
+This is a theoretical distance from every point to the line. We can't calculate this term but
+it does exist in theory. This is distinct from the lower case e which is the error term which is
+the distance from the point to the expected average (sample regression line).
+
+
+       |--------*  /              = * (Yi) is the actual point value for x
+       |Yi-y_hat|/               SSE    
+       |--------/
+       |       X-------------+   = X is the predicted point value for x
+SST    |      /              |
+       |     / y_hat - y_bar |   SSR
+       |    /                |
+y-bar  |---/---------------------------------->
+       |  /    |
+       | /     |
+       |       |
+       ---------------------->
+               x
+
+y-bar is the averge when we pretend that we don't have a value for x (x = 0).
+
+y_hat - y_bar is the distance from the expected/predicted average to the actual
+average. In this case we expect the value (the dependant value) to be higher
+than the mean. 
+Sum of Squares Residuals (SSR or RSS) = ∑(Y_hat₁ - y_bar)²
+Remember that the residuals are the distances from the predicted point to the average, that we then
+square and then summ all the squares.
+
+But we can see that our value is higher that this, which is higher
+still and called unexpected deviation:
+ei = Y(i) - Y_hat(i)
+Sum of Squares Predictions (SSE) = ∑(Y₁ - y_hat₁)²
+
+Sum of Squares Total (SST or TSS) = SSR + SSE
+Look at the graph above and you can see that we are now looking for the distance from the
+actual point down to the actual average.
+
+R2 = SSR/SST
+If our SSE is high R2 will be low, which means that our points are further apart from the 
+line. And if SSE is low it means that our points are close to the line. It tells us a little
+about the fit of our model.
+
+
+
 y-hat indicates that this is an approximation.
 
 The formula for calculating beta1 (the slope) is:
@@ -290,6 +396,10 @@ We can add new points and also use the `estimate` function to get an estimated y
 x value.
 
 #### Logistic regression
+Take the example a student passing or failing a test based on the number of hours spent studying. So
+if we pass in the number of hours of study we want the function to predict the probability of the
+student passing the test.
+
 
 y-hat = P(y=1|x) 
 Parameters: w (a vector in Rx), b (just a number)
@@ -555,8 +665,27 @@ dL(a, y)    y    1 - y
 -------- =  - +  -----
    da       a    1 - a
 
+dL(a, y)    dL(sigmid(w(1)*x(1) + w(2)*x(2) + b))
+-------- =  -------------------------------------
+   da                      da
+
+Recall that the derivative of 'a' was:
+sigmoid(x) - sigmoid(x)^2
+
 How is that derived from -(y log(a) + (1 - y) log( 1 - a)) ? 
-Recall that the derivative of a was: sigmoid(x) - sigmoid(x)^2
+
+Logistic regression 
+Tries to predict the probability for a given input that it belongs to a certain class. This solution  differs from logistic regression as the output is a certain class, say a binary either 1 or 0. 
+In cases like this trying to use a scatter plot would basically place point in two lines, they would
+either be part of the ones or the zeros. Not having what is called a normal distribution other types of regressions (like linear, multiple regression) are not suitable.
+The predicted values of the dependant variable is between 0 and 1 since it is a probability.
+
+The assumption here is that the input space can be divided into two regions which is separated
+by a linear border. In two dimensions that would be a straight line, in three dimentions it would
+be a plane.
+P\ -> the probability that a certain data point belongs to class `\'.
+P/ -> would then be (1 - P\)
+
 
 Derivative of dL/dz:
 dL(a, y)    dl    da
@@ -583,6 +712,98 @@ Cost function
             1
 J(w, b) =  --- Sum(loss(y_hat^i, y^i))
             m 
+
+### Input data
+
+X(1) ---->
+X(2) ---->  
+X(3) ---->  
+X(4) ---->  
+When you see input data like this remember that they are one single input, this could be the pixels
+of a single image, or each item could be some value like the size of a house, the number of rooms, etc. For each such training data entry we would also have an expected output which we use to compare
+with the actual outcome.
+
+The training set is all the inputs we want to train on. So these would be a data structure with one
+entry being the four values (our input above) and the expected output for that input.
+The loss function predicts one such entry, and then the cost function. 
+
+
+If training_data was a data structure with the first entry the vector of features and the second value the expected output value (y).
+
+Think of w and b on horizontal axis in a diagram:
+J(w, b) cost_function(w, b)
+      ^
+      |
+      |
+      |
+      |
+      |-----------------> b
+     /
+    /
+   /
+ /
+w
+So the output of the cost function of w and b will be some position above the horizonal plane.
+The cost function in our case is a convex function and looks like a bowl. So we can bascially give
+w and b whatever values we like to initialize them and that will give some cordinate in the third
+dimension (the height). The goal is for this hight to be also low as possible.
+
+Lets take b out of the picture for a moment to simpilfy this a little:
+      J(w) 
+      ^  \            /
+      |   \          /
+      |    \        /
+      |     \______/
+      |
+      |-----------------> w
+
+We start with a random value for w which we pass to J(w) which will land somewhere in the
+graph above. Then we can find the derivative of that point. If this value is positive then 
+this slope is going upwards. In this case we take that value -w as we want to go downwards.
+
+double rate = 0.01;
+double w = 0.0;
+do {
+             dJ(w)
+  w += w - α ----- 
+              dw
+} while (w <= lowest_point);
+
+Alpha (α) is the learning_rate which is how much we should step with each iteration
+
+      J(w) 
+      ^  \            /
+     4|   \          *
+     3|    \        /
+     2|     \______/
+     1|              
+      |-----------------> w
+                     ^
+Looking at the point above you can imaging a tangent line touching the point marked with an *.
+The slope of this line would be positive.
+We also have to update b in the same way so really the loop would look like:
+do {
+             ∂J(w, b)
+  w += w - α ----- 
+              dw
+
+             ∂J(w, b)
+  b += b - α ----- 
+              db
+} while (w <= lowest_point);
+
+∂ is the sign for partial derivatives.
+
+So I've thinking how does the x values (the features come into play here) and they do via
+the cost function. We are taking the derivatives of J, our cost function,  which is:
+
+            1
+J(w, b) =  --- Sum(loss(y_hat^i, y^i))
+            m 
+
+And to 
+
+
 
 ### Adding Google Test
 
