@@ -395,6 +395,19 @@ line so that the area between the points and the line are as small as possible.
 We can add new points and also use the `estimate` function to get an estimated y value for a specified
 x value.
 
+One can also use linear regression with multiple independant/feature variables. In this case
+the forumla looks like this:
+
+    y = β0 + β1x₁ + β2x₂ + βpXp + ε
+
+We can reason about the the features and their coefficients like this; 
+
+    y = 88 + 3x₁ + 4x₂
+
+88 is β0 which is still the y-intercept.
+Lets says that x₁ is expenses in 1000 SEK, then we can read this as for each unit increment
+of x₁ that will tripple y if we consider x₂ to be constant.
+
 #### Logistic regression
 Take the example a student passing or failing a test based on the number of hours spent studying. So
 if we pass in the number of hours of study we want the function to predict the probability of the
