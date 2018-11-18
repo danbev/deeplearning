@@ -361,14 +361,17 @@ f(x) = -f(-x)
 #### Line 
 f(x) = mx + b
 m = slope of the line which is the change in y / change in x, or delta y and delta x
-b = the y intercept when x is 0
+b = the y intercept when x is 0. (0, y)
 
-(-3, 5) (2, -6)
+y = 2x + 3
 
-m = -6 - 5     -11
-    ------- =  ---
-     2 - (-3)       
+            2
+m = slope = -
+            1
 
+b = y = 2(0) + 3
+b = y = 3
+So we now know that the interept is at point (0, 3)
 
 
 ### Place value
@@ -1783,9 +1786,67 @@ Synonyms: attribute, input, predictator, variable
 The outcome of the of an experiment or study.
 Synonyms: dependant variable, response, target, output
 
+Think of y = f(x), y is function of x, it is dependant on x. And x is our independant variable.
+
 #### Records
 A row in the table.
 Synonyms: case, example, instance, observation, pattern, sample.
 
 
+### ANOVA (ANalysis Of VAriance)
+
+### Degrees of freedom
+Say you toss a coin, you know that it will either be heads or tails. If we know
+the outcome we also know what the other possible value would be. Like we the 
+coin lands on heads we know that the only other possibility would be tails.
+We say that only one piece of information is required to also work out that
+we did not get tails. This is an example of a system with a one degree of 
+freedom.
+Likewise if we toss the coin 100 times and using a single piece of information,
+how many heads we got, we know how many tails there were too, so this is still
+a system of 1 degrees of freedom.
+
+Say you are talking with a friend on the phone and he says he is waiting at a
+trafic light. You ask what color the light is (red, yellow, or green) and he
+says "not green". You can't determine the color without more information. But
+if he now says "not yellow" then we know the light is red. You needed to pieces
+of information. There where 3 possible outcomes and 2 degrees of freedom.
+
+degrees of freedom = k-1
+k = the number of categories (heads, tails)
+
+So our first example would yield:
+df = 2 - 1 = 1
+
+To calculate the mean (x bar) we don't have any pre-existing knowledge of
+anything (not outcomes for example):
+
+x_bar = ∑ x
+       -----
+         N
+
+But when we go to calculate the standard deviation we use the mean:
+
+SD = √ ∑(x₁ - x_bar)²
+       --------------
+          N-1
+
+Lets say we have the following values:
+x₁ = 4
+x₂ = 5
+x₃ = 6
+x_bar = (4 + 5 + 6)/3 = 15/3 = 5
+
+SD = √ (4-5)² + (5-5)² + (6-5)² 
+       ------------------------
+                 2
+
+   = √  1 + 1 + 1
+       ------------------------
+           2
+   = √3/2 = 1.2247
+
+If you know the mean the last value i your sample is no longer independant. If
+we know the mean is 5 and we have two or the three values 4, 5 we know that the
+last value is 6.
 
