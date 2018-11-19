@@ -413,19 +413,51 @@ Take the example a student passing or failing a test based on the number of hour
 if we pass in the number of hours of study we want the function to predict the probability of the
 student passing the test.
 
+So we pass in a vector with the exam results and the outcome, if it is a passing
+/failing score.
 
-y-hat = P(y=1|x) 
-Parameters: w (a vector in Rx), b (just a number)
+The cost function will be:
+y-hat = σ(wx + b)
+                       1
+σ(z) = sigmoid(z) = --------
+                    1 + e^-z
 
-So with the input parameter x and the paremeters w and b we should generate the output y-hat.
-The function will be:
-y-hat = sigmoid(wx + b)
+We pass in training example to our model to allow it to learn:
+{ (x₁, y₁), ... , (x^m, y^m)
+
+And for each training data point we want the estimated y value (y_hat) to be
+as close as possible to out passed in, known to be correct, y.
+We accomplish this by 
+
+X = [ 65.0,
+      60.0,
+      20.0,
+      80.0]
+
+Now this is our training set as a matrix. In our case we only have a single
+independant variable, the exam score. But if the input was an image then a
+single training example would be an vector of pixels.
+The above vector is a column vector which is really a matrix of shape 4x1 (
+4 rows and 1 column).
+
+We could also write it as a row vector (1x4, 1 row and 4 columns):
+X = [ 65.0, 60.0, 20.0, 80.0]
+
+So X is a matrix and recall recall that a vector can also be viewed as
+a special type of matrix X with dimentions nxm (n = rows, m = columns), where
+one dimension is always set to 1.
+
+y-hat = σ(W^TX + b)
+
+y_hat is really a column vector of size (Tx1), 
+W is also a column  vector of size (Kx1), 
+X is a matrix of size (TxK).
 
 We need a cost function to calculate the w and b parameters.
 So we are trying to get w and b to be good estimates so that y-hat can be classified.
 We also need an error function that tells us how well the prediction is.
 
-Loss function is for a single training example.
+The loss function is for a single training example.
 L(y-hat, y) = -( y * log(y-hat) + (1 - y) log(1 - y-hat))
 
 Lets take a closer look at the above:
@@ -455,6 +487,11 @@ Cost function is for the entire training set.
            1
 J(w, b) = --- Sum( L(y-hat(i), y(i)))
            m
+    
+             1
+J(w, b) = - --- ∑( ( y * log(y-hat) + (1 - y) log(1 - y-hat)) )
+             m
+
 The J function is implemented using Gradient Decent.
 
 loop {
