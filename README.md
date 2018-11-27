@@ -450,8 +450,72 @@ one dimension is always set to 1.
 y-hat = σ(W^TX + b)
 
 y_hat is really a column vector of size (Tx1), 
-W is also a column  vector of size (Kx1), 
+W is also a column vector of size (Kx1), and the transpose will produce a 
+row vector.
 X is a matrix of size (TxK).
+
+
+x₁ ------>[a₁¹]  ---->                        z₁¹ = w₁¹T x + b₁¹, a₁¹ = σ(z₁¹)
+x₂ ------>[a₂¹]  ---->  [] ---> y_hat         z₂¹ = w₂¹T x + b₂¹, a₂² = σ(z₂¹)
+x₃ ------>[a₃¹]  ---->                        z₃¹ = w₃¹T x + b₃¹, a₃² = σ(z₃¹)
+x4 ------>[a4¹]  ---->                        z4¹ = w4¹T x + b4¹, a4² = σ(z4¹)
+
+The three input values will be a column vector looking like this:
+x = [x₁,
+     x₂,
+     x₃]
+
+And each neuron has it's own vector w, of weights, one for each input entry
+in the vector x:
+w = [w₁,
+     w₂,
+     w₃]
+
+Each neuron also has it's own bias, b. 
+
+The first operation to happen in the neuron is:
+z₁¹ = w₁¹T x + b₁¹
+
+Given the rules of matrix multiplication, we cannot multiply two vectors when 
+they are both viewed as column matrices. If we try to multiply an n×1 matrix 
+with another n×1 matrix, this product is not defined. 
+
+The number of columns of the first matrix (1) does not match the number of rows 
+of the second matrix (n). To rectify this problem, we can take the transpose of 
+the first vector, turning it into a 1×n row matrix. With this change, the product 
+is well defined; the product of a 1×n matrix with an n×1 matrix is a 1×1 matrix, 
+i.e., a scalar.
+
+
+For matrix multiplication to be conformable the number of columns in first 
+matrix must be equal to number of rows in second matrix. This is not the case
+here as they are both 
+
+[w₁ w₂ w₃] * [x₁
+              x₂   = [(x₁ * w₁) + (x₂ + w₂) + (x₃ + w₃)]
+              x₃]
+
+This is the reason for the transpose operation (T) used.
+
+[1 2 3] * [4
+           5    = [(4 * 1) + (5 * 2) + (6 * 3)] = [32]
+           6]
+
+So the result will bee a 1x1 matrix which is just a scalar. Also, we would 
+add the bias as well but that is not being shown above.
+
+Now, we can put all of the weights in a matrix:
+[w₁¹T    [x₁    [b₁¹
+ w₂¹T     x₂  +  b₂¹
+ w₃¹T     x₃]    b₃¹
+ w4¹T]           b4¹]
+(4*3)
+
+[w₁¹T x + b₁¹       [z₁¹
+ w₂¹T x + b₂¹    =   z₂¹
+ w₃¹T x + b₃¹        z₃¹
+ w4¹T x + b4¹]       z4¹]
+
 
 We need a cost function to calculate the w and b parameters.
 So we are trying to get w and b to be good estimates so that y-hat can be classified.
