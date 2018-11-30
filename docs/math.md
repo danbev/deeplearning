@@ -40,12 +40,6 @@ Numbers that cannot be written as a ratio of two integers. Any non-terminating n
 Combining irrational numbers with rationals gives what a set which is called the real numbers.
 The symbols is a capital R in blackboard bold.
 
-##### Complex numbers
-We can't take the square root of a negative number and for this we need complex numbers.
-The symbols is a capital C in blackboard bold.
-TODO: more details about complex numbers.
-
-
 ### Multiplication and Division
 Take 2 x 4 = 8 which can be throught of as 2 + 2 + 2 + 2, or 4 + 4:
 ```
@@ -665,28 +659,63 @@ to either coming out upwards or downwards.
 This is the unit of the coordinate system whith x, y, and z are scaled by.
 
 ### Imaginary numbers
-We can take the quare root of -1 but this is useful sometimes in math so an number was introduced to allow this:
+i = imaginary unit
+
+Definition:
+i² = -1         i =√-1
+Just like:
+2² = 4          2 = √4
+
+We can't take the quare root of -1 but this is useful sometimes in math so an
+number was introduced to allow this:
 The definition is :
 i^2 = -1
 
-i^0 = 1
+Here are some examples of using different values for he exponent of i:
+i⁰ = 1
 i^1 = i
 i^2 = -1
 i^3 = i^2 * i = -1 * i = -i
 i^4 = i^2 * i^2 = -1 * -1 = 1
 i^4 = i^3 * i = -i * -1 = 1
-Notice that i^4 is the same as i^0!
+Notice that i^4 is the same as i^0
 i^5 = i^4 * i = 1 * i = i
-Notice that i^5 is the same as i^1!
+Notice that i^5 is the same as i^1
 i^6 = i^5 * i = 1 * i = i * 1 = -1
-Notice that i^6 is the same as i^2!
+Notice that i^6 is the same as i^2
+
 This cycle continues.
 
+      Im  ^
+         i-
+          |
+          |
+<----|---------|--------->
+    -1    |    1 (i⁰)
+          |
+        -i-
 
+√-52 can be simplified to:
+√(-1)(52) = √-1 * √52
+
+Now √-1 is also our definition of i so we can replace it:
+i * √52 
+
+ √52 
+ / \
+2 * 26
+   /  \ 
+  2   13
+
+i * √52 = i * √4*13
+        = i * √4 * √13
+        = i * 2 * √13
+        = 2 * √13 * i
 
 ### Complex numbers
-Are similar to vectors and we can add and subtract complex numbers like vectors. The also have components, length,
-and direction.
+Are similar to vectors and we can add and subtract complex numbers like vectors.
+They also have components, length, and direction.
+
 A complex number has a real part and an imaginary part:
 z = 5 + 3i
 The real part is 5 and written as Re(z) = 5
@@ -1849,4 +1878,66 @@ SD = √ (4-5)² + (5-5)² + (6-5)²
 If you know the mean the last value i your sample is no longer independant. If
 we know the mean is 5 and we have two or the three values 4, 5 we know that the
 last value is 6.
+
+
+### Quantum computing
+Representing classical bits as a vector:
+One bit with the value 0:
+(1
+ 0)
+This can also be written in Dirac vector notation as: |0>
+One bit with the value 1:
+(0
+ 1)
+|1>
+
+If we think of this as a vector originating from the origin (0) then the
+0 will be along the x axis, really a unit on it. And 1 will be a unit in the
+y axis and x will be zero.
+
+Quantum computing uses these vectors (and later matrixes) just like a normal 
+computer would use bits and bytes.
+
+(1 0 0 0   (0      (0
+ 0 0 1 0    1    =  0
+ 0 1 0 0    0       1
+ 0 0 0 1)   0)      0)
+
+There are 4 operations on a single bit:
+1) Set it to 1
+2) Set it to 0
+3) Negate/Not~
+4) Identity (multiplied by 1)
+
+Identity:
+f(x) = x    0 -> 0     (1 0  (1   = (1        (1 0  (0   = (0
+            1 -> 1      0 1)  0)     0)        0 1)  1)     1)
+Is reversable. If we know the outcome and the operation we can reverse this.
+
+Negation:
+f(x) = ¬x   0 -> 1     (0 1  (1   = (0        (0 1  (0  = (1
+            1 -> 0      1 0)  0)     1)        1 0)  1)    0)
+Is reversable. If we know the outcome and the operation we can reverse this.
+
+Constant-0
+f(x) = 0    0 -> 0     (1 1  (1  = (1*1 + 0*1  = (1     (1 1  (0   = (0*1 + 1*1  = (1
+            1 -> 1      0 0)  0)    1*0 + 0*0)    0)     0 0)  1)     0*0 + 0*1)    0)
+Is not reversable. If we know the outcome and the operation we still can't know
+the input value, it would be either 0 or 1.
+
+Constant-1
+f(x) = 1    0 -> 1    (0 0  (1  = (0         (0 0  (0  = (0
+            1 -> 1     1 1)  0)    1)         1 1)  1)    1)
+Is not reversable. If we know the outcome and the operation we still can't know
+the input value, it would be either 0 or 1.
+
+Quantum computers only use reversable operations.
+Also all operations are there own inverse, so if you apply the operation twice
+you get back the input value.
+
+
+A qbit is represented by (a
+                          b) where a and b are complex numbers and
+||a²|| + ||b²|| = 1
+
 
