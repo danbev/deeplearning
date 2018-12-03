@@ -280,9 +280,46 @@ The expression:
 x = abc
 We say that x factors into a, b and c. a, b, and c are the factors of x.
 
+### Notation
+int f(int x) {
+  return 2*x;
+}
+The possible inputs are all integers and this is called the functions domain.
+The type of output is int but not all ints, you can't get 3 as the output. The
+actual outputs of a function is a set call the functions Range. The type of 
+outputs are called it's codomain.
+
+f : A -> B
+The above specifies the domain A and the codomain B. The range depends on the
+function just like we saw above.
+
+A polynomial is specified like so:
+f : R -> R
+
+R  = the set of real numbers.
+R² = pair of real numbers.
+R³ = tripple of real numbers. 
 
 #### Polynomials
 Poly comes from greek and means many.
+f(x) = a₀ + a₁x + a₂x² + ... +anx^n
+
+a is just an array of real numbers, the coefficients.
+n is the degree of the polynomial. As the degree goes up so does the number of 
+times the polynomial changes direction, between increasing and decreasing.
+Polynomials only contain addition, multiplication and constants.
+
+Just like the binary opoerations AND, OR, and NOT, when combined can be used
+to implement algorithms, polynomials have the same role for arithmetic.
+
+AND(x,y) = xy
+NOT(x,y) = 1-x 
+ OR(x,y) = 1-(1-x)(1-y)
+
+So any AND/NOT/OR operation can be represented by using a combination of the
+above three polynomials.
+
+
 nomial comes from the latin word nomen which means name. In math we deal with terms instead of names.
 Examples:
 10x^7 - 9x^2 + 15x^3 + 9
@@ -319,6 +356,7 @@ Degree		Name		Example
 3		Cubic		x^3-x^2+5
 4		Quartic		6x^4-x^3+x-2
 5		Quintic		x^5-3x^3+x^2+8
+
 
 
 ### Functions
