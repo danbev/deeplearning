@@ -21,7 +21,8 @@ The symbol is a captial W in blackboard bold.
 Whole numbers and their negatives {..., -3, -2, -1, 0, 1, 2, 3,...}
 The symbol for integers is a captial Z (Zahlen is a German word for number) in blackboard bold.
 
-The symbols  is a capital R in blackboard bold.
+The symbols is a capital R in blackboard bold.
+
 ##### Rational numbers
 Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0.
 nominator          1
@@ -29,7 +30,7 @@ nominator          1
 denominator        2
 
 (a ratio is a relationship between two numbers indicating how many times the first number contains
-the second) which is why these numbers are called retionaly numbers.
+the second) which is why these numbers are called rational numbers.
 
 The symbol for rational numbers is a capital Q in blackboard bold.
 
@@ -135,6 +136,10 @@ Negative exponents meant divide by:
 2^-3 = 1 / 2 * 2 * 2       = 1/9
 2^-4 = 1 / 2 * 2 * 2 * 2   = 1/16
 ```
+
+(x²)³ = x²*³ = x⁶
+
+2^5/2 = 2^(5*1/2) = (2^1/2)^5
 
 Fractional exponents:
 a^1/2 = 2sqrt(a) What times itself 2 times is a? 
@@ -301,7 +306,16 @@ R² = pair of real numbers.
 R³ = tripple of real numbers. 
 
 #### Polynomials
-Poly comes from greek and means many.
+Poly comes from greek and means many. A polynomial is something that is made up
+from the sum of terms.
+A polynominal is the sum of a finite number of terms where each term has a coefficient, being multiplied
+by a variable, being raised to a non-negative integer power.
+There has to be non-negative powers for it to be a polynominal.
+A coefficient is just something that is mutiplied and in this case would be 
+multiplied with a variable for example.
+Notice that it says sums which means addition, but we can still be adding
+negative terms.
+
 f(x) = a₀ + a₁x + a₂x² + ... +anx^n
 
 a is just an array of real numbers, the coefficients.
@@ -319,28 +333,50 @@ NOT(x,y) = 1-x
 So any AND/NOT/OR operation can be represented by using a combination of the
 above three polynomials.
 
-
 nomial comes from the latin word nomen which means name. In math we deal with terms instead of names.
 Examples:
 10x^7 - 9x^2 + 15x^3 + 9
 6
 
+A polynomial cannot have a negative power in a polynomial. Why?
+
 Not a polynominal:
 10x^-7 - 9x^4 + 15x^3 + 9
-10x^-7 - 9x^4 + 15x^3 + 9x^0
+10x^-7 - 9x^4 + 15x^3 + 9
 6x^0
 
 Terms:
-10x^-7, - 9x^4, 15x^3, 9x^0
+10x⁷, - 9x⁴, 15x³, 9
 Coefficients
-10, -9, 15, 9
+10, -9, 15, 9. The last nine can also be written as:
+9x⁰ 
+And x⁰ is just 1 so that is just be nice so we don't have to write it all out.
+So, the statement "A polynominal is the sum of a finite number of terms where 
+each term has a coefficient, being multiplied by variable" must hold true.
 
-A polynominal is the sum of a finite number of terms where each term has a coefficient, being multiplied
-by a variable, being raised to a non-negative integer power.
-There has to be non-negative powers for it to be a polynominal.
+Which of the following are polynomials:
+f(x) = 0                     A special case called the zero polynomial
+g(x) = 12                    Yes
+h(x) = 1 + x + x² + x³       Yes
+i(x) = x^1/2                 No, the exponent is not an integer (it is a fraction)
+j(x) = 1/2 + x² - 2x⁴ + 8x⁸  Yes
+k(x) = 4.5 + 1/x - 5/x²      No. 5/x^2 is the same as 5x^-1 using the rule:
+                               1
+                             ---- = 1x^-n
+                              x^n
 
-The difference between a point (px py) and a vector (vx, vy) is that a point always originates (is drawn)
-starting from the origin. This might not be the case for vectors.
+l(x) = pi - 1/e x⁵ + epi³x⁹  Yes. 1/e is division by a constant which is ok.
+m(x) = x + x² - x^pi - x^pi + x^2 No, not if pi and e are not integer constants.
+
+Take a look at the curve that a polynomial represents using Grapher.
+
+
+Monomial: one term. Example 6 or 6x⁰, 10z⁸
+Binominal: two terms
+Trinominal: three terms
+
+
+
 
 Degree of a polynominal is the largest exponent of that variable:
 4x
@@ -357,7 +393,22 @@ Degree		Name		Example
 4		Quartic		6x^4-x^3+x-2
 5		Quintic		x^5-3x^3+x^2+8
 
+Simplifying:
+Just remember that we can combine like terms. Like terms have to have the
+same power to be able to combine them. Start with the highest degree and move
+it to the front and see if it and others can be simplified. This will also bring
+the polynomial into standard form.
 
+Leading:
+Can be used to mean the first term or first coefficient depending on the context.
+
+Standard form:
+Is when you write the terms in degree order (highest to lowest).
+
+
+
+The difference between a point (px py) and a vector (vx, vy) is that a point always originates (is drawn)
+starting from the origin. This might not be the case for vectors.
 
 ### Functions
 
@@ -1587,11 +1638,15 @@ cat then the value of y-hat would be 1.
 
 
 ### Useful rules
+
+#### Fraction in divisor
   1
 ---- = 1x^-n
  x^n
 
-2/4^3 = 2 * 4^-3
+ 2
+--- = 2 * 4-³
+4³
 This works both ways, so if you have a negative exponent you can rewrite it
 
 Product rules:
@@ -1979,3 +2034,14 @@ A qbit is represented by (a
 ||a²|| + ||b²|| = 1
 
 
+
+### Distibrute sign
+-(8 + 2) 
+Notice that the negative sign is outside of the parentheses and could also
+be written as:
+-1(8 + 2)
+And that would give
+= ((-1* 8) + (-1*2)
+= -8 + -2
+ =-10
+So the sign of each term in the group is changed.
