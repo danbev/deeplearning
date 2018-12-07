@@ -1639,7 +1639,7 @@ cat then the value of y-hat would be 1.
 
 ### Useful rules
 
-#### Fraction in divisor
+#### Exponent in divisor
   1
 ---- = 1x^-n
  x^n
