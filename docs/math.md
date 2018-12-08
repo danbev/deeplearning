@@ -17,11 +17,9 @@ The symbol that is used is a capital N in blackboard bold.
 Natural numbers and zero {0, 1, 2, 3, 4,...}
 The symbol is a captial W in blackboard bold.
 
-##### Intger numbers
+##### Integer numbers
 Whole numbers and their negatives {..., -3, -2, -1, 0, 1, 2, 3,...}
 The symbol for integers is a captial Z (Zahlen is a German word for number) in blackboard bold.
-
-The symbols is a capital R in blackboard bold.
 
 ##### Rational numbers
 Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0.
@@ -161,6 +159,13 @@ Reverse: 2^3   = 8
 
 5^4/3 = 3sqrt(5^4) = 3sqrt(5*5*5*5) = 3sqrt(625) = 8,549879
 5^4/3 = 3sqrt(5^4) = (3sqrt(5))^4 = 8,549879
+
+Multiplying powers:
+x³ * x² = (x * x * x)(x * x) = x⁵
+When the base are the same we just add the exponents.
+
+(x²)³ = (x * x)(x * x)(x * x) = x⁶
+This is called the power or power property. You just multiply the exponents.
 
 Rules:
 
@@ -1644,9 +1649,20 @@ cat then the value of y-hat would be 1.
 ---- = 1x^-n
  x^n
 
- 2
---- = 2 * 4-³
-4³
+Why is this true?
+
+ 2     2
+--- = --- = 0.03125
+4³    64
+
+2*4^-3 = 0.03125
+This works because 
+        2       2
+4^-³ = --- = -------
+        4³    4*4*4
+So what we are doing is going from the middle representation above to the 
+first (that has the negative exponent).
+
 This works both ways, so if you have a negative exponent you can rewrite it
 
 Product rules:
@@ -2045,3 +2061,11 @@ And that would give
 = -8 + -2
  =-10
 So the sign of each term in the group is changed.
+
+### Theorm
+For any integer x ≥ 0 and any list of n + 1 points (x₀, y₀),(x₁, y₁),...(xn,yn)
+in R² with x₀ < x₁ < ... < xn, there exists a unique degree n polynomial p(x)
+such that p(xi) = yi, for all i.
+
+So we have an list of pairs of... 
+
