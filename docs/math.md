@@ -290,6 +290,43 @@ The expression:
 x = abc
 We say that x factors into a, b and c. a, b, and c are the factors of x.
 
+Rules for Arithmetic:
+1) a(b+c) = ab + ac
+
+      b      ab
+2) a(---) = ---
+      c      c
+
+3)  a
+    -
+    c      a            (1/5)       1        1
+   ---- = ---           ----- =  ------- =  ----
+    b      bc             2       5 * 2      10
+
+4) a       ac           1       1 * 2    2   1
+  ---- =  ----        ----- =   ----- =  - = -
+   b       b           6/2        6      6   3
+   -
+   c
+
+5) a    c      (ad + bc)
+  -- + --- =   ---------
+   b    d         bd
+
+Rules for Exponents:
+
+a^m * a^n = a^m*n
+(a^n)^m   = a^n&m
+(ab)^n    = a^n * b^n
+         1
+a^-n =  ---
+         a^n
+(a/b)^-n = (b/a)^n
+(a/b)^n = (a^n/b^n)
+(a^n/a^m) = a^n-m
+a⁰ = 0
+
+
 ### Notation
 int f(int x) {
   return 2*x;
