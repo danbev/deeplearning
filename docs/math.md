@@ -1669,6 +1669,25 @@ How is this different to the binary step function?
 
 ### Probability
 
+Take a deck of cards:
+4 different suites/types wich 13 in each
+4 * 13 = 52
+
+        4      1
+P(5) = ---- = ---
+        52    13
+
+                   1  
+P(5 and hearts) = ---
+                  52
+
+                   4     13     17-1
+P(5 or hearts) =  --- +  -- =  ---
+                  52     52     52
+
+Note that there will be a card which is both a 5 and of types heart which is why
+we need to subtract the difference.
+
 Notation:
 y-hat = P(y=1|x) 
 y-hat will tell us the probability that the x is of some specific type, for example if it is a picture of a
