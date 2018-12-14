@@ -90,7 +90,7 @@ Remember this is the 28x28 image represented as an array.
 Each entry in the array is a neuron and has an activation value between 0.0-1.0.
 
 The first layer/array will be the largest and the following layers smaller, the last being the smallest.
-The layers inbetween the first layer and the last are called the hidden layers.
+The layers in between the first layer and the last are called the hidden layers.
 For example the second layer might contain 16 nodes, and there might more than one hidden layer. The layers
 are connected and these connection are weighted. This means that every node in the first layer is connected
 to every node in the second layer.
@@ -111,7 +111,7 @@ to every node in the second layer.
 So in our case upon we have an image with a human written digit. This will fire all the neurons in the
 first layer as this is how things get into the network. But not all neurons will fire in the next layer as
 this depends on their activation values. You can think of this as the first layer splitting/detecting small
-patterns in and activating on them. The next layer would splitt/detect further but this time putting together
+patterns and activating on them. The next layer would split/detect further but this time putting together
 patterns from the former layer that it knows about. For example, say we have a 0 as our human written digit,
 the first layer might detect four/five pieces that are part of a loop (think zero, six, eight or nine). 
 The next layer will activate all only neurons that could be part of a zero and not activate pars of a six,
@@ -138,7 +138,7 @@ these weights determined? I think this is what parameters are for
 Take all the activations from the prevoius layer and sum them:
 weigh1 activation1 + ... +weightn activationn
 
-This done for each neuron which make sense as all the neurons are connected. This value is then often
+This is done for each neuron which make sense as all the neurons are connected. This value is then often
 squashed into av value between 0.0-1.0. Also a bias is added before squashing but for about that later.
 
 We usually want our weighted sum to be a value between 0-1 so we put it through a function like
@@ -218,11 +218,12 @@ b is the column vector of outcomes for each row in the A matrix.
 x is the weights which is a vector of parameters.
 
 ### Connection weights
-Weights on connections in a neural network are coefficients that scale (amplify or minimize) the input signal to a given neuron in the network. 
+Weights on connections in a neural network are coefficients that scale (amplify or minimize) 
+the input signal to a given neuron in the network. 
 
 
 ### Bias
-Per neuron basis, so each neuron has it's own value. Remember that this is one of the values that
+Per neuron bais, so each neuron has it's own value. Remember that this is one of the values that
 can be altered so that the network can learn (the other values are the weights). 
 
 Each neuron receives the weighted sum from the previous layer (note that this means all the input
@@ -236,8 +237,8 @@ Input     Weights        Neuron (inside the function)
 x1 = 1 ---(-0,55)---->   double sum = 1 * (-0,55) + 2 * 0.1; // -0,35   
 x2 = 2 ---(0.1)------>   double output = relu(sum); // 0
 
-With out a bias this neuron would not activate (well the outputu will be 0 and the will not affect
-the next layer as anything weight multipled with it will be 0 and that 0 will be added to the 
+Without a bias this neuron would not activate (well the output will be 0 and the will not affect
+the next layer as anything weight multipled with it will be 0, and that 0 will be added to the 
 next layers weighted sum which will not do anything).
 In this case the threshold is anything below zero will cause the neuron to output zero. But what if
 we wanted to move this threshold, like say it is acceptable that any value equal to or greater than
@@ -257,8 +258,11 @@ or behaviors. Biases are generally notated b, and, like weights, biases are modi
 
 
 ### Activation
-The functions that govern the artificial neuron’s behavior are called activation functions. The transmission of that input is known as forward propagation. 
-Activation functions transform the combination of inputs, weights, and biases. Products of these transforms are input for the next node layer. 
+The functions that govern the artificial neuron’s behavior are called activation functions.
+The transmission of that input is known as forward propagation.
+
+Activation functions transform the combination of inputs, weights, and biases. Products 
+of these transforms are input for the next node layer. 
 Many (but not all) nonlinear transforms used in neural networks transform the data into a convenient range, such as 0 to 1 or –1 to 1. 
 When an artificial neuron passes on a nonzero value to another artificial neuron, it is said to be activated.
 
@@ -272,8 +276,7 @@ y = β0 + β1x + ε
 
 ε = elipson
 
-^
-y = β0 + β1x
+y_hat = β0 + β1x
 β0 is the y-intercept population parameter.
 β1 is the slope of the line population parameter.
 ε is our error term and is the unexplained variation in y. What does this mean?
@@ -322,10 +325,10 @@ use the equation directly. But in real life we almost never have this informatio
 sample data and have to estimate the values for the parameters. For sample data the equation looks
 like:
 y_hat = b0 + b1x
-y_hat is the point estimator of E(y). The mean value of y for the given x
+y_hat is the point estimator of E(y). The mean value of y for the given x.
 
 When using linear regression with two variables we are always comparing that with the result of
-when we pretent that there is no second variable (x = 0), which will make the slope/β1 0.
+when we pretend that there is no second variable (x = 0), which will make the slope/β1 0.
 y = β0 + β1
 β0 represents the ideal y-intercept if you have plotted/graphed the entire population.
 So we are stating that all x and y are related according to a straight line. But not all points
@@ -352,16 +355,17 @@ y-bar  |---/---------------------------------->
        ---------------------->
                x
 
-y-bar is the averge when we pretend that we don't have a value for x (x = 0).
+y-bar is the average when we pretend that we don't have a value for x (x = 0).
 
 y_hat - y_bar is the distance from the expected/predicted average to the actual
 average. In this case we expect the value (the dependant value) to be higher
 than the mean. 
+
 Sum of Squares Residuals (SSR or RSS) = ∑(Y_hat₁ - y_bar)²
 Remember that the residuals are the distances from the predicted point to the average, that we then
 square and then summ all the squares.
 
-But we can see that our value is higher that this, which is higher
+But we can see that our value is higher than this, which is higher
 still and called unexpected deviation:
 ei = Y(i) - Y_hat(i)
 Sum of Squares Predictions (SSE) = ∑(Y₁ - y_hat₁)²
@@ -375,14 +379,12 @@ If our SSE is high R2 will be low, which means that our points are further apart
 line. And if SSE is low it means that our points are close to the line. It tells us a little
 about the fit of our model.
 
-
-
 y-hat indicates that this is an approximation.
 
 The formula for calculating beta1 (the slope) is:
-      sum ( (x-x_mean) (y - y_mean) )
+      ∑ ( (x-x_mean) (y - y_mean) )
 b1 = ------------------------------
-      sum ( (x - x_mean)^2
+      ∑ ( (x - x_mean)^2
 
 What we are doing is finding the area of the points and summing them up. Then we are divding this
 with the area of the distance to the x mean.
@@ -407,6 +409,7 @@ We can reason about the the features and their coefficients like this;
 88 is β0 which is still the y-intercept.
 Lets says that x₁ is expenses in 1000 SEK, then we can read this as for each unit increment
 of x₁ that will tripple y if we consider x₂ to be constant.
+
 
 #### Logistic regression
 Take the example a student passing or failing a test based on the number of hours spent studying. So
@@ -443,15 +446,14 @@ The above vector is a column vector which is really a matrix of shape 4x1 (
 We could also write it as a row vector (1x4, 1 row and 4 columns):
 X = [ 65.0, 60.0, 20.0, 80.0]
 
-So X is a matrix and recall recall that a vector can also be viewed as
+So X is a matrix and recall that a vector can also be viewed as
 a special type of matrix X with dimentions nxm (n = rows, m = columns), where
 one dimension is always set to 1.
 
 y-hat = σ(W^TX + b)
 
 y_hat is really a column vector of size (Tx1), 
-W is also a column vector of size (Kx1), and the transpose will produce a 
-row vector.
+W is also a column vector of size (Kx1), and the transpose will produce a row vector.
 X is a matrix of size (TxK).
 
 
@@ -548,8 +550,9 @@ And when y = 0:
 = -(log(1 - y-hat))
 
 Cost function is for the entire training set.
+
            1
-J(w, b) = --- Sum( L(y-hat(i), y(i)))
+J(w, b) = --- ∑( L(y-hat(i), y(i)))
            m
     
              1
@@ -594,9 +597,9 @@ We want a function that we can plug in any x value and get the rate of change at
 is where we want have a derivative function. How do we derive that for the sigmoid function?
 
 We can rewrite the sigmoid function like this if we like:
-  1
--------  = (1 + e^-x)^-1
-1 + e^-x
+    1
+----------  = (1 + e^-x)^-1
+(1 + e^-x)
 
 f(x) = (1 + e^-x)^-1
 
@@ -643,7 +646,7 @@ We can add 1 and subtract one to the numerator.
           (1 + e^-x)^2
 
 This will not change the result as this is zero but it does allow us to 
-rewrite this as
+rewrite this as:
 
            1 + e^-x             1
       =  -------------  -  ------------
@@ -690,10 +693,14 @@ b \     +----------+    +-->+-----------+        +---------+
    ---->| u = bc   | ------>| v = a + u | -----> | J = 3v  |
 c /     +----------+        +-----------+        +---------+
 
-So lets say a = 5, b = 3, and c = 2. That would give us:
-u = 6
-v = 11
-J = 33
+So lets say 
+a = 5 
+b = 3
+c = 2 
+That would give us:
+u = 3 * 2 = 6
+v = 5 + u = 11
+J = 3 * v = 33
 
 In this case J would be the cost function that we are trying to minimize and this is done in the 
 forward phase. 
@@ -724,7 +731,7 @@ J = 33.001
 
 dJ       dJ dJ
 -- = 3 = -- -- = (3)(1)
-da       gv da
+da       dv da
 
 (This is the chain rule in work here).
 The reason that dj/da is one is because when we increase a, v changes by the same amount, hence 1:
@@ -760,7 +767,7 @@ So the forward phase computes the cost and the back propagation to compute deriv
 What have we got so far:
 z = w^Tx + b
 y-hat = a = sigmoid(z)       // note that a is the output of the logistic regression
-loss(a, y) = -(y log(a) + (1 - y) log( 1 - a))
+loss(a, y) = -(y log(a) + (1 - y) log( 1 - a)) // y is the expected value/target value
 
 Note that w^T is the transpose of the weights and then taking the dot product with x, so that
 becomes (w(1) * x(1) + w(2) + x(2)) + b.
@@ -788,19 +795,6 @@ sigmoid(x) - sigmoid(x)^2
 
 How is that derived from -(y log(a) + (1 - y) log( 1 - a)) ? 
 
-Logistic regression 
-Tries to predict the probability for a given input that it belongs to a certain class. This solution  differs from logistic regression as the output is a certain class, say a binary either 1 or 0. 
-In cases like this trying to use a scatter plot would basically place point in two lines, they would
-either be part of the ones or the zeros. Not having what is called a normal distribution other types of regressions (like linear, multiple regression) are not suitable.
-The predicted values of the dependant variable is between 0 and 1 since it is a probability.
-
-The assumption here is that the input space can be divided into two regions which is separated
-by a linear border. In two dimensions that would be a straight line, in three dimentions it would
-be a plane.
-P\ -> the probability that a certain data point belongs to class `\'.
-P/ -> would then be (1 - P\)
-
-
 Derivative of dL/dz:
 dL(a, y)    dl    da
 -------- =  -- *  --  = a - y
@@ -827,25 +821,52 @@ Cost function
 J(w, b) =  --- Sum(loss(y_hat^i, y^i))
             m 
 
+### Logistic regression 
+Tries to predict the probability for a given input that it belongs to a certain class. 
+This solution differs from logistic regression as the output is a certain class, say a binary either 1 or 0. 
+In cases like this trying to use a scatter plot would basically place point in two lines, they would
+either be part of the ones or the zeros. Not having what is called a normal distribution other types of 
+regressions (like linear, multiple regression) are not suitable.
+The predicted values of the dependant variable is between 0 and 1 since it is a probability.
+
+The assumption here is that the input space can be divided into two regions which is separated
+by a linear border. In two dimensions that would be a straight line, in three dimentions it would
+be a plane.
+P\ -> the probability that a certain data point belongs to class `\'.
+P/ -> would then be (1 - P\)
+
 ### Input data
+You input for logistic regresion will be the training samples in the format
+{(x¹, y¹), ... ,(x^m, y^m), 
+
+Now, x is a vector of input values, think of the case of an image then each pixel
+would be an entry in this vector. Or a row from a table in a database, each value
+would be a the value of a column. And for each x vector we have a value y which is
+the target value that for x. We calulate a prediction called y_hat for those x and
+want it to be close to Y.
 
 X(1) ---->
 X(2) ---->  
 X(3) ---->  
 X(4) ---->  
 When you see input data like this remember that they are one single input, this could be the pixels
-of a single image, or each item could be some value like the size of a house, the number of rooms, etc. For each such training data entry we would also have an expected output which we use to compare
+of a single image, or each item could be some value like the size of a house, the number of rooms, etc, 
+like a row from a table in a database where each value would represent a column.
+
+For each such training data entry we would also have an expected output which we use to compare
 with the actual outcome.
 
 The training set is all the inputs we want to train on. So these would be a data structure with one
 entry being the four values (our input above) and the expected output for that input.
-The loss function predicts one such entry, and then the cost function. 
+The loss function predicts/compares one such entry, and then the cost function does
+a prediction for the entire training set.. 
 
-
-If training_data was a data structure with the first entry the vector of features and the second value the expected output value (y).
+If training_data was a data structure with the first entry the vector of features and the 
+second value the expected output value (y).
 
 Think of w and b on horizontal axis in a diagram:
-J(w, b) cost_function(w, b)
+
+     J(w, b) cost_function(w, b)
       ^
       |
       |
@@ -857,6 +878,7 @@ J(w, b) cost_function(w, b)
    /
  /
 w
+
 So the output of the cost function of w and b will be some position above the horizonal plane.
 The cost function in our case is a convex function and looks like a bowl. So we can bascially give
 w and b whatever values we like to initialize them and that will give some cordinate in the third
