@@ -16,7 +16,7 @@ struct data {
 class LogisticRegression {
  public:
    LogisticRegression(std::vector<data> training_set,
-                      std::vector<double> weights,
+                      std::vector<double> weights = {},
                       double learning_rate = 0.005,
                       double bias = 0.5) : 
        training_set_(training_set), weights_(weights), 
@@ -26,7 +26,7 @@ class LogisticRegression {
    double predict_y_hat(std::vector<double>) const;
    double loss(double y_hat, double y) const;
    double cost();
-   void sgd();
+   void gd();
    double bias() const;
    std::vector<double> weights() const;
  private:

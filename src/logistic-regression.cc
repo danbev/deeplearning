@@ -26,11 +26,11 @@ double LogisticRegression::cost() {
     // compare the prediction with the expected value
     loss_sum += loss(y_hat, training_set_[i].y);
   }
-  return loss_sum;
+  return loss_sum * (1/training_set_.size());
 }
 
 double LogisticRegression::loss(double y_hat, double y) const {
-  return y * log(y_hat) + (1 - y) * log(1 - y_hat) * -1;
+  return -(y * log(y_hat) + (1 - y) * log(1 - y_hat));
   /* Compare and verify that these work the same
   if (y == 1) {
     return -log(y_hat);
@@ -40,11 +40,11 @@ double LogisticRegression::loss(double y_hat, double y) const {
   */
 }
 
-void LogisticRegression::sgd() {
+void LogisticRegression::gd() {
   // train the paremeters, the weights and the bias...
-  double loss_sum = 0.0;
-  double db = 0;
   std::vector<double> d_weights(weights_.size());
+  double loss_sum = 0.0;
+  double db = 0.0;
 
   for (int i = 0; i < training_set_.size(); i++) {
     double y_hat = predict_y_hat(training_set_[i].x);
@@ -59,19 +59,22 @@ void LogisticRegression::sgd() {
     db += derivative;
   }
 
-  std::cout << "Total loss_sum: " << loss_sum << '\n';
-
   // compute the averages
   loss_sum /= training_set_.size();
   db /= training_set_.size();
   for (int i = 0 ; i < d_weights.size(); i++) {
     d_weights[i] /= training_set_.size();
   }
-  // update the weights and the bias
-  for (int i = 0; i < weights_.size(); i++) {
-    weights_[i] = weights_[i] - learning_rate_ * d_weights[i];
-  }
-  bias_ = bias_ - learning_rate_ * db;
+
+  /*
+  do {
+    // update the weights and the bias
+    for (int i = 0; i < weights_.size(); i++) {
+      weights_[i] = weights_[i] - learning_rate_ * d_weights[i];
+    }
+    bias_ = bias_ - learning_rate_ * db;
+  } while (
+  */
 }
 
 double LogisticRegression::bias() const {
