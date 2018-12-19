@@ -1679,7 +1679,7 @@ P(5) = ---- = ---
 
                    1  
 P(5 and hearts) = ---
-                  52
+                   52
 
                    4     13     17-1
 P(5 or hearts) =  --- +  -- =  ---
@@ -2196,4 +2196,219 @@ in R² with x₀ < x₁ < ... < xn, there exists a unique degree n polynomial p(
 such that p(xi) = yi, for all i.
 
 So we have an list of pairs of... 
+
+### E
+If we think of something that doubles in growth for a time period it will go
+from 1 - 2 after 1 time period. 
+growth = 2^x
+2⁰ = 1
+2¹ = 2
+2² = 4
+2³ = 8
+2⁴ = 16
+2⁵ = 32
+2⁶ = 64
+...
+This could also be written as:
+growth = (1 + 100%)^x
+1 is the original value which we double x number of times.
+
+But things don't really grow that was. 
+
+Is defined as:
+            1
+e(n) = (1 + - )^n
+            n
+
+1        (1+1/1)¹ =  2¹         = 2
+2        (1+1/2)² =  1.25²      = 2.25
+3        (1+1/3)³ =  1.3333...³ = 2.37037037
+4        (1+1/4)⁴ =  1.25⁴      = 2.4414
+5        (1+1/5)⁵ =  1.2⁵       = 2.48832
+6        (1+1/6)⁶ =  1.16.....⁶ = 2.5216
+100000   (1+1/100000)^100000    = 2.718268237
+
+e is the rate of growth if we continually compound 100% return on smaller
+and smaller time periods.
+
+perfect compound growth = e = lim (1 + 1/n)^1*n
+                              n=∞
+
+The first 1 is the unit quantity. The second 1 (in 1/n) is the earning unit 
+interest. The third (^1*n) is the unit time.
+n is the number of periods to split the growth into.
+
+As we take finer and finer time periods the total return stays around 2.718.
+Notice that we are taking smaller and smaller values since we are dividing 1/n.
+
+2.718 is the max possible return when compounding 100% growth for 1 time period,
+if we start with 1 SEK and get 100% compound return we would get 1e = 2.718...
+If we start with 2 SEK we would get 2e = 5.436
+
+Say we don't want 100% rate but only 50%? 
+e = lim (1 + 0.5/n)^1*n
+    n=∞
+
+1 = (1 + 0.5/1)^1*1 = 1.5^1 = 1.5
+2 = (1 + 0.5/2)^1*2 = 1.255^1 = 1.25
+
+
+When we write e^x the variable x is a combination of rate and time.
+growth = e^x = e^r*t
+
+Logarithm naturali (ln) is the inverse of e. So if e gives us the growth for
+x units of time, then ln gives us the time for a specific growth. Now recall
+that what e is raised to is a combination of rate * time. 
+
+ln(x) = log_e(x)
+
+
+e³ = 20,085533692
+Is asking for the max growth for 3 time units.
+ln(20,085533692) = 3
+
+ln(1) 
+How long do I have to wait to get my current amount?
+
+ln(negative nr) = undefined
+
+ln(0.5)
+How long would it take to get half of my current amount.
+
+
+
+### Entropy
+In physics entropy is the number of microstates or microscopic configuration.
+If the particles inside a system have many possible possitions to move around
+then the system has high entropy, and if not it has low entropy.
+Entropy in probability:
+     1                       2                         3
+ [ 0 0 0 0 ]             [ 0 0 0 x ]               [ 0 0 x x ]
+ Most knowledge          Some knowledge            Least knowledge
+ Low entropy             Medium entropy            High entropy
+
+If we pick something from the first bucket we know it will be a 0.
+If we pick something from the second bucket there is a 75% chance of it being 0
+and 25% chance of it being an x.
+If we pick something from the third bucket the chances are 50% that it is going
+to be a 0 and 50% of it being an x.
+
+So, we know we have a high probablity for the 1 bucket, but low entropy. How do
+we get a formula that give a low entropy for a high probability, and a high entropy 
+for a low probability?
+
+What are the different ways we can arrange the items in the bucket.
+For the first one there is only one combination:
+0 0 0 0
+
+1 1 1 1
+- - - -
+1 2 3 4
+
+For the second bucket we have the following:
+0 0 0 x
+0 0 x 0
+0 x 0 0
+x 0 0 0
+
+2⁴ = 16
+
+We have 4 possible combinations.
+
+For the third bucket we have the following:
+0 0 x x
+x x 0 0
+x x 0 0
+
+Game:
+1. Choose one of the buckets.
+2. We are shown all the items in the bucket, in some order and then the items
+are placed back in the bucket.
+3. We pick one item from the bucket, record its value, and return the item to 
+the bucket.
+4. If the items recorded match the squence from step 2 then we win, and if not
+we loose.
+
+Take the second bucket for example:
+ [ 0 0 0 x ]
+So lets try to draw item in that order to win, what is the probability of doing
+that?
+1. The first item is 0 3/4 (0.75)
+2. The second item is 0 3/4 (0.75)
+3. The third item is 0 3/4 (0.75)
+4. The fourth item is x 1/4 (0.25)
+These are all independant values as we put the items back every time.
+
+(3/4) * (3/4) * (3/4) * (1/4) = 27/256 = 0.105
+
+For the first bucket:
+(4/4) * (4/4) * (4/4) * (4/4) = 256/256 = 1
+
+For the third bucket:
+  [ 0 0 x x ]
+(2/4) * (2/4) * (2/4) * (2/4) = 16/256 = 0.0625
+(1/2) * (1/2) * (1/2) * (1/2) = 1/16   = 0.0625
+  0.5 * 0.5   * 0.5   * 0.5   = 16/256 = 0.0625
+
+Probabilities:
+Bucket 1: 1
+Bucket 2: 0.105
+Bucket 3: 0.0625
+
+Now for entropy we want the opposite, some measure that gives a low value for
+bucket 1 and a high value for bucket 3.
+
+In this example we only have 4 items in each bucket so using multiplication is
+not too bad. But imagine if we had millions of items in each bucket. We would
+be multiplying and producing a very tiny number. How about using a sum instead.
+
+ 0.75 * 0.75  * 0.75  * 0.25  = 0.105
+-log₂(0.75) - log₂(0.75) - log₂(0.75) - log₂(0.25)           = 3.245112498
+-log₂(0.75) + (-log₂(0.75)) + (-log₂(0.75)) + (-log₂(0.25))  = 3.245112498
+We are using negative/opposite/subtraction or otherwise the answer will be negative.
+We are using probabilities and they will be between 0 and 1. And log of a number
+less than 1 will be a negative number.
+
+We can then take the average (remember we have four items so we just divide by
+3.245112498/4). Which can also be written as:
+1/4 (-log₂(0.75) - log₂(0.75) - log₂(0.75) - log₂(0.25)) = 0.8112781245
+1/4 ( (-0.4150)  - (-0.4150)  - (-0.4150)  - (-0.4150))  = 0.8112781245
+
+1/4 (-log₂(1) - log₂(1) - log₂(1) - log₂(1)) = 0
+1/4 (0 - 0 - 0 - 0) = 0
+1/4 (0) = 0
+
+1/4 (-log₂(0.5) - log₂(0.5) - log₂(0.5) - log₂(0.5)) = 1
+1/4 ( (-1)      - (-1)      - (-1)      - (-1) = 1
+
+m = number of 0
+n = number of x
+           -m          m      -n          n
+Entropy = ---- * log₂(---) + ---- * log₂(---)
+           m+n        m+n     m+n        m+n
+
+So using the above forula we can calculate for the second bucket like this:
+m = 3
+n = 1
+
+           -3          3      -1          1
+Entropy = ---- * log₂(---) + ---- * log₂(---)
+           3+1        3+1     3+1        3+1
+        
+           -3                  -1          
+Entropy = ---- * log₂(0.75) + ---- * log₂(0.5)
+            4                   4        
+
+           -3                      -1          
+Entropy = ---- * -0.4150374993 +  ---- * -2
+            4                      4        
+
+Entropy = 0.312781245 +  0.5
+Entropy = 0.8112781245
+          
+If molecules have many possible rearrangements, then the system has high 
+entropy, and if they have very few rearrangements, then the system has low entropy.
+
+
+
 
