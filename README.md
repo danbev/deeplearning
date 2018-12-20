@@ -521,33 +521,71 @@ Now, we can put all of the weights in a matrix:
 
 We need a cost function to calculate the w and b parameters.
 So we are trying to get w and b to be good estimates so that y-hat can be classified.
-We also need an error function that tells us how well the prediction is.
+We also need an error/loss function that tells us how well the prediction is.
 
 The loss function is for a single training example.
-L(y-hat, y) = -( y * log(y-hat) + (1 - y) log(1 - y-hat))
+L(y_hat, y) = -( y * log(y_hat) + (1 - y) log(1 - y_hat))
+
+y_hat will never be bigger than 1 as it was returned from the sigmod function.
 
 Lets take a closer look at the above:
-(y * log y-hat)
-The logarithm is asking what the value of y-hat was raised to. 
-For example, say y-hat was 16 then this would be:
-log 16 = 4 (if we are using the base 2 which I think is the default when not specified).
+if y = 1:
+L(y_hat, 1) = -( 1 * log(y_hat) + (1 - 1) log(1 - y_hat))
+L(y_hat, 1) = -( 1 * log(y_hat) + (0) log(1 - y_hat))
+L(y_hat, 1) = -( 1 * log(y_hat))
+Notice that the first multiplication of y does not change anything when y is
+1 and if y is 0 then the first part will become zero:
+if y = 0:
+L(y_hat, 0) = -( 0 * log(y_hat) + (1 - 0) log(1 - y_hat))
+L(y_hat, 0) = -(log₂(1 - y_hat))
 
-We take that value and multiply it against y which is the known correct value for y.
-Then we add this to (1 - y) log(1 - y-hat)
-Remember that y-hat will be the result of the sigmoid function above.
+We know that y_hat is the predicted value for y for the input data (after going
+through the multiplication with the weights and the addition of the bias) passed
+through the sigmoid function. So this is a value between 0-1. The reason for the
+negative sign is that log₂ of any number between 0.1-1 will give a negative
+value and we want a positive value.
 
-Now, the result, y, will be either 1 or 0.
-When y = 1:
-= -( y * log(y-hat) + (1 - y) log(1 - y-hat))
-= -( 1 * log(y-hat) + (1 - 1) log(1 - y-hat))
-= -(     log(y-hat) + (0)     log(1 - y-hat))
-= -log(y-hat)
+Why are we calling log₂(y_hat) here, what does that give us? 
+So I'm thinking that y_hat is the estimate/guess.
+Lets take a look at [logistic-regression_test.cc](./test/logistic-regression_test.cc)
+where we are only dealing with a single training set item just to be able to
+get a feeling for what is going on. 
+So we are passing in our training data:
+```c++
+std::vector<data> training_set {
+  { {65.0}, 1}
+};
+```
+We are then going to call `predict_y_hat' using this entry in the training set.
+This can be debugged using:
+```console
+(lldb) br s -f logistic-regression_test.cc -l 21
+```
+The first thing that the `predict_y_hat` function does is loop over the 
+input entries (x), and multiply them with the weights, and finally add the 
+bias:
+```console
+(lldb) fr v
+(std::__1::vector<double, std::__1::allocator<double> >) x = size=1 {
+  [0] = 65
+}
+(std::__1::vector<double, std::__1::allocator<double> >) w = size=1 {
+  [0] = 0.01
+}
+(double) b = 0.5
+(double) sum = 0
+```
+So we can see that our x vector only contains a single entry with the value `65`, 
+and the w vector a single value of `0.001`. This multiplied will give us 
+`0.65000000000000002`
+Adding our bias to the sum gives `1.1499999999999999`. So this bacially boils
+down to 
+double sum = 65 * 0.01 + 0.5
+∼ (1.15)
 
-And when y = 0:
-= -( 0 * log(y-hat) + (1 - 0) log(1 - y-hat))
-= -(                + (1) log(1 - y-hat))
-= -((1) log(1 - y-hat))
-= -(log(1 - y-hat))
+This value will then be passed to the sigmoid function.
+
+
 
 Cost function is for the entire training set.
 
@@ -839,11 +877,53 @@ P/ -> would then be (1 - P\)
 You input for logistic regresion will be the training samples in the format
 {(x¹, y¹), ... ,(x^m, y^m), 
 
-Now, x is a vector of input values, think of the case of an image then each pixel
-would be an entry in this vector. Or a row from a table in a database, each value
+Now, x is a vector of input values, think of the case of an image which would just
+be numbers between 0-255. This looks like a pretty flat structure to the computer
+but the actual image might be like 800*600*3 (width*hight*channels (red, green, blue))
+Each pixel is represented by three numbers, red, green, and blue.
+
+Or a row from a table in a database, each value
 would be a the value of a column. And for each x vector we have a value y which is
 the target value that for x. We calulate a prediction called y_hat for those x and
 want it to be close to Y.
+
+Lets take the example of exam scores training data. The x vector would be
+the result score and y would be 1 for passing of 0 for failing:
+{ {65.0, 1} }
+So we have only one entry here. Now, if we pass this set into our neural network
+what exactly will happen?
+
+65.5 -> ()
+
+First we want to make a prediction for y using x. Now our input value is a number
+but our predication is a boolean value. We use the sigmoid function (the logit function)
+to get a value between 0 and 1.
+
+```c++
+double l = loss(0.75951091694911099, 1)
+```
+
+```c++
+double LogisticRegression::loss(double y_hat, double y) const {
+  return y * log(y_hat) + (1 - y) * log(1 - y_hat) * -1;
+}
+```
+y_hat = 0.75951091694911099
+y     = 1
+
+1 * log(0.75951091694911099) + (1 - 1) * log(1 - y_hat) * -1;
+1 * log(0.75951091694911099) + 0 * log(1 - y_hat) * -1;
+log(0.75951091694911099) -1;
+
+ln(0.7595103) = -0.2750813955
+And the - sign is before log function call so this will be positive instead.
+
+Now, remember that the sigmoid function will return a value between 0 and 1, but
+the loss function does not (at least I got confused about this for some reason).
+reason.
+So this is was just a single entry. Using a larger training set we would call
+the loss functio from a cost function. This function will take the average of 
+all the calculated loss function results.
 
 X(1) ---->
 X(2) ---->  
@@ -938,6 +1018,35 @@ J(w, b) =  --- Sum(loss(y_hat^i, y^i))
             m 
 
 And to 
+
+### Nearest Neighbor classifiers
+
+#### L2 (Euclidean) distance
+This is the shortest distance between two points a an b:
+c = √a² + b²
+
+You can remember this L2 because we are raising to the power of two.
+
+
+#### L1 (Manhattan) distance
+Think about this as the distance in Manhattan. You cannot always take the shortest
+path (the euclidean path) as there are city blocks.
+I believe this is call L1 as it is raised to the first power.
+
+### L1 (Euclidean) distance
+
+The formula for L1 is:
+d₁(I₁, I₂) = ∑|I₁^p - I₂^p|
+
+ Test image           Training data        pixel-wise absolute value difference
++---+---+---+---+    +---+---+---+---+   +---+---+---+---+
+|56 | 32| 10|18 |    |10 |20 |24 |17 |   |46 |12 |14 |18 |  add
++---+---+---+---+ -  +---+---+---+---+ = +---+---+---+---+ -----> 456
+...                  ...                 ....
+
+Notice that we are simply taking the difference of the pixel value, and summing
+them up. If it was an exact match we would get 0. Notice that we take the absolue
+value before adding so negative values will not cancel out.
 
 
 
