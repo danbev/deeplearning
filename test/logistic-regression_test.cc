@@ -17,8 +17,9 @@ TEST(LogisticRegression, loss) {
   };
   std::vector<double> weights { 0.01 };
   LogisticRegression lr {training_set, weights};
+
   double y_hat = lr.predict_y_hat(training_set[0].x);
-  EXPECT_DOUBLE_EQ(lr.predict_y_hat(training_set[0].x), 0.75951091694911099);
+  EXPECT_DOUBLE_EQ(y_hat, 0.75951091694911099);
   EXPECT_DOUBLE_EQ(lr.loss(y_hat, training_set[0].y), 0.27508058318639855);
 }
 
@@ -33,7 +34,7 @@ TEST(LogisticRegression, cost) {
   EXPECT_DOUBLE_EQ(lr.cost(), 0.42349651022253426);
 }
 
-TEST(LogisticRegression, lg) {
+TEST(LogisticRegression, train) {
   // Imagine that the data below are exam scores, and if that
   // would be enough to pass or fail the exam (1 or 0).
   std::vector<data> training_set { 
@@ -44,6 +45,6 @@ TEST(LogisticRegression, lg) {
   };
   std::vector<double> weights { 0.01, 0.02, 0.03, 0.02 };
   LogisticRegression lr {training_set, weights};
-  lr.gd();
+  lr.train();
   //EXPECT_DOUBLE_EQ(lr.gd(), -0.42349651022253426);
 }

@@ -30,18 +30,16 @@ double LogisticRegression::cost() {
 }
 
 double LogisticRegression::loss(double y_hat, double y) const {
-  return -(y * log(y_hat) + (1 - y) * log(1 - y_hat));
-  /* Compare and verify that these work the same
+  //return -(y * log(y_hat) + (1 - y) * log(1 - y_hat));
   if (y == 1) {
     return -log(y_hat);
   } else {
     return -log(1 - y_hat);
   }
-  */
 }
 
-void LogisticRegression::gd() {
-  // train the paremeters, the weights and the bias...
+void LogisticRegression::train() {
+  // train the parameters, the weights and the bias...
   std::vector<double> d_weights(weights_.size());
   double loss_sum = 0.0;
   double db = 0.0;
