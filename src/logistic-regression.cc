@@ -13,20 +13,17 @@ double loop_dot(std::vector<double> x, std::vector<double> w, double b) {
   return sum;
 }
 
-// For a single training entry
 double LogisticRegression::predict_y_hat(std::vector<double> x) const {
   return sigmoid(loop_dot(x, weights_, bias_));
 }
 
-// For the entire training set
 double LogisticRegression::cost() {
   double loss_sum = 0.0;
   for (int i = 0; i < training_set_.size(); i++) {
     double y_hat = predict_y_hat(training_set_[i].x);
-    // compare the prediction with the expected value
     loss_sum += loss(y_hat, training_set_[i].y);
   }
-  return loss_sum * (1/training_set_.size());
+  return loss_sum * (1.0/training_set_.size());
 }
 
 double LogisticRegression::loss(double y_hat, double y) const {
@@ -44,35 +41,32 @@ void LogisticRegression::train() {
   double loss_sum = 0.0;
   double db = 0.0;
 
-  for (int i = 0; i < training_set_.size(); i++) {
-    double y_hat = predict_y_hat(training_set_[i].x);
-    // compare the prediction with the expected value
-    loss_sum += loss(y_hat, training_set_[i].y);
+  //do {
+    for (int i = 0; i < training_set_.size(); i++) {
+      double y_hat = predict_y_hat(training_set_[i].x);
+      // compare the prediction with the expected value
+      loss_sum += loss(y_hat, training_set_[i].y);
 
-    // now
-    double derivative = y_hat - training_set_[i].y; 
-    for (int y = 0; y < d_weights.size(); y++) {
-      d_weights[y] += training_set_[i].y * derivative;
+      double derivative = y_hat - training_set_[i].y; 
+      for (int y = 0; y < d_weights.size(); y++) {
+        d_weights[y] += training_set_[i].y * derivative;
+      }
+      db += derivative;
     }
-    db += derivative;
-  }
 
-  // compute the averages
-  loss_sum /= training_set_.size();
-  db /= training_set_.size();
-  for (int i = 0 ; i < d_weights.size(); i++) {
-    d_weights[i] /= training_set_.size();
-  }
+    // compute the averages
+    loss_sum /= training_set_.size();
+    db /= training_set_.size();
+    for (int i = 0 ; i < d_weights.size(); i++) {
+      d_weights[i] /= training_set_.size();
+    }
 
-  /*
-  do {
     // update the weights and the bias
     for (int i = 0; i < weights_.size(); i++) {
       weights_[i] = weights_[i] - learning_rate_ * d_weights[i];
     }
     bias_ = bias_ - learning_rate_ * db;
-  } while (
-  */
+  //} while (loss_sum 
 }
 
 double LogisticRegression::bias() const {

@@ -26,12 +26,14 @@ TEST(LogisticRegression, loss) {
 
 TEST(LogisticRegression, cost) {
   std::vector<data> training_set { 
-    { {1.0, 2.0, 3.0}, 1}
+    {{65.0}, 1},
+    {{60.0}, 0},
+    {{80.0}, 1},
+    {{45.0}, 0}
   };
-  std::vector<double> weights { 0.01, 0.02, 0.03 };
+  std::vector<double> weights { 0.01, 0.01, 0.01, 0.01 };
   LogisticRegression lr {training_set, weights};
-  lr.cost();
-  EXPECT_DOUBLE_EQ(lr.cost(), 0.42349651022253426);
+  EXPECT_DOUBLE_EQ(lr.cost(), 0.79509519224644354);
 }
 
 TEST(LogisticRegression, train) {
