@@ -17,6 +17,10 @@ double LogisticRegression::predict_y_hat(std::vector<double> x) const {
   return sigmoid(loop_dot(x, weights_, bias_));
 }
 
+double LogisticRegression::predict_y_hat(double x) const {
+  return sigmoid(loop_dot(std::vector<double>{x}, weights_, bias_));
+}
+
 double LogisticRegression::cost() {
   double loss_sum = 0.0;
   for (int i = 0; i < training_set_.size(); i++) {
@@ -36,27 +40,30 @@ double LogisticRegression::loss(double y_hat, double y) const {
 }
 
 void LogisticRegression::train() {
-  // train the parameters, the weights and the bias...
+  int m = training_set_.size();
   std::vector<double> d_weights(weights_.size());
+  double j = 0.0;
   double loss_sum = 0.0;
   double db = 0.0;
 
-  //do {
-    for (int i = 0; i < training_set_.size(); i++) {
-      double y_hat = predict_y_hat(training_set_[i].x);
-      // compare the prediction with the expected value
-      loss_sum += loss(y_hat, training_set_[i].y);
+  // Start one step of degradient decent
+  do {
+    for (int i = 0; i < m; i++) {
+      double z = loop_dot(training_set_[i].x, weights_, bias_);
+      double a = sigmoid(z);
+      j += loss(a, training_set_[i].y);
+      loss_sum += loss(a, training_set_[i].y);
+      double dz = a - training_set_[i].y; 
 
-      double derivative = y_hat - training_set_[i].y; 
       for (int y = 0; y < d_weights.size(); y++) {
-        d_weights[y] += training_set_[i].y * derivative;
+        d_weights[y] += training_set_[i].y * dz;
       }
-      db += derivative;
+      db += dz;
     }
 
     // compute the averages
-    loss_sum /= training_set_.size();
-    db /= training_set_.size();
+    j /= m;
+    db /= m;
     for (int i = 0 ; i < d_weights.size(); i++) {
       d_weights[i] /= training_set_.size();
     }
@@ -66,7 +73,20 @@ void LogisticRegression::train() {
       weights_[i] = weights_[i] - learning_rate_ * d_weights[i];
     }
     bias_ = bias_ - learning_rate_ * db;
-  //} while (loss_sum 
+    // End one step of degradient decent
+  } while (j < 0);
+}
+
+double LogisticRegression::predict(double x) const {
+  // We have trained our model so the weights and bias should be
+  // good values. We now want to pass in our value of x through the trained
+  // network.
+  double prediction = predict_y_hat(x);
+  std::cout << "prediction: " << prediction << '\n';
+  if (prediction > 0.5) {
+    return 1;
+  }
+  return 0;
 }
 
 double LogisticRegression::bias() const {
