@@ -16,18 +16,21 @@ points are given a weight and they are summed and this is the sum used to detect
 
 ### Perceptrons
 Is an artificial neuron which takes several binary inputs and outputs a single binary value:
+```
 x (1) -------->  +------------+
 x (0) -------->  | Perceptron | ---> output
 x (1) -------->  +------------+
+```
 
 So how is the output computed? 
 It is computed by assigning an importance value each input a input. So the output is determined
 by all the sum of these values, which are called weights. If the weighted sum is less than or
 greater than some threshold value that determines the output 0 or 1.
-
+```
 x1 (1) --w1=6--->  +------------+
 x2 (0) --w2=3--->  | Perceptron | ---> output
 x3 (1) --w3=3--->  +------------+
+```
 
 output = 0 if w1x1 + w2x2 + w3x3 <= threshold for this perceptron
 output = 1 if w1x1 + w2x2 + w3x3 > threshold for this perceptron
@@ -37,10 +40,12 @@ next layers perceptrons. All output in the first layer will be inputs to all of 
 perceptrons.
 
 The above can also be written as:
+```
          +--
 output = | 0 if w*x + b <= 0
          | 1 if w*x + b > 0
          +--
+```
 
 ### Neural networks
 The goal of neural networks is to split data. Don't confuse this with anything else.
@@ -49,13 +54,14 @@ Consider the case where you have red and blue stones and you want to draw a line
 from the blue stones. Just like the problem of trying to
 get closer to a target where we can pick could pick random posistion and make take a measurement, the equivalent
 here is to randomlly place the line somewhere (this is our starting posisition). 
-
+```
 x = blue
 o = red
 
   x  /  o
 o o / x  x
    /
+```
 
 Then we are going to say that the ones to the left of the line are blue and the ones to the right are red.
 But as we see this was not a great guess, there are two reds in the blue area and two blues in the red.
@@ -65,7 +71,7 @@ the error function for moving towards a target.
 
 Let's look at the classic machine learning example of letter recognition where you have letters
 represented by 28x28 pixels:
-
+```
   0                                 27
 0 +----------------------------------+
   |0.0|0.0|0.0|0.0|...0.0|0.0|0.0|0.0|
@@ -76,6 +82,7 @@ represented by 28x28 pixels:
   |0.0|0.0|0.0|0.0|...0.0|0.0|0.0|0.0|
   |0.0|0.0|0.0|0.0|...0.0|0.0|0.0|0.0|
 27+----------------------------------+
+```
 
 So each cell/pixel above would be a neuron/node and we have 28x28=784.
 The value in each cell would indicate the brightness. 0.0 would be black and 1.0 white, 
@@ -83,8 +90,10 @@ and anything in between something in the gray scale. This value is called an act
 
 These 784 neurons make up the first layer in our neural network. You can think of them as an 
 array:
+```
 0                               784
 [0.0, 0,0, 0,0,..., 0,0, 0.0, 0.0]  
+```
 Remember this is the 28x28 image represented as an array.
 
 Each entry in the array is a neuron and has an activation value between 0.0-1.0.
@@ -95,6 +104,7 @@ For example the second layer might contain 16 nodes, and there might more than o
 are connected and these connection are weighted. This means that every node in the first layer is connected
 to every node in the second layer.
 
+```
 0                                                                             784 neurons
 [0.0, 0,0, 0,0,                   ...,                           0,0, 0.0, 0.0]  
          (all neurons above connect to all neurons below)
@@ -107,6 +117,7 @@ to every node in the second layer.
       0            10  neurons
       [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]  
         0    1    2    3    4    5    6    7     8    9
+```
 
 So in our case upon we have an image with a human written digit. This will fire all the neurons in the
 first layer as this is how things get into the network. But not all neurons will fire in the next layer as
@@ -120,11 +131,12 @@ eight or nine digit. In the last layer the 0 neuron should be activate due to th
 We assign a weight to each of the connections then we take all the values from the activations in the layer
 and multiply it with the weight and add them all together:
 w1a1 + w2a2 ... +wNaN
-
+```
 0 +-----------------------------------+
   |w1a1|w2a2|w3a3|...                 |
   |               ...                 |
 27+-----------------------------------+
+```
 
 So we will have the same number of values, weight x activation, for each neuron. If the value is positive that
 might mean that the neuron in question should be activate. And negative might mean that it should not be 
@@ -165,6 +177,7 @@ computer to learn how to make the adjustments itself. Kind of like the example w
 robot to advance towards a target, take one step, evaluate if it is closer or further way, and the adjust
 appropriately. For example, say that we know that the result should have evaluated to the number 3, this
 would give an array of:
+```
 [0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
 And lets say the result of our randomly configured net work produced:
 [0.42, 0.29, 0.18, 0.83, 0.71, 0.01, 0.63, 0.83, 0.99, 0.60]
@@ -183,6 +196,7 @@ And lets say the result of our randomly configured net work produced:
 0.9801 <- (0.99 - 0.00)^2 +
 0.3600 <- (0.60 - 0.00)^2 +
 = 2.8529
+```
 A small sum is produces when the network is working better and is closer to its target, and larger when it is
 off. And that is only for a single digit. 
 
@@ -245,9 +259,11 @@ we wanted to move this threshold, like say it is acceptable that any value equal
 -1 should be allowed.
 
 So, take the following network with biases:
+```
 Input     Weights        Neuron (inside the function) b = 1
 x1 = 1 ---(-0,55)---->   double sum = 1 * (-0,55) + 2 * 0.1 + b; // 0,65
 x2 = 2 ---(0.1)------>   double output = relu(sum); // 0.65
+```
 
 We set the bias to the opposite of the acceptable value, like in the above case we are saying
 that the threshold should be -1 or larger and we set the bias to 1.
@@ -269,18 +285,22 @@ When an artificial neuron passes on a nonzero value to another artificial neuron
 ### Linear Regression using Least Squared Criterion
 We are trying to find a line where the distance to our data points is as small as possible.
 This is done by drawing a line and calculating the
-
+```
 y = mx + b
+```
 or in statistics:
+```
 y = β0 + β1x + ε
+```
 
 ε = elipson
-
+```
 y_hat = β0 + β1x
+```
 β0 is the y-intercept population parameter.
 β1 is the slope of the line population parameter.
 ε is our error term and is the unexplained variation in y. What does this mean?
-
+```
 E(y) = β0 + β1x
 
 The expected mean or value of y for a given value of x.
@@ -293,13 +313,14 @@ y |------->         y will be the mean for x
   |       |
   ---------------------->
           x
+```
 
 Lets say you have multiple data entries for point x and not just one. What we do is we calculate
 the mean of those points and say that is what y would be if we are given x. 
 Now, what if there are not points at all for x? Then we can look at the neighbors and caclulate
 the means of them and take that mean (I think). So we are always estimating/approximating.
 Y is the mean of a distribution around the y's for x.
-
+```
 E = β0 + 0(x) 
 E(y) = 3 + 2x
 x = 0;
@@ -314,9 +335,12 @@ y |---------------------------------------->
   |       |
   ---------------------->
           x
+```
 
-
+```
 E(y) = β0 - β1x
+```
+
 Means that the slope will be negative down from the left.
 Notice that the sign and the value of β1 determines the slope.
 
@@ -329,17 +353,21 @@ y_hat is the point estimator of E(y). The mean value of y for the given x.
 
 When using linear regression with two variables we are always comparing that with the result of
 when we pretend that there is no second variable (x = 0), which will make the slope/β1 0.
+```
 y = β0 + β1
+```
 β0 represents the ideal y-intercept if you have plotted/graphed the entire population.
 So we are stating that all x and y are related according to a straight line. But not all points
 will be exactly on this straight line. There is going to be some deviation which is represented
 as epsilon ε in the Population Regression Function:
+```
 y = β0 + β1 + ε
+```
 
 This is a theoretical distance from every point to the line. We can't calculate this term but
 it does exist in theory. This is distinct from the lower case e which is the error term which is
 the distance from the point to the expected average (sample regression line).
-
+```
 
        |--------*  /              = * (Yi) is the actual point value for x
        |Yi-y_hat|/               SSE    
@@ -354,6 +382,7 @@ y-bar  |---/---------------------------------->
        |       |
        ---------------------->
                x
+```
 
 y-bar is the average when we pretend that we don't have a value for x (x = 0).
 
@@ -367,7 +396,9 @@ square and then summ all the squares.
 
 But we can see that our value is higher than this, which is higher
 still and called unexpected deviation:
+```
 ei = Y(i) - Y_hat(i)
+```
 Sum of Squares Predictions (SSE) = ∑(Y₁ - y_hat₁)²
 
 Sum of Squares Total (SST or TSS) = SSR + SSE
@@ -382,9 +413,11 @@ about the fit of our model.
 y-hat indicates that this is an approximation.
 
 The formula for calculating beta1 (the slope) is:
+```
       ∑ ( (x-x_mean) (y - y_mean) )
 b1 = ------------------------------
       ∑ ( (x - x_mean)^2
+```
 
 What we are doing is finding the area of the points and summing them up. Then we are divding this
 with the area of the distance to the x mean.
@@ -399,12 +432,14 @@ x value.
 
 One can also use linear regression with multiple independant/feature variables. In this case
 the forumla looks like this:
-
+```
     y = β0 + β1x₁ + β2x₂ + βpXp + ε
+```
 
 We can reason about the the features and their coefficients like this; 
-
+```
     y = 88 + 3x₁ + 4x₂
+```
 
 88 is β0 which is still the y-intercept.
 Lets says that x₁ is expenses in 1000 SEK, then we can read this as for each unit increment
@@ -420,26 +455,46 @@ So we pass in a vector with the exam results and the outcome, if it is a passing
 /failing score.
 
 The cost function will be:
+```
 y-hat = σ(wx + b)
                        1
 σ(z) = sigmoid(z) = --------
                     1 + e^-z
+```
 
 We pass in training example to our model to allow it to learn:
+```
 { (x₁, y₁), ... , (x^m, y^m)
+```
 
 And for each training data point we want the estimated y value (y_hat) to be
 as close as possible to out passed in, known to be correct, y.
-We accomplish this by 
-
-X = [ 65.0,
-      60.0,
-      20.0,
-      80.0]
-
+```
+X = [ { 65.0, 1 },
+      { 60.0, 1 },
+      { 20.0, 0 },
+      { 80.0, 1 }]
+```
 Now this is our training set as a matrix. In our case we only have a single
 independant variable, the exam score. But if the input was an image then a
-single training example would be an vector of pixels.
+single training example would be an vector of pixels. For example:
+```
+         Computer view
+         64x64 matrix for red
+image -> 64x64 matrix for green -> x = [
+64x64    64x64 matrix for blue          r₁
+                                        r₂
+                                        ...
+                                        g₁
+                                        g₂
+                                        ...
+                                        b₁
+                                        b₂ ]
+```
+
+The size of x will be 64*64*3 = 12288
+Nx = 12288
+
 The above vector is a column vector which is really a matrix of shape 4x1 (
 4 rows and 1 column).
 
@@ -449,34 +504,41 @@ X = [ 65.0, 60.0, 20.0, 80.0]
 So X is a matrix and recall that a vector can also be viewed as
 a special type of matrix X with dimentions nxm (n = rows, m = columns), where
 one dimension is always set to 1.
-
+```
 y-hat = σ(W^TX + b)
+```
 
 y_hat is really a column vector of size (Tx1), 
 W is also a column vector of size (Kx1), and the transpose will produce a row vector.
 X is a matrix of size (TxK).
-
+```
 
 x₁ ------>[a₁¹]  ---->                        z₁¹ = w₁¹T x + b₁¹, a₁¹ = σ(z₁¹)
 x₂ ------>[a₂¹]  ---->  [] ---> y_hat         z₂¹ = w₂¹T x + b₂¹, a₂² = σ(z₂¹)
 x₃ ------>[a₃¹]  ---->                        z₃¹ = w₃¹T x + b₃¹, a₃² = σ(z₃¹)
 x4 ------>[a4¹]  ---->                        z4¹ = w4¹T x + b4¹, a4² = σ(z4¹)
-
+```
 The three input values will be a column vector looking like this:
+```
 x = [x₁,
      x₂,
      x₃]
+```
 
 And each neuron has it's own vector w, of weights, one for each input entry
 in the vector x:
+```
 w = [w₁,
      w₂,
      w₃]
+```
 
 Each neuron also has it's own bias, b. 
 
 The first operation to happen in the neuron is:
+```
 z₁¹ = w₁¹T x + b₁¹
+```
 
 Given the rules of matrix multiplication, we cannot multiply two vectors when 
 they are both viewed as column matrices. If we try to multiply an n×1 matrix 
@@ -492,21 +554,24 @@ i.e., a scalar.
 For matrix multiplication to be conformable the number of columns in first 
 matrix must be equal to number of rows in second matrix. This is not the case
 here as they are both 
-
+```
 [w₁ w₂ w₃] * [x₁
               x₂   = [(x₁ * w₁) + (x₂ + w₂) + (x₃ + w₃)]
               x₃]
+```
 
 This is the reason for the transpose operation (T) used.
-
+```
 [1 2 3] * [4
            5    = [(4 * 1) + (5 * 2) + (6 * 3)] = [32]
            6]
+```
 
 So the result will bee a 1x1 matrix which is just a scalar. Also, we would 
 add the bias as well but that is not being shown above.
 
 Now, we can put all of the weights in a matrix:
+```
 [w₁¹T    [x₁    [b₁¹
  w₂¹T     x₂  +  b₂¹
  w₃¹T     x₃]    b₃¹
@@ -517,27 +582,33 @@ Now, we can put all of the weights in a matrix:
  w₂¹T x + b₂¹    =   z₂¹
  w₃¹T x + b₃¹        z₃¹
  w4¹T x + b4¹]       z4¹]
-
+```
 
 We need a cost function to calculate the w and b parameters.
 So we are trying to get w and b to be good estimates so that y-hat can be classified.
 We also need an error/loss function that tells us how well the prediction is.
 
 The loss function is for a single training example.
+```
 L(y_hat, y) = -( y * log(y_hat) + (1 - y) log(1 - y_hat))
+```
 
 y_hat will never be bigger than 1 as it was returned from the sigmod function.
 
 Lets take a closer look at the above:
+```
 if y = 1:
 L(y_hat, 1) = -( 1 * log(y_hat) + (1 - 1) log(1 - y_hat))
 L(y_hat, 1) = -( 1 * log(y_hat) + (0) log(1 - y_hat))
 L(y_hat, 1) = -( 1 * log(y_hat))
+```
 Notice that the first multiplication of y does not change anything when y is
 1 and if y is 0 then the first part will become zero:
+```
 if y = 0:
 L(y_hat, 0) = -( 0 * log(y_hat) + (1 - 0) log(1 - y_hat))
 L(y_hat, 0) = -(log₂(1 - y_hat))
+```
 
 We know that y_hat is the predicted value for y for the input data (after going
 through the multiplication with the weights and the addition of the bias) passed
@@ -583,20 +654,39 @@ down to
 double sum = 65 * 0.01 + 0.5
 ∼ (1.15)
 
-This value will then be passed to the sigmoid function.
-
-
-
+This value will then be passed to the sigmoid function. So, that gives
+us our prediction of y_hat, a single training set entry. We want to find
+the a value, the cost, of all the entries. For this we use the cost function.
 Cost function is for the entire training set.
+The cost function will iterate (I understand that this is not something that would
+be done in practice as matrix operations would but I'm using for loops at this stage
+to understand the process) through the entire training set and for each entry
+predict y_hat and then calculate the average.
+So the value returned from the cost function is an average how well the predictions
+matched the expected/actual/known y values. If this value is close to 1 or some
+other value that is considered ok for the input then we would be done. But if
+we have a value that is below some threshold we would continue calling the cost
+function. But just calling the cost function would of course yield the same result
+so we have to tweak some values that are available to us, the weights and the bias.
+There is a vector of weights and a bias for each neuron which we can tweak, but
+how do we know if we should increase or decrease these values? That is where
+gradient decent comes in. 
+
+Cost function: 
 
            1
 J(w, b) = --- ∑( L(y-hat(i), y(i)))
            m
+
+Remember that if you expand the loss function L you will see that it used the
+input parameters w and b (used in the computation of y_hat):
     
              1
-J(w, b) = - --- ∑( ( y * log(y-hat) + (1 - y) log(1 - y-hat)) )
+J(w, b) = - --- ∑( ( y * log(y_hat) + (1 - y) log(1 - y_hat)) )
              m
 
+The cost function meanures how well our parameters w and b doing on the training
+data set.
 The J function is implemented using Gradient Decent.
 
 loop {
@@ -604,6 +694,7 @@ loop {
 }
 The learning_rate is denoted as alpha, and we take that times the derivative at point w.
 Notice that if the dirivative/slope is postive we will be subtracting w.
+
 
 ### Sigmoid
 The forumla for the sigmoid function is:
@@ -817,7 +908,7 @@ W(2) ---->  +-----------------------------|       +------------------------+    
 b    ---->
 
 The paremeters in the above case are w anb b, and these are the values that we want to modify in
-order to reduct the output value of the loss function.
+order to reduce the output value of the loss function.
 
 Derivative of dL/da:
 dL(a, y)    y    1 - y
