@@ -9,8 +9,8 @@ Means the slope of the tagent line at 5. Or you can see this as the rate of chan
 of y with respect to x of our function f.
 
 Having a positive slope, for example delta y / delta x = 2 / 1 = 2 means that for 
-every set in the x direction we go up two in the y direction.
-But if we have -2 that would mean that for every set in the x direction we would 
+every step in the x direction we go up two in the y direction.
+But if we have -2 that would mean that for every step in the x direction we would 
 go down 2 in the y direction.
 
 
@@ -25,7 +25,7 @@ Delta = change
 slope = delta y / delta x
 
 When we have a line we take the change in x and the the change in y. This looks like a triangle
-of half a rectangle:
+or half a rectangle:
 +--------+
 |       /|
 |     /  |  y
@@ -46,10 +46,7 @@ Lets say that x = 2 and y = 3, this would give us 3/2 = 1.5.
 Now if you take any two point on the same line you'll get the same slope regardless of the
 distance between the points.
 
-
 y = mx + b
-
-
 
 
 ### Derivative
@@ -58,7 +55,6 @@ amount, like 0.001. Then you calculate the slope of this line by using
 change in y / change in x
 
 so our average rate of change of that interval and is the secant line between the points.
-
 
 
 #### Rules
