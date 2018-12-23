@@ -44,9 +44,10 @@ void LogisticRegression::train() {
   std::vector<double> d_weights(weights_.size());
   double j = 0.0;
   double db = 0.0;
+  int iterations = 1000;
 
   // Start one step of degradient decent
-  do {
+  for (int y = 0; y < iterations; y++) {
     for (int i = 0; i < m; i++) {
       double z = loop_dot(training_set_[i].x, weights_, bias_);
       double a = sigmoid(z);
@@ -72,7 +73,7 @@ void LogisticRegression::train() {
     }
     bias_ = bias_ - learning_rate_ * db;
     // End one step of degradient decent
-  } while (j < 0);
+  }
 }
 
 double LogisticRegression::predict(double x) const {
