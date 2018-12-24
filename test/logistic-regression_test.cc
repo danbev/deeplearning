@@ -47,7 +47,8 @@ TEST(LogisticRegression, train) {
   };
   std::vector<double> weights { 0.00, 0.00, 0.00, 0.00 };
   LogisticRegression lr {training_set, weights};
-  lr.train();
+  lr.train(1000);
+  EXPECT_DOUBLE_EQ(lr.predict(80), 1);
   EXPECT_DOUBLE_EQ(lr.predict(65), 1);
   EXPECT_DOUBLE_EQ(lr.predict(63), 1);
   EXPECT_DOUBLE_EQ(lr.predict(20), 0);

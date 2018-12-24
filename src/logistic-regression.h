@@ -27,7 +27,7 @@ class LogisticRegression {
    double predict_y_hat(double x) const;
    double loss(double y_hat, double y) const;
    double cost();
-   void train();
+   void train(int iterations);
    double predict(double x) const;
    double bias() const;
    std::vector<double> weights() const;

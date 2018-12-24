@@ -39,12 +39,11 @@ double LogisticRegression::loss(double y_hat, double y) const {
   }
 }
 
-void LogisticRegression::train() {
+void LogisticRegression::train(int iterations) {
   int m = training_set_.size();
   std::vector<double> d_weights(weights_.size());
   double j = 0.0;
   double db = 0.0;
-  int iterations = 1000;
 
   // Start one step of degradient decent
   for (int y = 0; y < iterations; y++) {
