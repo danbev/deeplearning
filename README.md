@@ -672,6 +672,11 @@ There is a vector of weights and a bias for each neuron which we can tweak, but
 how do we know if we should increase or decrease these values? That is where
 gradient decent comes in. 
 
+Think of two weights, these would be on the x and y axis and the z axis represents
+the value of the loss function for a particular value of these two weights.
+It is this value that we will try to find a value for which the loss is minimum.
+This point is called a minima for the loss function.
+
 Cost function: 
 
            1
@@ -687,7 +692,14 @@ J(w, b) = - --- ∑( ( y * log(y_hat) + (1 - y) log(1 - y_hat)) )
 
 The cost function meanures how well our parameters w and b doing on the training
 data set.
-The J function is implemented using Gradient Decent.
+The J function is implemented using Gradient Decent. So w will be a vector of 
+many values and with only two values this is pretty easy to visualize but when
+there are many how to we visualize this, can we even?
+In the above forumla for `J` we can't see that w and be are used, but if you 
+expand `y_hat` w anb e are used to predict this value:
+```
+y_hat = σ(W^T * X + b)
+```
 
 loop {
   w = w - learning_rate * dj(w)/dw
