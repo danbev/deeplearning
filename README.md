@@ -1171,4 +1171,54 @@ an array which is what I initially did (I've left this code in the source for co
 can use a single operator for this.
 
 
+### Convolutional Neural Networks (CNN)
+Say we have a 32*32*3 image (the last 3 is the for the channels red, green, blue).
+We also create a filter for this of size 5*5*3. We then slide this filter over
+the image and take the dot product plus the bias which results in a single number.
+After sliding over the complete image these scalars will be the input to the
+next layer.
+32*32*3 image
+5*5*3 filter w (w^T x + b)
+
+This will result in a 28*28
+
+This purpose of this process is to extract features from the image (like lines,
+curves etc). This process preserves the spatial relationship between pixels.
+       Image (x)              Filter/Kernel/feature detection (w)
++---+---+---+---+---+             +---+---+---+
+| 1 | 1 | 1 | 0 | 0 |             | 1 | 0 | 1 |
++---+---+---+---+---+             +---+---+---+
+| 0 | 1 | 1 | 1 | 0 |             | 0 | 1 | 0 |
++---+---+---+---+---+             +---+---+---+
+| 0 | 0 | 1 | 1 | 1 |             | 1 | 0 | 1 |
++---+---+---+---+---+             +---+---+---+
+| 0 | 0 | 1 | 1 | 0 |
++---+---+---+---+---+
+| 0 | 1 | 1 | 0 | 0 |
++---+---+---+---+---+
+
+The filter will then start at the top left corner and move across one step to
+the right, then down on step and so on. This is called the stride.
+
++----------------------------------------------------------------------+---+----+
+| x₀*w₀ + x₁*w₁ + x₂*w₂ + x₃*w₃ + x₄*w₄ + x₅*w₅ + x₆*w₆ + x₇*w₇ + x₈*w₈|   |    |
++----------------------------------------------------------------------+---+----+
+| ...                                                                  |   |    |
++----------------------------------------------------------------------+---+----+
+| ...                                                                  |   |    |
++----------------------------------------------------------------------+---+----+
+
+Imaging overlaying the filter over the image and then computing the above for
+each overlay.
+1*1 + 1*0 + 1*1 + 0*0 + 1*1 + 1*0 + 0*1 + 0*0 + 1*1 = 4
+...
+
++-----+-----+-----+
+|  4  |  3  |  4  |
++-----+-----+-----+
+|  2  |  4  |  3  |
++-----+-----+-----+
+|  2  |  3  |  4  |
++-----+-----+-----+
+
 
