@@ -1213,6 +1213,7 @@ each overlay.
 1*1 + 1*0 + 1*1 + 0*0 + 1*1 + 1*0 + 0*1 + 0*0 + 1*1 = 4
 ...
 
+Below output after the completion of the convolution phase
 +-----+-----+-----+
 |  4  |  3  |  4  |
 +-----+-----+-----+
@@ -1220,5 +1221,52 @@ each overlay.
 +-----+-----+-----+
 |  2  |  3  |  4  |
 +-----+-----+-----+
+
+This output is called "Convoluted Feature"/"Activation Map"/"Feature Map".
+So the idea here is that the filter would detect some sort of patten, like a line,
+curve or something pretty basic. If the area that the filter is over matches/almost
+matches the value of the scalare output will be higher causing an activation in
+the next layer that may further detect more complex features.
+
+Notice that if we change the filter that will cause a different output, so this
+is a way to affect the output and similar to the weights of a normal neural network(I think).
+
+#### Rectified Linear Unit (RELU)
+Is a supplementary step in the convolution operation.
+f(x) = max(0, x)
+So we can see that it is the identity for any value greater than 0 and 0 for the 
+rest.
+
+
+#### Max Pooling
+In this stage/phase/layer we create something similar to a filter/kernal like we
+did for the filter stage but this time we are computing the max operation to
+all the values covered by the filter. In this case it just taking the max value
+hence the name max pooling. This is added after a convolutional layer.
+
+ Conv output                 Max pooling/filter       Stride
++-----+-----+-----+----+   +----+----+
+|  4  |  3  |  1  | 10 |   |    |    |                  2
++-----+-----+-----+----+   +----+----+
+|  0  |  4  |  0  | 2  |   |    |    |
++-----+-----+-----+----+   +----+----+
+|  2  |  1  |  4  | -8 |
++-----+-----+-----+----+
+|  2  |  0  |  8  | -1 |
++-----+-----+-----+----+
+
++-----+-----+
+|  4  |  10 |
++-----+-----+
+|  2  |  8  |
++-----+-----+
+Notice that we have reduced the matrix to a 2x2 matrix from a 4x4.
+The 2x2 blocks in the convolution layer output are called pools (pools of numbers)
+which is why it is called pooling. So we have reduced out input by a factor of
+two and I'm guessing this helps computation efficiency at least. So moving forward
+the network is looking at larger regions of the image at a time.
+We are preserving the pixels that are most activated and discarding the ones that
+are less activated.
+It might also help over fitting? How?
 
 
