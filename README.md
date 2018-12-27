@@ -1238,6 +1238,65 @@ So we can see that it is the identity for any value greater than 0 and 0 for the
 rest.
 
 
+#### Zero Padding
+
+     Input                      Filter
++-----+-----+-----+----+   +----+----+----+
+|  4  |  3  |  1  | 10 |   |    |    |    |
++-----+-----+-----+----+   +----+----+----+
+|  0  |  4  |  0  | 2  |   |    |    |    |
++-----+-----+-----+----+   +----+----+----+
+|  2  |  1  |  4  | -8 |
++-----+-----+-----+----+
+|  2  |  0  |  8  | -1 |
++-----+-----+-----+----+
+
+How many times can we convolve the 4x4 input using the 3x3 filter.
+There are two possiblities from the first row, and the same for the second
+row resulting in a 2x2 output.
++----+----+
+|    |    |
++----+----+
+|    |    |
++----+----+
+
+nxn image
+fxf filter
+output size = (n - f + 1)x(n - f + 1)
+
+output size = (4 - 3 + 1) x (4 - 3 + 1)
+            = (1 + 1) x (1 + 1)
+            = 2x2
+
+What happens if we have meaningful information close to the edges that are not
+getting included?
+Zero padding allows us to preserve the original input size.
+
+     Input                                  Filter
++-----+-----+-----+-----+----+----+
+|  0  |  0  |  0  |  0  |  0 |  0 |
++-----+-----+-----+-----+----+----+   +----+----+----+
+|  0  |  4  |  3  |  1  | 10 |  0 |   |    |    |    |
++-----+-----+-----+-----+----+----+   +----+----+----+
+|  0  |  0  |  4  |  0  | 2  |  0 |   |    |    |    |
++-----+-----+-----+-----+----+----+   +----+----+----+
+|  0  |  2  |  1  |  4  | -8 |  0 |
++-----+-----+-----+-----+----+----+
+|  0  |  2  |  0  |  8  | -1 |  0 |
++-----+-----+-----+-----+----+----+
+|  0  |  0  |  0  |  0  |  0 |  0 |
++-----+-----+-----+-----+----+----+
+
+6x6 image
+3x3 filter
+output size = (6 - 3 + 1)x(6 - 3 + 1)
+            = (4)x(4)
+So we can move our filter 4 times across the first row and the output size is
+the same as our original input size. You might need more than a single border of
+padding but this will depend on the size of the original image.
+Some API will do the padding for you and you only specify if you want padding or
+not.
+
 #### Max Pooling
 In this stage/phase/layer we create something similar to a filter/kernal like we
 did for the filter stage but this time we are computing the max operation to
