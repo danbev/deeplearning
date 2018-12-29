@@ -2409,6 +2409,19 @@ Entropy = 0.8112781245
 If molecules have many possible rearrangements, then the system has high 
 entropy, and if they have very few rearrangements, then the system has low entropy.
 
+### Series
+Is about adding up sequences of numbers.
+Think about a square with the area of 1. Then divide it into two halves, each
+of 1/2. Now divide one of them in half again and you'll get 1/4
++--------------------+
+|         1/2        |
+|                    |
+|--------------------+
+| 1/4      |      1/6|
+|          |  1/8    |
++--------------------+
+And keep doing this. We know that the area is one and all the parts should add
+up to one.
+1/2 + 1/4 + 1/8 + 1/16 + 1/32 + 1/64 ... = 1
 
-
-
+So, while the series is infinite it will converge to 1.
