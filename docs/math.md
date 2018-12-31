@@ -613,7 +613,11 @@ Scaling can also be done in the negative direction in which case the vector will
 
 Dot product:
 The dot product is about finding similarites as it uses the same dimensions, x with x,
-y with y etc. 
+y with y etc. This does not have anything to do with the magnitude (length) of the
+vector, it is based only on it's direction.
+One way to visualize this is taking rotating the vectors so that one becomes 
+the x-axis. Then the project is the other vectors length on this x-axis.
+
 What we are doing is trying find the projection of one vector upon the other and then 
 multipyling them together. This will give us the "force" they both have in the same
 direction. This uses the dot product which can be calculated in two ways, one is using
@@ -2425,3 +2429,20 @@ up to one.
 1/2 + 1/4 + 1/8 + 1/16 + 1/32 + 1/64 ... = 1
 
 So, while the series is infinite it will converge to 1.
+A convergence is defined by looking at the sequence of partial sums:
+     1
+S₁ = -
+     2
+
+     1   1   3
+S₂ = - + - = -
+     2   4   4
+
+     1   1   1   7
+S₃ = - + - + - = -
+     2   4   8   8
+
+Taking the partial sums gives a sequence of numbers that get closer and closer
+to 1. But there other series where the sequence of numbers do this. For example
+S = 1 - 1 + 1 - 1 + 1 - 1 + 1 - 1 + 1 - 1 ...
+
