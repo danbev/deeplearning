@@ -70,18 +70,22 @@ and 8 / 2 = 4. We are asking how many groups of 2 go in 8
 ```
 
 
+```
 1
 - is the same as 1/3. One of three, or how many groups of one go in three.
 3
+```
 ```
 +--+--+--+
 +x |  |  |
 +--+--+--+
 ```
 
+```
 3
 - x 4
 4
+```
 ```
 +--+--+--+--+
 |x |x |x |  |
