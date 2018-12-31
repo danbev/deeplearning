@@ -23,9 +23,11 @@ The symbol for integers is a captial Z (Zahlen is a German word for number) in b
 
 ##### Rational numbers
 Numbers that can be written as a ratio of two integers and the dominator of the ratio is not 0.
+```
 nominator          1
 ---------          -
 denominator        2
+```
 
 (a ratio is a relationship between two numbers indicating how many times the first number contains
 the second) which is why these numbers are called rational numbers.
