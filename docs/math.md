@@ -146,55 +146,73 @@ Negative exponents meant divide by:
 2^5/2 = 2^(5*1/2) = (2^1/2)^5
 
 Fractional exponents:
-a^1/2 = 2sqrt(a) What times itself 2 times is a? 
-
+a^1/2 = 2sqrt(a) 
+What times itself 2 times is a? 
 Notice that the 2 is the root index which tells us how many times itself our answer must
 be multiplied with itself to give a.
 
 So for example
+```
 4^1/2 = 2sqrt(4^1) = 2 because 2 * 2 = 4
 2^2 = 4
+```
 
 The 2 in front of sqrt, which is really above the radical symbol is the root index which tells us how many
 times itself our answer must be multiplied by itself to give 4.
-
+```
 8^1/3 = 3sqrt(8^1) = 2 because 2 * 2 * 2 = 8
-
+```
+```
 8^1/3 = 3sqrt(8^1) = 2 
 Reverse: 2^3   = 8 
-
+```
+```
 5^4/3 = 3sqrt(5^4) = 3sqrt(5*5*5*5) = 3sqrt(625) = 8,549879
 5^4/3 = 3sqrt(5^4) = (3sqrt(5))^4 = 8,549879
+```
 
 Multiplying powers:
+```
 x³ * x² = (x * x * x)(x * x) = x⁵
-When the base are the same we just add the exponents.
+```
+When the base are the same we just `add` the exponents:
+```
+x^m * x^n = x^m+n
+```
 
+```
 (x²)³ = (x * x)(x * x)(x * x) = x⁶
+```
 This is called the power or power property. You just multiply the exponents.
 
 Rules:
 
 Example the sigmoid function:
-
+```
   1
 ----
 1 + e^-x
+```
 
 Our first step above is to rewrite this as a negative exponent instead of division:
+```
   1
 ----     =  (1 + e^-x)^-1
 1 + e^-x
+```
 
 So we now have:
+```
 (1 + e^-x)^-1
+```
 
 It is not very nice to have a negative exponent so we can get rid of that using the reciprical:
 x^-m = 1/x^m
-
+```
     1
 -----------
 (1 + e^-x)^1
+```
 
 Now, this can be viewed as two functions
      1             u(x)         <--- one function
