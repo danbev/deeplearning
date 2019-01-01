@@ -2470,3 +2470,22 @@ Taking the partial sums gives a sequence of numbers that get closer and closer
 to 1. But there other series where the sequence of numbers do this. For example
 S = 1 - 1 + 1 - 1 + 1 - 1 + 1 - 1 + 1 - 1 ...
 
+#### Geometric series
+Is the sum of a geometric sequence, for example
+```
+{1, 1/2, 1/4, 1/8,...}
+```
+
+Is called geometric because it is like the dimentions in geometry:
+<---- n ----->           1D just a line.
+
++----+
+|    |
+| n² |                   2D a square
++----+
+
+                         3D a square
+
+...
+
+
