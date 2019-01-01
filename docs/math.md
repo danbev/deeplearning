@@ -2470,10 +2470,31 @@ Taking the partial sums gives a sequence of numbers that get closer and closer
 to 1. But there other series where the sequence of numbers do this. For example
 S = 1 - 1 + 1 - 1 + 1 - 1 + 1 - 1 + 1 - 1 ...
 
+#### Geometric sequence
+```
+{ 1, 1/2, 1/4, 1/8, ... } = {a_n}^∞ with a_n = 1(1/2)^-1
+
+Index
+1    = 1 * 1/2^(1-1) = 1 * (1/2)^0 = 1 * 1 = 1
+2    = 1 * 1/2^(2-1) = 1 * (1/2)^1 = 1 * 1/2 = 1/2
+3    = 1 * 1/2^(3-1) = 1 * (1/2)^2 = 1 * 1/2 = 1 * (1/2 * 1/2 * 1/2) = 1 * (1/2^3) = 1 * 1/8
+...
+```
+
 #### Geometric series
 Is the sum of a geometric sequence, for example
 ```
 {1, 1/2, 1/4, 1/8,...}
+```
+
+```
+S = a + ar + ar² + ... + ar^(n-1)
+```
+`r` is the common ratio. For example, {in a⁰, ar¹, ar², ar³} the ratio is
+```
+ar³           2³    8
+--- = r       -- =  - = 2
+ar²           2²    4
 ```
 
 Is called geometric because it is like the dimentions in geometry:
