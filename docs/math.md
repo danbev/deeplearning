@@ -140,13 +140,16 @@ Negative exponents meant divide by:
 2^-3 = 1 / 2 * 2 * 2       = 1/9
 2^-4 = 1 / 2 * 2 * 2 * 2   = 1/16
 ```
-
+```
 (x²)³ = x²*³ = x⁶
 
 2^5/2 = 2^(5*1/2) = (2^1/2)^5
+```
 
 Fractional exponents:
+```
 a^1/2 = 2sqrt(a) 
+```
 What times itself 2 times is a? 
 Notice that the 2 is the root index which tells us how many times itself our answer must
 be multiplied with itself to give a.
