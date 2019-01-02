@@ -2509,4 +2509,29 @@ Is called geometric because it is like the dimentions in geometry:
 
 ...
 
+Forumla:
+```
+n-1          1-r²
+∑ (ar^k) = a(----)
+k=0          1-r
+```
+How did we get that formula?  
+```
+S = a + ar + ar² + ... + ar^(n-2) + ar^(n-1)
+```
+We multiply `S` by `r`:
+```
+S*r = ar + ar² + ar³ + ... + ar^(n-1) + ar^n
+```
+Next we subtract S - Sr:
+```
+   S = a + ar + ar² + ... + ar^(n-2) + ar^(n-1)
+-S*r =   - ar - ar² - ... - ar^(n-1) - ar^(n-1) - ar^n
+------------------------------------------------------
+-S*r =   - ar                                   - ar^n
+```
+Notice how all the middle terms cancel out leaving us with:
+```
+S-Sr = a - ar^n
+```
 
