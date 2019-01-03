@@ -138,3 +138,10 @@ if it is not very long it is a shallow asenct and if it is long it is steeper.
 f( 
 
 
+### Second derivative
+```
+d  d         d²y
+=[---[y]] =  ---
+dx dx        dx²
+```
+Notice that this is taking the derivative of the first derivative.
