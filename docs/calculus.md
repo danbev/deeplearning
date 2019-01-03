@@ -139,9 +139,29 @@ f(
 
 
 ### Second derivative
+The syntax for this looks like
+```
+d²y
+---
+dx²
+```
+But what it means is we are taking the derivative of the first derivative and
+it is more like a nestet function call:
+```
+d   d
+=[  --[y] ]
+dx  dx
+```
+We are calculating the first derivative:
+```
+d
+--[y]
+dx
+````
+And passing that result do calculate the derivative of that value:
 ```
 d  d         d²y
 =[---[y]] =  ---
 dx dx        dx²
 ```
-Notice that this is taking the derivative of the first derivative.
+So the ² is not d*d but instead we are applying the derivative operator twice.
