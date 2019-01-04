@@ -99,7 +99,7 @@ f`(x) = 6x^2 - 14x + 3
 Remember that the resulting function f`(x) allows us to pass in any value for x and get
 the slope of the tangent line at that point or view it as the instantanous change with 
 respect to x. Always remember what we are doing!
-``
+```
         2       1
 g(x) = ---  -  ---
        x^3      x^2
