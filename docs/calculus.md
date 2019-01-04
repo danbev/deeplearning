@@ -4,19 +4,21 @@ Not only how steeply a line slopes, but indeed, how steeply any curve slopes at 
 A tangent line skims across the curve, hitting it once in the indicated location; 
 however, a secant line does not skim at all. It cuts right through a function, usually intersecting it in multiple spots.
 
+```
 f`(5) 
+```
 Means the slope of the tagent line at 5. Or you can see this as the rate of change
-of y with respect to x of our function f.
+of `y` with respect to `x` of our function `f`.
 
-Having a positive slope, for example delta y / delta x = 2 / 1 = 2 means that for 
-every step in the x direction we go up two in the y direction.
-But if we have -2 that would mean that for every step in the x direction we would 
-go down 2 in the y direction.
+Having a positive slope means that for every step in the x direction we go up 
+two in the y direction. But if we have -2 that would mean that for every step 
+in the x direction we would go down 2 in the y direction.
 
-
+```
 g`(4)    g`(6)
 (4, 4,5)
 (6, 0,74)
+```
 To estimate, draw a tangent line and then take a point on the tangent line and make
 a triangle (dt/dx). 
 
@@ -26,6 +28,7 @@ slope = delta y / delta x
 
 When we have a line we take the change in x and the the change in y. This looks like a triangle
 or half a rectangle:
+```
 +--------+
 |       /|
 |     /  |  y
@@ -34,7 +37,9 @@ or half a rectangle:
 /        |
 ----------
     x
+```
 Lets say that x = 2 and y = 3, this would give us 3/2 = 1.5.
+```
  y
  -- = 1.5         y = 1.5 * 2 = y = 3 
  2
@@ -42,11 +47,13 @@ Lets say that x = 2 and y = 3, this would give us 3/2 = 1.5.
  3
  -- = 1.5   3 = 1.5 * x  3 / 1.5 = 2
  x                       
+```
 
 Now if you take any two point on the same line you'll get the same slope regardless of the
 distance between the points.
-
+```
 y = mx + b
+```
 
 
 ### Derivative
