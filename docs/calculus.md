@@ -55,6 +55,43 @@ distance between the points.
 y = mx + b
 ```
 
+### Limits
+Basically this involves functions where there are points that are undefined but
+we can find values close to 2 by letting x become closer and closer to 2.
+```
+f(x) = x - 1 when x ≠ 2
+```
+In the above made up case x=2 is not 1 but instead undefined.
+The above can also be written like:
+```
+lim f(x) = 1
+x->2
+```
+"the limit, as x goes to 2, of f(x) is equal to 1". When x is near but not equal
+to 2 the value of f(x) is near 1.
+```
+          x - 1 if x ≠ 2,
+g(x) = {  3     if x = 2
+```
+What is the limit for the above function?  
+Is is the same as our first example:
+```
+lim g(x) = 1
+x->2
+```
+
+Limits can be different for the left and right hand side. Imagine that you have 
+a function that for x = 3 is undefined, but as we close to 3 y approches 1. 
+And for x = -3 it is also undefined but as we get close y approches 3.
+These are two limits for the same function, one limit from the left and one
+limit from the right.
+```
+lim h(x) = 1      lim h(x) = -2
+x->3-             x->3+
+```
+Notice the `-` and `+` signes indicate the left/right hand limits!
+
+
 
 ### Derivative
 Is the slope of a tangent line to the point. Think of this increasing/nugging x by a small
