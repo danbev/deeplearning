@@ -89,8 +89,36 @@ limit from the right.
 lim h(x) = 1      lim h(x) = -2
 x->3-             x->3+
 ```
-Notice the `-` and `+` signes indicate the left/right hand limits!
+Notice the `-` and `+` signes indicate the left/right hand limits! The reason for
+these symbols is that for the left hand size we are considering values less than 3
+and for the right values. We get close to 3 from the left 2.99999 for example, 
+and from the right 3.000001.
 
+```
+lim f(x) = L         lim f(x) = L
+x->a-               x->a+
+```
+is the same as:
+```
+lim f(x) = L
+x->a
+```
+
+### Derivative
+Is the slope of a tangent line to the point. Think of this increasing/nugging x by a small
+amount, like 0.001. Then you calculate the slope of this line by using
+change in y / change in x
+
+So our average rate of change of that interval and is the secant line between the points.
+
+
+#### Rules
+Power rule:
+```
+d/dx (x^n) = nx^n-1, n != 0
+```
+
+```
 
 
 ### Derivative
