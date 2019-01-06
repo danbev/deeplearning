@@ -104,6 +104,13 @@ lim f(x) = L
 x->a
 ```
 
+#### Vertical Asymptote
+Means that atleast on of 
+```
+lim f(x) = ∞ or lim f(x) = -∞
+x->a-           x->a+
+```
+
 ### Derivative
 Is the slope of a tangent line to the point. Think of this increasing/nugging x by a small
 amount, like 0.001. Then you calculate the slope of this line by using
