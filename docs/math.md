@@ -1572,6 +1572,31 @@ No more dividing the circle into some arbitrary number of units.
 Take the radius and make an arc with the same lenght, this is one radian. Half a circle is a little more than
 3 radians. It is actually exactly 3PI.
 
+### Unit circle
+
+Angle (Degrees)       Angle (Radians)    Coordinates of Points on circle
+0                     0                  (1, 0)
+30                    π/6                (√3/2, 1/2)
+45                    π/4                (√2/2, 2/2)
+60                    π/3                (1/2, √3/2)
+90                    π/2                (0, 1)
+
+120                   2π/3               (-1/2, √3/2)
+135                   3π/4               (√2/2, √2/2)
+150                   5π/6               (√3/2, 1/2)
+180                   π                  (-1, 0)
+
+210                   7π/6               (-√3/2,-1/2)
+225                   5π/4               (-√2/2,-√2/2)
+240                   4π/3               (-1/2,-√3/2)
+270                   3π/2               (0,-1)
+300                   5π/3               (1/2,-√3/2)
+315                   7π/4               (√2/2,-√2/2)
+330                   11π/6              (√3/2,-1/2)
+360                   2π                 (1, 0)
+
+Note that the points are calculated as P = (Px, Py) = (cos(angle), sin(angle))
+
 
 ### Trigonometry
 
