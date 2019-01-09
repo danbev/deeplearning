@@ -1573,7 +1573,19 @@ Take the radius and make an arc with the same lenght, this is one radian. Half a
 3 radians. It is actually exactly 3PI.
 
 ### Unit circle
+Is a circle where the radius is 1 for. Also if you take this length of one and
+curve it and then add three of them (back to back) along the circle you find
+that they almost complete half the circle. The little bit remaining is about
+0.14 long. So this in total will be 3.14 for half the circle. So half the circumference
+is π, then the whole circle must be π + π or 2π.
+Remember that the cicumference forumla:
+```
+C = 2πr
+```
+And in the case of a unit circle `r` is just 1.
 
+
+```
 Angle (Degrees)       Angle (Radians)    Coordinates of Points on circle
 0                     0                  (1, 0)
 30                    π/6                (√3/2, 1/2)
@@ -1594,14 +1606,61 @@ Angle (Degrees)       Angle (Radians)    Coordinates of Points on circle
 315                   7π/4               (√2/2,-√2/2)
 330                   11π/6              (√3/2,-1/2)
 360                   2π                 (1, 0)
+```
 
 Note that the points are calculated as P = (Px, Py) = (cos(angle), sin(angle))
+
+Looking at the radians and I understand the first quarter being, π/2, π/3 etc but
+for the second quarter. Remember that our starting position is (1,0) and the
+radian is similar to degrees going from 0-180, but radians go from 0-π.
+In the second quarter we have to take into account the first half that so for
+the first entry we can just multiply with 2π/3.
+
+Also notice that the if we ignore the sign for a moment there are only three
+lengths for both sine and cosine:
+```
+short: 1/2
+medium: √2/2
+long: √3/2
+```
+
+```
+|---|---|---|---|---|---|---|---|--->
+0   π   π   π   2π  5π  π
+    -   -   -   --  --
+    6   3   2   3   6
+
+    1   2   3   4   5   6
+|---|---|---|---|---|---|---|---|--->
+0   6   6   6   2*6 5*6 6
+    -   -   -   --  --
+    6   3   2   3   6
+```
+
+A few important angles to remember are:
+```
+30 / π/6
+45 / π/4
+60 / π/3
+```
+
+Take 30, π/6, (√3/2, 1/2):
+```
+                |  1
+                |  -
+                |  2
+                |
+----------------+
+     √3
+     --
+      2
+```
 
 
 ### Trigonometry
 
 ### sine/cosine
-Think of sine, cosine as the y and x axis of a dome. Sine is where we hang a screen and x is the lenght from 
+Think of sine, cosine as the y and x axis of a dome. Sine is where we hang a screen and x is the length from 
 us the screen will be. The closer to the origin from 0.0 - 1.0 on the x axis, the larger the screen.
 As we make the screen larger (y moves towards 1) the distance (x moves towards 0) decreases.
 
