@@ -1698,6 +1698,21 @@ Now lets mix all of these together, what I mean here is that they all can be in 
 This is a really nice visual representation and interactive app which allow one to play around with the values:
 https://web.archive.org/web/20150511220229/http://www.touchmathematics.org:80/topics/trigonometry
 
+The derivative for sin(x) = cos(x)
+If you plot a graph with y = sin(x) and one with y = cos(x) you will be able
+to visually see that where the first curve has a slope of 0 it will match the
+value of the second curve (the cos curve).
+So when y` = sin(x) = 0, that will be equal to cos(x).
+```
+d
+-- [sin x] = cos x
+dx
+
+d
+-- [cos x] = -sin x
+dx
+```
+
 
 ### Tensor
 
