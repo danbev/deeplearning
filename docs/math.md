@@ -132,6 +132,24 @@ Negative exponents meant divide by:
 10^-2 = 1 / 10*10    = 0.01
 10^-3 = 1 / 10*10*10 = 0.001
 ```
+We take the reciprocal of that number (putting 1 over it) and make the exponent
+positive:
+```
+         1¹
+10^-1 =  -     = 0.1
+         10¹
+
+         1                   1²   1
+10^-2 =  -     = 0.01   or   -- = --- = 0.01
+         10^2                10²  100
+```
+For fractions:
+```
+(1/2)^-2 = (2/1)² = 2²/1² = 4/1 = 4 
+```
+Notice that when we remove the parentheses from the fraction the exponents are
+added to both the nominator and denominator. This is somethimes called pushing it
+through the fraction.
 
 ```
 2^-0 = 1 /                 = 1
@@ -340,18 +358,41 @@ Rules for Arithmetic:
   -- + --- =   ---------
    b    d         bd
 
-Rules for Exponents:
+### Rules for Exponents
 
+```
 a^m * a^n = a^m*n
+
 (a^n)^m   = a^n&m
+
 (ab)^n    = a^n * b^n
+```
+```
          1
 a^-n =  ---
-         a^n
+        a^n
+```
+```
+2⁴   = 1 * 2 * 2 * 2 * 2 = 16
+```
+A negative exponent means the oppsite of multiplication: division.
+So instead of telling us how many times to multiply 2, it tells how many
+times to divide by 2.
+```
+2^-4 = 1  
+```
+
+```
 (a/b)^-n = (b/a)^n
+```
+Notice that when a fraction is raised we take the reciprocal and raise that
+to the positive exponent.
+
+```
 (a/b)^n = (a^n/b^n)
 (a^n/a^m) = a^n-m
 a⁰ = 0
+```
 
 
 ### Notation
@@ -1339,8 +1380,15 @@ x = --
 x = 6
     
 
-### Square root
-It's called because you can take the number and multiply it by itself. Just like you would with a square
+### Radicals/Roots
+You write a radical with a funny sign that almost looks like a division: 16√=4. 
+There is an invisible '2' inside the square root sign, since we are finding two
+numbers multiplied together that equal 4. If we are finding 3 numbers multiplied 
+ogether, we are taking what we call the cube root of a number and we put a little 3 in the root sign.
+
+It's called because you can take the number and multiply it by itself. 
+Just like you would with a square
+```
 +-----+
 |     |
 |     | 2
@@ -1351,10 +1399,21 @@ It's called because you can take the number and multiply it by itself. Just like
 4^2 = 4^1 * 4^1 = 4^(1 + 1) =
 
 2^0,5 = 2^(0,5 + 0,5) = 2^1
+```
+Taking the square root of a number is the same thing are raising it to the 1/2:
+```
+√16 = 4
+```
+Take √9 * √9 = 9 (3 * 3 = 9)
+√9 = 9^1/2 we can express √9 * √9 as:
+```
+9^1/2 * 9^1/2 = 9^1/2+1/2 = 9¹
+```
+
 
 ### Visualizing multiplication
 Lets take 3 * 4 = 12. Imaging you have 3 blocks:
-
+```
 	+----+
 	|    |
 	+----+
@@ -1362,9 +1421,10 @@ Lets take 3 * 4 = 12. Imaging you have 3 blocks:
 	+----+
 	|    |
 	+----+
+```
 
 And the 4 is those 3 blocks 4 times:
-
+```
 	+----+----+----+----+
 	|    |    |    |    |
 	+----+----+----+----+
@@ -1374,11 +1434,12 @@ And the 4 is those 3 blocks 4 times:
 	+----+----+----+----+
 
                   4
+```
 
 ### Fractions
 
 Recall that one or a whole is 
-
+```
   +--------------+
   |              |
   +--------------+
@@ -1389,8 +1450,10 @@ _ :
   +--------------+
   |      |       |
   +--------------+
+```
 
 Remember that we are asking how many groups are in something.
+```
 
 8
 -   how may groups of four go in eight
@@ -1406,6 +1469,7 @@ Remember that we are asking how many groups are in something.
                  4
                  -
                  7
+```
 
 When divide fractions, why have we learned to invert the second fraction and multiply?
 
@@ -1898,60 +1962,71 @@ nPk = n!/(n-k)!
 
 ### E
 
-
-
 ### Useful rules
 
 #### Exponent in divisor
+```
   1
 ---- = 1x^-n
  x^n
+```
 
 Why is this true?
-
+```
  2     2
 --- = --- = 0.03125
 4³    64
 
 2*4^-3 = 0.03125
+```
 This works because 
+```
         2       2
 4^-³ = --- = -------
         4³    4*4*4
+```
 So what we are doing is going from the middle representation above to the 
 first (that has the negative exponent).
 
-This works both ways, so if you have a negative exponent you can rewrite it
+This works both ways, so if you have a negative exponent you can rewrite it.
 
 Product rules:
+```
 a^n * a^m = a^n+m
+
 a^n * b^n = (a * b)^n
+```
 
 Quotient rules:
+```
 a^n / a^m = a^n-m
+
 a^n / b^n = (a / b)^n
 
         u(x)       u`(x) v(x) - u(x) * v`(x)
 f(x) = -----  =   --------------------------
         v(x)           [v(x)]^2
+```
 
 Power rules:
+```
 (b^n)^m = b^n*m
 b^n^m = b(n^m)      2^3^2 = 2(3^2) = 512
 
 m * sqrt(b^n) = b^n/m
 b^1/n = n * sqrt(b)
+```
 
 Negative exponents:
+```
 b^-n = 1/b^n
 
 2^-3 = 1/2^3
+```
 
 ### Add one, subtract one
 So I ran into this when looking into deriving the sigmoid function and at one stage +1 and -1 
 were added to simplify the expression.
-
-
 
 
 ### odds
