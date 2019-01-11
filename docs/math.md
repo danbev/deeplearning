@@ -236,6 +236,7 @@ x^-m = 1/x^m
 ```
 
 Now, this can be viewed as two functions
+```
      1             u(x)         <--- one function
 y = ------------   ----
     (1 + e^-x)^1   v(x)         <--- one function
@@ -248,12 +249,14 @@ f(x) = -----  =   --------------------------
   u`(x) v(x) - u(x) * v`(x)
  ---------------------------
          [v(x)]^2
-
+```
 The nominator is 1, a constant so it's derivative is 0:
+```
 u(x) = 1
 u`(x) = 0
 v(x) = (1 + e^-x)^1
 v`(x) = 
+```
 
 To take the derivative of v(x) we need to use the chain rule.
 
@@ -401,24 +404,29 @@ a⁰ = 0
 
 
 ### Notation
+```
 int f(int x) {
   return 2*x;
 }
+```
 The possible inputs are all integers and this is called the functions domain.
 The type of output is int but not all ints, you can't get 3 as the output. The
 actual outputs of a function is a set call the functions Range. The type of 
 outputs are called it's codomain.
-
+```
 f : A -> B
+```
 The above specifies the domain A and the codomain B. The range depends on the
 function just like we saw above.
 
 A polynomial is specified like so:
+```
 f : R -> R
 
 R  = the set of real numbers.
 R² = pair of real numbers.
 R³ = tripple of real numbers. 
+```
 
 #### Polynomials
 Poly comes from greek and means many. A polynomial is something that is made up
