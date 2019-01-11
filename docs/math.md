@@ -358,6 +358,7 @@ x = abc
 We say that x factors into a, b and c. a, b, and c are the factors of x.
 
 Rules for Arithmetic:
+```
 1) a(b+c) = ab + ac
 
       b      ab
@@ -379,6 +380,7 @@ Rules for Arithmetic:
 5) a    c      (ad + bc)
   -- + --- =   ---------
    b    d         bd
+```
 
 ### Rules for Exponents
 
