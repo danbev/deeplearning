@@ -372,14 +372,19 @@ a^m * a^n = a^m*n
 a^-n =  ---
         a^n
 ```
+
 ```
 2⁴   = 1 * 2 * 2 * 2 * 2 = 16
 ```
+This actually means; start with 1 and multiply 1 by 2, 4 times.
+
 A negative exponent means the oppsite of multiplication: division.
 So instead of telling us how many times to multiply 2, it tells how many
-times to divide by 2.
+times to divide by 2. So again start with 1 and divide 1 by 2, 4 times
 ```
-2^-4 = 1  
+2^-4 = 1  * 1/2 * 1/2 * 1/2 * 1/2 = 1*1*1*1     1     1
+                                    -------  = --- = ---
+                                    2*2*2*2     2⁴    16
 ```
 
 ```
