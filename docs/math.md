@@ -261,75 +261,94 @@ v`(x) =
 To take the derivative of v(x) we need to use the chain rule.
 
 #### Chain Rule
-Can be used when you have a function can be viewed as a compsition of multiple functions.
+Can be used when you have a function that can be viewed as a compsition of multiple functions.
 Look at this as you have an outer function and an inner function, and you can take each separately
 and multiply them
+```
 The derivative of f(g(x)) is f`(g(x)) * g`(x) 
-
+```
+For example:
+```
 y = (3x + 1)^2
-The inner function in this case is (3x + 1), lets call it g. Calling g(x) will evaluate the body of the 
-function which in this case calculated 3x + 1.
-The outer function in this case is ()^2, lets call it h. Calling h(x) will evaluate (3x + 1)^2 and it
-will not execute g(). 
-This allows us to then have h() * g()
+```
+The inner function in this case is `(3x + 1)`, lets call it `g`. Calling `g(x)` will evaluate the body of the 
+function which in this case calculated `3x + 1`.
+The outer function in this case is `()^2`, lets call it `h`. Calling `h(x)` will evaluate `(3x + 1)^2` and it
+will not execute `g()`. 
+This allows us to then have `h() * g()`
 Note that the functions should be the derivaties multiplied.
 
 Lets see if an example can clear this up a little. 
+```
 f(x) = (3x + 1)^2
 inner` = 3x + 1  = 3
 outer` = (3x + 1)^2           // power rule 
 outer` = 2(3x)            
+```
 We can apply the power rule to the outer function:
+```
 f`(x) = 2(3x + 1) * (3)
-
+```
 
 Example of exponent containing x:
+```
 f(x) = e^x         which is the same as e^1x
+```
 This is a compound expression with an inner and outer function.
-The outer function is e^1x and the inner is just the exponent part 1x
+The outer function is `e^1x` and the inner is just the exponent part `1x`.
 We can then use the chain rule:
-The derivative of e^1x is just e^1x.
-The derivative of 1x is just 1
+The derivative of `e^1x` is just `e^1x`.
+The derivative of `1x` is just `1`.
+```
 f`(x) = e^1x * (1)  =  e^1x = e^x
+```
 
 Now if this was instead e^-1x the process is the same as above only it will give:
+```
 f`(x) = e^-1x * (-1)  =  -e^-1x = -e^-x
+```
 
-h(x) = (sin(x)^2
-h`(x) = df/dx = 
-
-Notice that the left hand side is already in the 1/b^n form and we are writing it in the other form.
-(1 + e^-x) is the value of b in this case. But why is there
-
+```
 1
 - = 2^-1 = 0.5
 2
+```
 
+```
               1         1
 16^-3/4 =  ------ =  ----------  = 0.125
            16^3/4    (16^1/4)^3
+```
 
+```
 f(x) = -4 3sqrt(x)
+```
 Which is the same as 
+```
 f(x) = -4 x^1/3
+```
 And now we can use the power rule:
+```
 f(x) = -4 * 1/3  x^(1/3 - 1)
 f(x) = -4 * 1/3  x^(1/3 - 3/3)
 f(x) = -4/3  x^-2/3
-
-
-
+```
 
 Reciprical: 
 A number whose numerator and denominator have been flipped:
+```
 2    3
-- => -
+- => -   
 3    2
+```
+Notice that multiplying a number with its reciprical will be `1`.
 
 ### Operator precedence
+```
 * Expontents and roots
 * Products and division
 * Addition and subtraction
+```
 
 ### Algebra
 Is all about manipulating numbers and variables.
