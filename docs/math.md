@@ -387,7 +387,7 @@ Rules for Arithmetic:
 ```
 a^m * a^n = a^m*n
 
-(a^n)^m   = a^n&m
+(a^n)^m   = a^n*m
 
 (ab)^n    = a^n * b^n
 ```
