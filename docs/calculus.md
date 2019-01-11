@@ -118,6 +118,55 @@ change in y / change in x
 
 So our average rate of change of that interval and is the secant line between the points.
 
+Take the function f(x) = x² which is our familiar parabola. Take a point on the
+curve and then nudge it a little to get a second one.
+Our initial function is x² which can be seen as an area:
+```
+ +-------------+
+ |             |
+ |    x²       |
+ |             |
+ |             |
+ |             |
+ +-------------+
+```
+And then we nudge it a little producing:
+```
+ +-------------+ +--+
+ |             | |  |
+ |    x²       | |  |
+ |             | |  | x
+ |             | |  |
+ |             | |  |
+ +-------------+ +--+
+ +-------------+ +--+
+ |             | |  | dx
+ +-------------+ +--+
+       x          dx
+
+```
+so `df` would be:
+```
+              +--+    +--+
+              |  |    |  |
+              |  |    |  |   +--+
+        df =  |  | +  |  | + |  |
+              |  |    |  |   +--+
+              |  |    |  |
+              +--+    +--+
+```
+The first two rectangles have sides of `x*dx`. So we can write that as `2x dx` and
+represent new area. The last box which is dx² is so small that it can be ignored.
+For example if dx was 0.01 dx² would be 0.0001.
+
+And this is the derivative of x²:
+```
+       df = 2x * dx
+
+       df = 
+       -- = 2x
+       dx
+```
 
 #### Rules
 Power rule:
