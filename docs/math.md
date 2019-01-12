@@ -452,8 +452,10 @@ R³ = tripple of real numbers.
 #### Polynomials
 Poly comes from greek and means many. A polynomial is something that is made up
 from the sum of terms.
-A polynominal is the sum of a finite number of terms where each term has a coefficient, being multiplied
-by a variable, being raised to a non-negative integer power.
+nomial comes from the latin word nomen which means name. In math we deal with terms instead of names.
+
+A polynominal is the `sum` of a `finite` number of terms where each term has a `coefficient`, being multiplied
+by a `variable`, being `raised to a non-negative integer power`.
 There has to be non-negative powers for it to be a polynominal.
 A coefficient is just something that is multiplied and in this case would be 
 multiplied with a variable for example.
@@ -469,17 +471,17 @@ times the polynomial changes direction, between increasing and decreasing.
 Polynomials only contain addition, multiplication and constants.
 ```
 
-Just like the binary operations AND, OR, and NOT, when combined can be used
+Just like the binary operations `AND`, `OR`, and `NOT`, when combined can be used
 to implement algorithms, polynomials have the same role for arithmetic.
-
+```
 AND(x,y) = xy
 NOT(x,y) = 1-x 
  OR(x,y) = 1-(1-x)(1-y)
+```
 
-So any AND/NOT/OR operation can be represented by using a combination of the
+So any `AND/NOT/OR` operation can be represented by using a combination of the
 above three polynomials.
 
-nomial comes from the latin word nomen which means name. In math we deal with terms instead of names.
 Examples:
 ```
 10x^7 - 9x^2 + 15x^3 + 9
