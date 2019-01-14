@@ -163,9 +163,86 @@ And this is the derivative of x²:
 ```
        df = 2x * dx
 
-       df = 
+       df  
        -- = 2x
        dx
+```
+This is how the power rule works and I should remind myself of this now and 
+again.
+
+f(x) = 1/x
+
+```
+           x
+ +--------------------+ 
+ |                    |
+ |                    |  1
+ |        1           |  -
+ |                    |  x
+ |                    |
+ +--------------------+
+
+Now nudge:
+
+          x              dx
+ +--------------------+ +--+
+ |____________________| |__| d(1/x)  
+ |                    | |  |        1
+ |        1           | |  |        -
+ |                    | |  |        x
+ |                    | |  |
+ +--------------------+ +--+
+```
+So our nudge is to the right and the slope is negative in this case and we
+are loosing some area on the top and getting new area to the right.
+
+Now, we know the area is 1, and we are both adding and removing some of it. So,
+this addition/removal should cancel out each other and the area should still be
+one.
+
+Remember that we are looking for the change in rise/run which is this case is
+d(1/x)/dx
+
+```
+removed + added = 0
+
+       +--------------------+   +--+
+ 0 = - |____________________| + |  |
+                                |  |
+                                |  |
+                                |  |
+                                +--+
+
+  1/x * dx + d(1/x)x = 0
+  1/x * dx + d(1/x)x = -d(1/x)x
+  1/x * dx = -d(1/x)x
+  --------   --------
+     dx         dx
+
+  1/x = -d(1/x)x
+        --------
+          dx
+
+  1/x = -d(1/x)x
+  ----   --------  /x
+   x        dx
+
+  1/x = -d(1/x)
+  ----   ------
+   x        dx
+
+  d(1/x)     1/x
+  ------ = - ---
+    dx        x
+
+  d(1/x)      1
+  ------ = - ---
+    dx        x²
+      
+  d(1/x)      
+  ------ = -1x^-2
+    dx       
+
 ```
 
 #### Rules
