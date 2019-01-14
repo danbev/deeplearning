@@ -145,8 +145,13 @@ And then we nudge it a little producing:
        x          dx
 
 ```
-so `df` would be:
-```
+dx is the change in x (delta of x) and df is the change in the function (delta
+of function). We are asking what is the rate the function changes for unit change
+in x. `df` is that change in area caused by the increase `dx`.
+In this specific case you could write `df` as d(x²) as that is the function.
+
+So `df` would be:
+```            dx      dx     dx
               +--+    +--+
               |  |    |  |
               |  |    |  |   +--+
@@ -158,10 +163,15 @@ so `df` would be:
 The first two rectangles have sides of `x*dx`. So we can write that as `2x dx` and
 represent new area. The last box which is dx² is so small that it can be ignored.
 For example if dx was 0.01 dx² would be 0.0001.
+We can safely ignore any value of dx raised to a larger than one.
 
 And this is the derivative of x²:
 ```
-       df = 2x * dx
+       df = x*dx + x*dx + dx²
+       df = 2(x * dx)
+       df = 2(x * dx)
+       --   ---------
+       dx       dx
 
        df  
        -- = 2x
@@ -170,9 +180,8 @@ And this is the derivative of x²:
 This is how the power rule works and I should remind myself of this now and 
 again.
 
-f(x) = 1/x
-
 ```
+f(x) = 1/x
            x
  +--------------------+ 
  |                    |
@@ -243,6 +252,13 @@ removed + added = 0
   ------ = -1x^-2
     dx       
 
+```
+Recall that the last simplification is just the rule and they mean the same
+thing, just written in different ways:
+```
+  1
+---- = 1x^-n
+ x^n
 ```
 
 #### Rules
