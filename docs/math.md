@@ -2770,3 +2770,45 @@ Notice how all the middle terms cancel out leaving us with:
 S-Sr = a - ar^n
 ```
 
+
+#### Rotating the parabola
+```
+y = x²
+```
+This is a parabola with the tip at the origin.
+```
+y = x² - 2
+```
+This is also a parabola but with all y values -2.
+If you instead add all y values will be shifted upwards.
+We add/subtract 2 from all y-values we get from the basic curve y = x².
+
+```
+y = (x - 1)²
+```
+Notice the parentheses here! Notice that we are squaring so y will never be 
+negative. 
+What happens if we set x = 0, -1² = 1. (0, 1)
+What happens if we set x = 1, 0² = 1.  (1, 1)
+This will be shifted to the right.
+
+```
+y = (x + 2)²
+```
+Will move the parabola 2 units to the left.
+
+Now, lets see how we can rotate the parabola.
+```
+y² = x
+```
+This represents a parabola rotated 90 degrees to the right.
+This is actually two functions:
+```
+y = √x         top half
+y = -√x        bottom half
+```
+Try x = 0 and you get √0 = 0, -√0 = 0 (0, 0)
+Try x = 1 and you get √1 = 1, -√1 = 0 (1, 1), (1, -1)
+Notice that we get two values for each y value of x larger than 0. This is called
+a relation.
+
