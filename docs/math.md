@@ -2812,3 +2812,37 @@ Try x = 1 and you get √1 = 1, -√1 = 0 (1, 1), (1, -1)
 Notice that we get two values for each y value of x larger than 0. This is called
 a relation.
 
+### Euclidian Algorithm
+Is an algorithm to find the greatest common denominator.
+For example
+```
+gcd(10, 45)
+45 = 10 * q + r
+q = how many times does 10 go into 45
+r = is the remainder
+45 = 10 * 4 + 5
+     |        |
++----+  +-----+
+10    = 5 * 2 + 0
+When we get a remainder of 0 we are done.
+```
+
+### Extended Euclidian Algorithm
+The normal Euclidiean algorithm is:
+```
+gcd(13, 7)
+```
+Bezout's theorm:
+```
+13s + 7t = gcd(13, 7)
+```
+Extends the Ecludian alg to also tell us what `s` and `t` are.
+
+13 = 7(?) + (?)
+13 = 7(1) + (6)
+
+7 = 6(?) + (?)
+7 = 6(1) + (1)
+6 = 1(6) + (0) <--- we are done
+
+gcd(13, 7) = 1
