@@ -115,6 +115,17 @@ and 8 / 2 = 4. We are asking how many groups of 2 go in 8
 
 100 + 70 + 80 + 56 = 306
 
+Division rule:
+```
+10/2 = 10 * 1/2 = 5 * 2 * 1/2 = 5 * 1 = 5
+```
+Dividing by 2 is the same thing as multiplying with 1/2. This is true for all
+values. Dividing by 4 is the same thing as multiplying by 1/4 etc.
+We say that 1/4 is the reciprocal(complementary, corresponding, joint) to 4.
+```
+10x * 1/5 = 5 * 2 * x * 1/5 = 2 * x * 5/5 = 2x
+```
+
 ### Exponential
 Is the act of multiplying things together many times:
 ```
@@ -381,6 +392,11 @@ Rules for Arithmetic:
   -- + --- =   ---------
    b    d         bd
 ```
+
+You have reached the simplest form when the answer has a single term or when
+all the like terms in the answer have been combined.
+Expressions that include parentheses are not in simplest form if the parentheses
+can be removed using the distributed property.
 
 ### Rules for Exponents
 
@@ -2846,3 +2862,6 @@ Extends the Ecludian alg to also tell us what `s` and `t` are.
 6 = 1(6) + (0) <--- we are done
 
 gcd(13, 7) = 1
+
+### Absolute number
+Is defined as the distance from zero (neither positive or negative).
