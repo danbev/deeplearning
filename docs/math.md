@@ -384,9 +384,9 @@ Rules for Arithmetic:
 
 4) a       ac             1       1 * 2    2   1
   ---- =  ----          ----- =   ----- =  - = -
-   b       b             6/2        6      6   3
-   -
-   c
+   b       b              6         6      6   3
+   -                      -
+   c                      2
 
 5) a    c      (ad + bc)
   -- + --- =   ---------
@@ -420,22 +420,42 @@ This actually means; start with 1 and multiply 1 by 2, 4 times.
 
 A negative exponent means the oppsite of multiplication: division.
 So instead of telling us how many times to multiply 2, it tells how many
-times to divide by 2. So again start with 1 and divide 1 by 2, 4 times
+times to divide by 2. So again start with 1 and divide 1 by 2, 4 times remembering
+that division can be written as multiplication by the receprical.
 ```
-2^-4 = 1  * 1/2 * 1/2 * 1/2 * 1/2 = 1*1*1*1     1     1
-                                    -------  = --- = ---
-                                    2*2*2*2     2⁴    16
+            1   1   1   1   1*1*1*1     1       1
+2^-4 = 1  * - * - * - * - = -------  = ----  = ---
+            2   2   2   2   2*2*2*2     2⁴      16
 ```
 
 ```
-(a/b)^-n = (b/a)^n
+  a          b            8                2         1
+( - )^-n = ( - )^n      ( - )^-2 = 4² =  ( - )^2 = ( - )^2 = 0.25² = 0.0625
+  b          a            2                8         4
+
+$ echo '(8/2)^(-2)' | bc -l
+.06250000000000000000
 ```
 Notice that when a fraction is raised we take the reciprocal and raise that
 to the positive exponent.
 
 ```
-(a/b)^n = (a^n/b^n)
-(a^n/a^m) = a^n-m
+  a         a^n                  8      8²   64
+( - )^n = ( --- )              ( - )² = -- = -- = 16
+  b         b^n                  2      2²   4
+
+$ echo '(8/2)^2' | bc
+16
+$ echo '(8^2/2^2)' | bc
+16
+```
+
+```
+
+  a^n
+( --- ) = a^n-m
+  a^n
+
 a⁰ = 0
 ```
 
