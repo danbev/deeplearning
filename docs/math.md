@@ -1829,6 +1829,13 @@ is 80% then we know much more.
 
 Cosine is the ratio between the x axis and hypo.
 
+You can see simply plot using `gnuplot`:
+```console
+$ gnuplot -e 'set term dumb; plot cos (x);'
+```
+And use Grapher to see "nicer" looking graphs but gnuplot is pretty nice when
+you don't want to leave the shell.
+
 ### Tangent/secant
 Imaging you have a wall that starts just outside the circle, almost touching a point on the x-axis furthest to the right.
 We are going to hang our screen on the wall. Regard less of the height on the wall we choose to hang it, it will always
