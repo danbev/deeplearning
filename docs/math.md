@@ -398,6 +398,75 @@ all the like terms in the answer have been combined.
 Expressions that include parentheses are not in simplest form if the parentheses
 can be removed using the distributed property.
 
+```
+2x + 3 = 9
+```
+Can't we divide both sides by 2 without first subtracting the 3 from both sides?
+```
+2x + 3 = 9
+------   -
+  2      2
+
+1x + 1.5 = 4.5
+x  + 1.5 = 4.5
+   - 1.5 = 4.5 - 1.5
+       x = 3
+
+2x + 3   = 9
+2x + - 3 = 9 -3
+      2x = 6
+      --   -- = 3
+      2    2
+       x = 3
+```
+
+Another example of solving:
+```
+x - 8
+----- = 5
+  2
+          1
+(x - 8) * - = 5
+          2
+
+          1
+(x - 8) * - * 2 = 5 * 2
+          2
+
+          2
+(x - 8) * - = 10
+          2
+
+
+(x - 8) * 1 = 10
+x - 8       = 10
+x - 8       = 10
+x - 8 + 8   = 10 + 8
+x - 0       = 18
+          x = 18
+
+```
+Now, is it possible to start with `-8` instead?
+```
+
+x - 8
+----- + 8 = 5
+  2
+```
+This will not make -8 zero as -8 is part of an expression.
+
+```
+3x + 2x - 8 = 3 + 9
+3x + 2x - 8 = 12
+3x + 2x - 8 + 8 = 12 + 8
+3x + 2x = 20
+5x = 20
+5x = 20
+--   --
+5    5
+x  = 4
+```
+
 ### Rules for Exponents
 
 ```
