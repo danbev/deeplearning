@@ -205,7 +205,7 @@ Reverse: 2^3   = 8
 
 Multiplying powers:
 ```
-x³ * x² = (x * x * x)(x * x) = x⁵
+x³ * x² = (x * x * x)(x * x) = x*x*x*x*x = x⁵
 ```
 When the base are the same we just `add` the exponents:
 ```
@@ -213,9 +213,11 @@ x^m * x^n = x^m+n
 ```
 
 ```
-(x²)³ = (x * x)(x * x)(x * x) = x⁶
+(x²)³ = (x * x)(x * x)(x * x) = x*x*x*x*x*x = x⁶
 ```
 This is called the power or power property. You just multiply the exponents.
+Just think about what it would look like if you simplified it and wrote it
+out like we did above.
 
 Rules:
 
@@ -2961,3 +2963,92 @@ gcd(13, 7) = 1
 
 ### Absolute number
 Is defined as the distance from zero (neither positive or negative).
+
+
+### Euler formula
+```
+e^iπ = -1
+```
+Think about multiplication as a transformation, if you multiply by 2 you are stretching
+the number and it becomes double of what it currently is. If you multiply by i
+you are rotating. So multiplication takes something and moves it around (stretches/rotates).
+Remember that exponential growth e is the continuous growth of something on the 
+number line, well sort of. What I mean is that it is growth added continously in
+the quantity growing. But if imaginary exponential growth is instead rotation.
+
+```
+e^iπ = -1
+```
+So the forumla means, start at 1 and rotate π (halfway around the circle) to get
+to -1.
+
+```
+e^i = e^i*1
+```
+Says that instead of growing normally start growing up (rotating). How far we 
+should rotate is given by the `1`, and is one radian.
+
+This comes from a more general form:
+```
+e^iπ = cos(π) + isin(π)
+```
+There are two ways to describe motion 
+
+### Cirular Path
+Thing about the smoothie process from betterexplained.com about the fourier transform
+where we can determine the ingredenents of the smoothie using filters. If we
+have filters for all ingreedients we can separate them and the quantity of each.
+These need to be independant of each other and it must be possible to combine them
+back into the smoothie.
+
+Say you want to draw a circle simultaneously as someone else, you'd have to
+describe the circle and tell them how big the radius is (center 
+to perimiter) (the amplitude), how fast to draw it (frequency 1 circle/second is
+a frequency of 1 Hertz (Hz) or 2*π radians/second), and also where to start (the
+Phase angle, where 0 degrees is the x-axis.
+
+Pretty much any pattern can be described as cirular paths.
+The cicular path has the following properties:
+```
+Amplitude the size of the radius.
+Speed the frequency or speed that we go along the path
+Angle the starting angle
+```
+
+1) Start with a time based signal, bascially a signal that does on for a certain 
+amount of time. A voice signal for example.
+
+2) Apply filters to measure each possible "circular ingredient", like described with 
+the filter for the smoothie.
+
+3) Collect the full recipe
+Listing the mount of each "circular ingredient"
+
+For example, if computer data can be represented with oscillating patterns
+perhaps the least important ones can be ignored.
+
+The combination of all of the cycles is our signal.
+
+0 Hz means 0 circle/second so never goes around but just follows the x-axis in a
+straight line.
+
+The Fourier transform finds the set of cycle speeds, amplitudes and phases to
+match any time signal.
+
+
+### JPEG (Joint Photography Expert Group)
+This was super cool and something that I was not aware about before and that is
+how cosine is used in the formula for jpeg compression.
+At the very basic level take a photo represented as a pixel grid (black/white) 
+so only one channel. Take a line or a grid of pixel values (0 represents white, and
+100 would be black) with the following 12 numbers:
+
+72 70 65 65 66 68 72 75 80 84 84 89
+
+The average of these numbers is:
+72 + 70 + 65 + 65 + 66 + 68 + 72 + 75 + 80 + 84 + 84 + 89
+--------------------------------------------------------- = 74.16666
+                   12
+
+Next, we can plot these values as a curve.
+
