@@ -664,6 +664,20 @@ same power to be able to combine them. Start with the highest degree and move
 it to the front and see if it and others can be simplified. This will also bring
 the polynomial into standard form.
 
+If you have parenthes the you need to remove them, for example
+```
+(3x + 4) - (x + 1) = 13
+Remember that this is the same as:
+1(3x + 4) - 1(x + 1) = 13
+So start by removing the parentheses by multiplying them.
+3x + 4 -x - 1 = 13
+2x + 3 = 13
+2x + 3 - 3 = 13 - 3
+2x = 10
+2x/2 = 10/2
+x = 5
+```
+
 Leading:
 Can be used to mean the first term or first coefficient depending on the context.
 
