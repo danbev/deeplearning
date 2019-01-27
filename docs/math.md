@@ -1044,16 +1044,21 @@ This is the unit of the coordinate system whith x, y, and z are scaled by.
 i = imaginary unit
 
 Definition:
+```
 i² = -1         i =√-1
 Just like:
 2² = 4          2 = √4
+```
 
 We can't take the quare root of -1 but this is useful sometimes in math so an
 number was introduced to allow this:
 The definition is :
+```
 i^2 = -1
+```
 
 Here are some examples of using different values for he exponent of i:
+```
 i⁰ = 1
 i^1 = i
 i^2 = -1
@@ -1065,8 +1070,10 @@ i^5 = i^4 * i = 1 * i = i
 Notice that i^5 is the same as i^1
 i^6 = i^5 * i = 1 * i = i * 1 = -1
 Notice that i^6 is the same as i^2
+```
 
 This cycle continues.
+```
 
       Im  ^
          i-
@@ -1076,11 +1083,15 @@ This cycle continues.
     -1    |    1 (i⁰)
           |
         -i-
+```
 
 √-52 can be simplified to:
+```
 √(-1)(52) = √-1 * √52
+```
 
 Now √-1 is also our definition of i so we can replace it:
+```
 i * √52 
 
  √52 
@@ -1093,6 +1104,7 @@ i * √52 = i * √4*13
         = i * √4 * √13
         = i * 2 * √13
         = 2 * √13 * i
+```
 
 ### Complex numbers
 Are similar to vectors and we can add and subtract complex numbers like vectors.
@@ -3065,4 +3077,40 @@ The average of these numbers is:
                    12
 
 Next, we can plot these values as a curve.
+
+
+
+### Taylor and Maclaurin polynomials
+Take a function f(x) which we don't know much about, but we do know that we
+can evaluate the function at f(0). So f(0) gives us some value, and we can take
+the derivative at that point, and the first derivative, the second and so on.
+
+This is what we know:
+```
+f(0), f`(0), f``(0), f```(0)...
+```
+So we what a polynomial that represents the function/graph.
+```
+p(0) = f(0)
+
+We also want the first derivative of our polinomial to be equal to the
+functions derivative when evaluated at zero: 
+p`(0) = f`(0)
+
+So we add another term (constraint) to our polynomial:
+p(x) = f(0) + f`(0)x
+
+p(0) = f(0) + f`(0) * 0
+p(0) = f(0)
+So our first constraint still holds true when x = 0.
+
+p`(x) = f`(0)   <-- constant value
+p`(0) = f`(0)
+
+```
+
+              1              1                 1                  1
+p(x) = f(0) * - x⁰ + f`(0) * - x¹  + f``(0) * --- x² + f```(0) * --- x³
+              0              1                2*1                2*3
+
 
