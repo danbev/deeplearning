@@ -469,6 +469,46 @@ This will not make -8 zero as -8 is part of an expression.
 x  = 4
 ```
 
+```
+(x + 2)(x² + 3) =
+(x + 2) * x² + (x + 2) * 3 =
+x³ + 2x² + 3x + 6 = 
+```
+
+When adding and subtracting terms the exponents never change, only the
+coefficients will change.
+
+
+Division:  
+First, simplify into two multiplied fractions:
+```
+12b   12    b
+--- = -- *  - = 4 * 1 = 4
+3b     3    b
+```
+
+```
+x⁴   x*x*x*x   x   x*x*x 
+-- = ------- = - * ----- = 1 * x³
+x       x      x     1
+
+```
+```
+a³    a*a*a       a   a   a     1                  1 
+--- = --------- = - * - * - * ----- = 1 * 1 * 1 * ---
+a⁵    a*a*a*a*a   a   a   a    a*a                 a²
+```
+Now the rule states that we can just subtract the exponents when the bases
+are the same, but 3-5 = -2 and our answer is 1/a². a^-2 is the same things
+are 1/a². Remeber that a negative exponent is the same thing as dividing that 
+number of time:
+```
+           1   1    1
+a^-2 = 1 * - * - =  -
+           a   a    a²
+```        
+
+
 ### Rules for Exponents
 
 ```
@@ -3108,9 +3148,9 @@ p`(x) = f`(0)   <-- constant value
 p`(0) = f`(0)
 
 ```
-
               1              1                 1                  1
 p(x) = f(0) * - x⁰ + f`(0) * - x¹  + f``(0) * --- x² + f```(0) * --- x³
               0              1                2*1                2*3
 
+```
 
