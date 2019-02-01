@@ -478,7 +478,6 @@ x³ + 2x² + 3x + 6 =
 When adding and subtracting terms the exponents never change, only the
 coefficients will change.
 
-
 Division:  
 First, simplify into two multiplied fractions:
 ```
@@ -506,8 +505,65 @@ number of time:
            1   1    1
 a^-2 = 1 * - * - =  -
            a   a    a²
+
+So if we expand this backwards:
+1   1   1   1   1
+- = - * - = - * - * 1 = a^-2
+a²  a   a   a   a
+
+We can see that these are just different way of writing same thing!.
 ```        
 
+```
+x² + 6x + 8 = 0
+```
+Since we have x² we need to know that the first term in the first binominal 
+needs to be x
+```
+(x + ?)(x + ?) = x²
+```
+And we know that the second cannot have an x as that would been the all terms
+would have x in them:
+```
+(x + 2)(x + 4) = x² + 2x + 4x + 8
+(x + 2)(x + 4) = x² + 6x + 8
+```
+This was a guessing game above and I had to try different solutions before 
+getting the right one. 
+Take: 
+```
+x * y = 0
+```
+We know that if either x or y is 0 then the anser will be zero.
+```
+x * 0 = 0
+0 * y = 0
+```
+And the same for a binominal expression:
+```
+(x + 2)(x + 4) = 0
+x + 2 = 0
+x + 2 -2 = -2
+x = -2
+x + 4 = 0
+x + 4 -4 = -4
+x = -4
+(-2 + 2)(-2 + 4) = (0)(2) = 0
+(-4 + 2)(-4 + 4) = (2)(0) = 0
+```
+
+The key to knowing the signs of the last terms in the binomial factors is to 
+check the sign of the third trinomial term: 
+A negative third term tells you the signs must be a + and a -. 
+A positive third term tells you the signs must be either both + or both -. 
+
+```
+x² - 8x + 15 = (x - 3)(x - 5) = x² - 5x - 3x + 15 = x² - 8x + 15
+```
+
+```
+x² - 6x - 16 = (x - 2)(x + 8) = x² - 8x - 2x - 16 = x² -8x - 16
+```
 
 ### Rules for Exponents
 
@@ -3132,20 +3188,34 @@ f(0), f`(0), f``(0), f```(0)...
 So we what a polynomial that represents the function/graph.
 ```
 p(0) = f(0)
+```
 
 We also want the first derivative of our polinomial to be equal to the
 functions derivative when evaluated at zero: 
+```
 p`(0) = f`(0)
+```
 
 So we add another term (constraint) to our polynomial:
+```
 p(x) = f(0) + f`(0)x
-
+```
+So the second term in the polynomial is the first power: 
+```
+p(x) = c₀ + c₁x¹ + c₂x² + c₃x³ + ... +
+```
+Now passing 0 into our polynomial yields:
+```
 p(0) = f(0) + f`(0) * 0
 p(0) = f(0)
+```
 So our first constraint still holds true when x = 0.
 
+```
 p`(x) = f`(0)   <-- constant value
 p`(0) = f`(0)
+```
+
 
 ```
               1              1                 1                  1
@@ -3154,3 +3224,24 @@ p(x) = f(0) * - x⁰ + f`(0) * - x¹  + f``(0) * --- x² + f```(0) * --- x³
 
 ```
 
+### Variable-Length Integer Encoding
+QUIC packets and frames commonly use a variable-length encoding for non-negative 
+integer values. This encoding ensures that smaller integer values need fewer bytes to encode.
+
+The QUIC variable-length integer encoding reserves the two most significant bits 
+of the first byte to encode the base 2 logarithm of the integer encoding length in bytes.
+
+This means that integers are encoded on 1, 2, 4, or 8 bytes and can encode 
+6, 14, 30, or 62 bit values respectively. 
+
+```
+2 bit  Length  Usable bits      Range
+00	1	   6	        0-63
+01	2	   14	        0-16383
+10	4	   30	        0-1073741823
+11	8	   62	        0-4611686018427387903
+```
+
+37 = 0000 0000 0000 0000 0000 0000 0010 0101
+Take the two most significant bytest `01` (the right most bits):
+log(01) = 0.
