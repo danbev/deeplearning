@@ -116,16 +116,15 @@ Is the slope of a tangent line to the point. Think of this increasing/nugging x 
 amount, like 0.001. Then you calculate the slope of this line by using
 change in y / change in x
 
-So our average rate of change of that interval and is the secant line between the points.
-
 Take the function f(x) = x² which is our familiar parabola. Take a point on the
 curve and then nudge it a little to get a second one.
 Our initial function is x² which can be seen as an area:
 ```
+       x
  +-------------+
  |             |
  |    x²       |
- |             |
+ |             | x
  |             |
  |             |
  +-------------+
@@ -268,7 +267,7 @@ f(x) = √x
  +--------------------+ 
  |                    |
  |                    |  √x
- |        1           |  
+ |        x           |  
  |                    |  
  |                    |
  +--------------------+
@@ -290,14 +289,29 @@ Now nudge:
  +--------------------+ +--+
         √x              d√x
 
+ The area increases by adding d√x to both sides and multiplying them:
+ df = √(x + d√x) + √(x + d√x)
+ df = (√x + d√x)²
 
- 
- x = √x * d√x + √x * d√x + d√x * d√x
- 
- x = √x * d√x + √x * d√x + (d√x)²
+ tiny change to the hight
+ --------------------------------------------
+ the tiny change of the input of the function
 
- x = √x * d√x + √x * d√x
- 0 = √x * d√x + √x * d√x - x
+ d√x   √x + dx
+ --- =  
+ dx
+ 
+ dx = √x²x + (√x * d√x) + (√x * d√x) + (d√x)²
+
+ dx = x + (√x * d√x) + (√x * d√x)
+ 0 =  x + (√x * d√x) + (√x * d√x) - dx
+ 0 =  x + (√x * d√x) + (√x * d√x) - dx
+      --------------------------------
+                 d√x
+
+ d√x =  x + √x + √x - dx
+
+
  0 = √x * d√x + √x * d√x - x
      --------   --------
        d√x       d√x
