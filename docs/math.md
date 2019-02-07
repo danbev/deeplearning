@@ -565,9 +565,11 @@ x² - 6x - 16 = (x - 2)(x + 8) = x² - 8x - 2x - 16 = x² -8x - 16
 
 ```
 Ratios:
+```
 students    30
 -------- =  --
 teachers    1
+```
 So for every groups of 30 students there is one teacher.
 And for each teacher there are 30 students.
 However, knowing that the ratio is 30 to 1 tells you nothing about the number
