@@ -510,14 +510,13 @@ So if we expand this backwards:
 1   1   1   1   1
 - = - * - = - * - * 1 = a^-2
 a²  a   a   a   a
-
-We can see that these are just different way of writing same thing!.
 ```        
+We can see that these are just different way of writing same thing!
 
 ```
 x² + 6x + 8 = 0
 ```
-Since we have x² we need to know that the first term in the first binominal 
+Since we have x² we know that the first term in the first binominal 
 needs to be x
 ```
 (x + ?)(x + ?) = x²
@@ -563,7 +562,25 @@ x² - 8x + 15 = (x - 3)(x - 5) = x² - 5x - 3x + 15 = x² - 8x + 15
 
 ```
 x² - 6x - 16 = (x - 2)(x + 8) = x² - 8x - 2x - 16 = x² -8x - 16
+
 ```
+Ratios:
+students    30
+-------- =  --
+teachers    1
+So for every groups of 30 students there is one teacher.
+And for each teacher there are 30 students.
+However, knowing that the ratio is 30 to 1 tells you nothing about the number
+of students in any particular English class. In fact, there may be 30 students
+in each of the 20 teachers’ classes, or it’s possible there are 90 students in
+some and 10 in others. Be aware of this as you work with ratios.
+
+```
+10xy³     5 * 2 x * y* y*y
+----   =  ----------------
+35x⁴y²    5 * 7 x*x*x * y*y
+```
+
 
 ### Rules for Exponents
 
