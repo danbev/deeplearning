@@ -583,6 +583,38 @@ some and 10 in others. Be aware of this as you work with ratios.
 35x⁴y²    5 * 7 x*x*x * y*y
 ```
 
+600 students and the ration of men to women is 3/7. Now 3/7 would be written as
+```
+3a   3 * a   3 * 1   3
+-- = ----- = ----- = -
+7a   7 * a   7 * 1   7
+
+3a + 7a = 600
+10a = 600
+10a = 600
+---   ---
+10    10
+a = 60
+
+men = 3 * 60 = 120
+women = 7 * 60 = 480
+```
+
+Proportions:
+If you need 2 dl flour to make 3 dussin cookies, then how much flour do you need
+to make 9 dussin cookies?: 
+```
+2   f
+- = -
+3   9
+```
+You can set this up using cross multiplication:
+```
+2 * 9 = 3f
+18 = 3f
+18/3 = 3f/3
+6 = f
+```
 
 ### Rules for Exponents
 
