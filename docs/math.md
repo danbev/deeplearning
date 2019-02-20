@@ -616,6 +616,14 @@ You can set this up using cross multiplication:
 6 = f
 ```
 
+If you have an unknown in the denominator you can take the reciprical and then
+solve:
+```
+4   20      x   12
+- = --   -> - = --
+x   12      4   20
+```
+
 ### Rules for Exponents
 
 ```
@@ -2209,7 +2217,7 @@ How is this different to the binary step function?
 ### Probability
 
 Take a deck of cards:
-4 different suites/types wich 13 in each
+4 different suites/types with 13 in each
 4 * 13 = 52
 
         4      1
@@ -2231,6 +2239,18 @@ Notation:
 y-hat = P(y=1|x) 
 y-hat will tell us the probability that the x is of some specific type, for example if it is a picture of a
 cat then the value of y-hat would be 1.
+
+Probability Space:
+Some kind of experiment that one can conduct where the outcome varies from experiment
+to experiment.
+(S, P)
+S is a finite set, like number of coin tosses. Called the sample space and the
+elements in the set are called the outcomes.
+P is a function, called the probability mass function.
+p: S -> [0,1]
+Read as p is a function that maps each outcome between zero or one.
+If you add up all the probabilites the sum should be 1
+
 
 
 ### Combinatorics
