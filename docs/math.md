@@ -2259,28 +2259,33 @@ If you add up all the probabilites the sum should be 1
 #### Permutations
 Say you have three different chairs, a, b, and c. How many different ways
 can you combine hem:
+```
 1. abc
 2. acb
 3. bac
 4. bca
 5. cab
 6. cba
+```
 
 Permuations: 3! = 3 * 2 * 1 = 6
 The number of ways to order/arrange the list/array.
 
 
 Now, lets say you have 4 chairs and 5 people to sit:
+```
 People: a, b, c, d, e
 
 5  4  3  
 -  -  -  = 5 * 4 * 3  = 60
 1  2  3      
+```
 
 So, for a normal permutation we could use factorials. How does that relate to 
 this problem?
 5! = 5 * 4 * 3 * 2 * 1 = 120
 But above we never did (2 * 1) so that would be the same as:
+```
 5 * 4 * 3 * 2 * 1
 ----------------- = 60
     2 * 1
@@ -2288,11 +2293,13 @@ But above we never did (2 * 1) so that would be the same as:
  5!
 --- = 60
  2!
+```
 
 But why 2 when we have 3 chairs? Well we left out two people from our list and
 we have three chairs. 5 - 3 = 2, so we could re-write the above as
 
 So, there are six options of sitting on the first chair, 5 on the second etc.
+```
     5!
  -------- = 60
  (5 - 2)!
@@ -2300,19 +2307,21 @@ So, there are six options of sitting on the first chair, 5 on the second etc.
         n!
 nPr = -----
       (n-r)!
-
+```
 How many 3 letter words are there in the english alphabet?
 We have 26 letters in the alpabet:
-
+```
 26  26  26   
 -   -   -  =   26³
 1   2   3    
+```
 So above we are allowing repeating letters, so aaa, bbb are alright. But what
 if we don't want to allow that?
-
+```
 26  25  24     26!
 -   -   -  =  -------  = 15600
 1   2   3     (26-3)!
+```
 
 Note that 26*25*24 = 15600
 
