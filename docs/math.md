@@ -1204,6 +1204,34 @@ This is the unit of the coordinate system whith x, y, and z are scaled by.
 
 ### Imaginary numbers
 i = imaginary unit
+```
+       Imaginary
+          3i-     * (2+3i)
+            |
+          2i-
+            |
+           i-
+            |
+  --|--|--|-0--|--|--|--|    Real numbers
+            |
+          -i-  1  2  3  4
+            |
+         -2i-
+            |
+         -3i-
+            |
+
+√-1 = i
+```
+Notice where `2+3i` is located. This extra "room" is not available when using
+normal real numbers. All locations in this space have a real and an imaginary 
+component to them. These make up the complex numbers. This allows us to store more
+information.
+Notice that `2+3i` is a term and not the addition operator indicated with the plus
+sign.
+
+To describe particles in quantum physics we need both complext numbers and matrices.
+
 
 Definition:
 ```
