@@ -49,7 +49,7 @@ Lets say that x = 2 and y = 3, this would give us 3/2 = 1.5.
  x                       
 ```
 
-Now if you take any two point on the same line you'll get the same slope regardless of the
+Now if you take any two points on the same line you'll get the same slope regardless of the
 distance between the points.
 ```
 y = mx + b

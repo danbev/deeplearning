@@ -1117,6 +1117,13 @@ x^2 + y^2 = c^2
 1^2 + y^2 = 5^2
 
 Cross product:
+```
+                        (first column * first row)    (second colum * first row)
+[a₁₁ a₁₂  [b₁₁ b₁₂   = [a₁₁*b₁₁ + a₁₂*b₂₁             a₁₁*b₁₂ + a₁₂*b₂₂
+ a₂₁ a₂₂]  b₂₁ b₂₂]     a₂₁*b₁₁ + a₂₂*b₂1             a₂₁*b₁₂ + a₂₂*b₂₂ ]
+```
+
+```
 Is only defined for three-dimensional vectors like (ux, ux, uz)
 ->
 u = (ux, uy, uz)
@@ -1127,7 +1134,7 @@ v = (vx, vy, vz)
 
 TODO: figure out what we are actually calculating here. The output of the cross product is vector that is prependicular to 
 both vectors.
-Hmm, thinkin about this we have two vectors a and b in a plane. If a is pointing in the x direction, and b in the y direction
+Hmm, thinking about this we have two vectors a and b in a plane. If a is pointing in the x direction, and b in the y direction
 then the resulting vector will be pointing in the z direction:
 
 ^   ^   ^
@@ -2131,7 +2138,24 @@ dx
 ```
 
 
-### Tensor
+### Tensor Product
+Is specified with a ring with an X in it where as a matrix product would only 
+be specified with an X.
+```
+Ψ₁ = [1
+      0 ]
+Ψ₂ = [0
+      1 ]
+
+ψ₁ tensor product Ψ₂:
+[
+  1 * [0          [0
+       1]       =  1
+  0 * [0           0
+       1]          1]
+]
+```
+
 
 ### Newton
 Force = mass * accelleration
