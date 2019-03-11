@@ -367,7 +367,9 @@ Notice that multiplying a number with its reciprical will be `1`.
 Is all about manipulating numbers and variables.
 
 The expression:
+```
 x = abc
+```
 We say that x factors into a, b and c. a, b, and c are the factors of x.
 
 Rules for Arithmetic:
@@ -1024,21 +1026,24 @@ What we are doing is trying find the projection of one vector upon the other and
 multipyling them together. This will give us the "force" they both have in the same
 direction. This uses the dot product which can be calculated in two ways, one is using
 the components:
-
+```
 vector a dot vector b = ax*bx + by*by
+```
 
 and the other is using the geographical version:
+```
 vector a dot vector b = ||a|| ||b|| cosine theta
+```
 where theta is the angle between the vectors.
 But how does one get the angle if it is not known? 
-
+```
 theta = arccos     a dot b
                ( ------------ )
                   ||a|| ||b||
-
+```
 
 This is measuring similarities.
-
+```
           bx    by   
 	+-----+-----+
     ax	| Dot |     |
@@ -1047,10 +1052,11 @@ This is measuring similarities.
 	+-----+-----+
 
 (1,2) * (3,4) = 1x3 + 2x4 = 3 + 8 = 11
+```
 
 Notice that the result is a number and not a new or modified vector.
 If the vector a * vector b = 0, then vector a and b are perpendicular:
-
+```
       a ^
         |
         |
@@ -1058,12 +1064,13 @@ If the vector a * vector b = 0, then vector a and b are perpendicular:
         |
         +------------->
                       b
-
+```
 The symbol for a perpendicular vector is an upside down capital T.
 So the above check could be used to check if two vectors are perpendicular, which means do that form a right
 triangle (90 degrees). This for when we vector a and be are in a plane.
 
 Example:
+```
 ->           ->
 a = (7, 14)  b = (2, -1)
 ->   ->
@@ -1088,16 +1095,20 @@ a  *  b = 7*2 + 14*-1 = 14 -14 = 0  it is perpendicular
         |   b (2, -1)
         |              
 
+```
 
 If the vectors point in the same direction , then
 cos (eulers totient)
 
 
 Length:
+```
   ->                     ->
 ||U||^2 = x^2 + v^2 => ||U|| = sqrt(x^2 = y^2)
+```
 
 This is using the pythagoras theorem.
+```
 
                                     +
                                    / |
@@ -1107,14 +1118,16 @@ This is using the pythagoras theorem.
                                /     |
                               +------+
                                  vx
+```
 
 What we are intrested in is the length of this vector, that is we want to know the length of the hypo.
-
+```
 x^2 + y^2 = c^2
 1^2 + 2^2 = c^2 
 1   + 4   = 5
           
 1^2 + y^2 = 5^2
+```
 
 Cross product:
 ```
@@ -1228,10 +1241,49 @@ normal real numbers. All locations in this space have a real and an imaginary
 component to them. These make up the complex numbers. This allows us to store more
 information.
 Notice that `2+3i` is a term and not the addition operator indicated with the plus
-sign.
+sign and this could also be a negative sign which is not the subtraction operator.
 
 To describe particles in quantum physics we need both complext numbers and matrices.
 
+```
+i x i = -1    
+   i² = -1
+  √-1 = i
+```
+Multiplication with two imaginary numbers:
+```
+3i * 4i = 3*4(i*i) = 12(i²) = 12(-1) = -12
+```
+This is interesting that this become a real number. 
+What happens if we multiply a real number with an imaginary number:
+```
+4 * -6i = 24i
+```
+It becomes an imaginary number. Notice the difference between an imaginary and
+a complex number. 24i is just straight up on the imaginary vertical number line,
+that is we are not moving to the left/right on the real number line but centered
+at 0.
+
+How about complex numbers:
+```
+4 * (-1-5i) = -4-20i
+    complex   complex
+```
+```
+3i * (-2+5i) = -6i+15(i²) = -6i+15(-1) = -6i-15
+                                       = -15-6i
+```
+
+What is the magnitude of a complex number? We use the same method that we do
+with vectors, the pythagorian theorem:
+```
+(3 4) = √3²+4² = 5
+3+4i  = √3²+4² = 5
+5+i   = √5²+1² = √25+1 = √26 = 5.099019514
+5+0i  = 5
+```
+Notice that we only use the coefficient of the imaginary number, which in this
+case is an implict 1.
 
 Definition:
 ```
