@@ -1353,11 +1353,44 @@ Are similar to vectors and we can add and subtract complex numbers like vectors.
 They also have components, length, and direction.
 
 A complex number has a real part and an imaginary part:
+```
+Z = a + bi
+Re(Z) = a
+Im(Z) = b      notice this is the number that is scaling i
+```
+
+Conjugate of a complex number (which is denoted with a label with a bar over it):
+```
+_
+Z = a - bi 
+```
+```
+      Im  ^
+          |
+         b|        Z (a + bi) This should be an arrow from origin (vector)
+          |        
+          |        
+-------------------|----------|-->
+          |        a   Re     (Z+Z_bar) or 2a
+          |        _
+        -b|        Z (a - bi) This should be an arroa from origin (vector)
+          |
+```
+                           _
+Notice that we can add Z + Z which would be a vector from Z down to the 
+real number line. And that will be a straight line the length of a * 2. 
+```
+a + bi + a - ib = a + a = 2a
+```
+
+```
 z = 5 + 3i
+```
 The real part is 5 and written as Re(z) = 5
 The imaginary part is 3i and written as Im(z) = 3
 
 We can visualize this:
+```
       Im  ^
           |
          3|        z(5,3)
@@ -1368,15 +1401,96 @@ We can visualize this:
           |
           |
           |
-
+```
 The above is called a complex plane.
+
+Just like we can specify the complex number above using the Re and Im parts
+and think of the arrow from the origin as the vector, we can describe the same
+thing as an angle and a lenght from the origin:
+```
+z = a + bi
+
+      Im  ^
+          |
+         b-         * Z (a, b) or (r, φ) (5, 53.13 degrees)
+          |        /|
+          |   r  /  |
+          |    /    |  4
+          |  /      |
+          |/ φ      |
+--------------------|-------->
+          |   3     a   Re
+          |
+          |
+          |
+
+We can represent this as polar coordinates which is like pointing someone in 
+a certain direction and telling them how far to go in that direction. We call
+the "how far" r.
+
+r = magnitude, or modulus. We can use the pythagorien theorm to get the length.
+φ = (phi) is the angle and the argument of the complex number. How do we get this? 
+
+Let make this concrete and use a = 3, b = 4
+r = √3²+4² = √9+16 = √25 = 5 
+We have a right sided triangle, and to calculate the angle we can use a trig 
+function (SOH CAH TOA). We know the oppisite side of φ is 4 and the adjacent is
+3, and the hypo is 5.
+
+tan(φ) = 4/3
+φ = arctan(4/3)
+
+tan φ = opposite/adjacent = 4/3
+      = arctan(tan φ) = arctan 4/3
+      = arctan(4/3) = 53.130    (set calc to degree mode)
+
+If you only have r and φ you and you want to find a you can use:
+
+cos φ = a/r
+r cos(φ) = a
+cos φ = a/5
+r cos(φ) = a
+5 cos(53.13) = 3
+
+And if we want to find b:
+sin φ = opp/hypo
+sin φ = b/r
+r sin φ = b
+5 sin φ = 3.9999 ~ 4
+
+So we could write the coordinates as:
+(r cos φ, r sin φ) 
+
+And if we write this as a complex number:
+    (Re axis) + (Im axis) * i
+z = r cos φ + r sin φ i
+
+We can factor out r:
+z = r (cos φ + sin φ i)
+z = r (cos φ + i sin φ)
+      (cos φ + i sin φ) = e^iφ
+z = re^iφ 
+
+```
 
 We can add complex numbers together by using the follwing:
 Lets take two complex numbers,
+```
 a = 2 + 3i
 c = 4 + 5i
 
 (2 + 3i) + (4 + 5i) = (2 + 4) + (3 + 5)i = (6 + 8i)
+```
+
+Changing signs of a complex number can be done in three ways, change the real
+number, change the imaginary number or both.
+Changing both can be done by multplying with `-1`:
+```
+-1(2 + 3i) = -2 - 3i
+```
+If we only change the imaginary part of the complex number this is called a 
+conjugation
+
 
 ### Linear algebra
 Vectors play an important part in linear algebra. A vector is a tuple.
