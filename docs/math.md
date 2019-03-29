@@ -1211,6 +1211,35 @@ a x b           = |a||b| sin theta n       // n = unit vector that is perpendicu
 Now a and b are on the same plane, for something to be perpendicular to both of them this vector would have
 to either coming out upwards or downwards.
 
+#### Inner Product
+Is similar to the dot product in the operations performed but the result will
+always lie inside the planes/axis involved which is why it is called inner.
+Remember that the dot product produces a scalar (and is sometimes called the
+scalar product).
+```
+a_hat = ⌈1⌉   b_hat = ⌈5 ⌉
+        |2|           |-7|
+        ⌊3⌋           ⌊6 ⌋
+
+a_hat . b_hat = ⌈1⌉   ⌈5 ⌉ = 1 * 5 + 2 * (-7) + 3 * 6 = 5 + (-14) + 18 = 9
+                |2| . |-7|
+                ⌊3⌋   ⌊6 ⌋
+
+This is the same as a^T b (transpose):
+[1 2 3]  ⌈5 ⌉ = [1 * 5 + 2 * (-7) + 3 * 6] = [5 + (-14) + 18] = [9]
+         |-7|
+         ⌊6 ⌋
+```
+
+#### Outer Product
+Builing on the inner product example the outer product would be:
+```
+This is the same as a b^T (transpose):
+⌈1⌉  [5 -7 6]⌉ = ⌈1 * 5   2 * 5   3 * 5 ⌉   ⌈ 5   10   15⌉
+|2|              |1 * -7  2 * -7  3 * -7| = |-7  -14  -21|
+⌊3⌋              ⌊1 * 6   2 * 6   3 * 6 ⌋   ⌊ 6   12   18⌋
+
+Notice that the diagonal add up to the inner product!
 
 #### Basis
 This is the unit of the coordinate system whith x, y, and z are scaled by.
