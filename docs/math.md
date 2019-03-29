@@ -1497,10 +1497,17 @@ z = r cos φ + r sin φ i
 We can factor out r:
 z = r (cos φ + sin φ i)
 z = r (cos φ + i sin φ)
-      (cos φ + i sin φ) = e^iφ
-z = re^iφ 
-
+Notice that this is Eulers forumla so we can rewrite this as:
+(cos φ + i sin φ) = e^iφ
+z = r e^iφ 
+This is called the exponential form of a complex number.
+r e^iθ means the same thing as cosθ + sinθ which is just one of two ways
+of writing we can write complex numbers.
 ```
+```
+r e^iθ 
+```
+Means that there is a complex number of radius `r` at angle `θ`.
 
 We can add complex numbers together by using the follwing:
 Lets take two complex numbers,
