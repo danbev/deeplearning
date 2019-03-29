@@ -3579,3 +3579,60 @@ This means that integers are encoded on 1, 2, 4, or 8 bytes and can encode
 37 = 0000 0000 0000 0000 0000 0000 0010 0101
 Take the two most significant bytest `01` (the right most bits):
 log(01) = 0.
+
+
+#### Subspace
+If I have a subset of vector R^n (where R is just an infinitly large set 
+vectors each with a size of n:
+```
+          ⌈x₁⌉
+R^n = {   |x₂⌉   }
+          |x₃|
+          |..|
+          ⌊xn⌋
+```
+So we can have a set V that is a subset of R^n which means that V will contain
+some (or all of the vectors in R^n).
+```
+        ⌈x₁⌉
+V = {   |x₂⌉   }
+```
+In order for V to be a subspace of R^n it must :
+```
+1) contain the zero vector (just all elements are zero)
+2) x times and real number will, x will still be a member of V.
+This is called closure under multiplication.
+3) x₁ + x₂ must also be in V
+```
+
+
+### Vector Space
+
+A 2D vector space is where we have a x,y plane where our vectors tail is at the
+origin. 2D because each vector contains two numbers (x and y). 
+For 3D we have a similar vector space except we have three numbers in each vector.
+We can have any number of dimensions.
+
+Properties of vector space addition:
+```
+Addition: v+w = w+v (order does not matter, Commutative)
+Zero vector: 0 (all values in the vector V^n are 0)
+Identity element: 0 + v = v + 0 = v
+Inverse: For every vector there exists a vector that points in the opposite direction.
+         v + (-v) = (-v) + v = 0
+Associative: v + (w + z) = (v + w) + z
+```
+With the above properties we say that vector spaces form a commutative group
+under vector addition.
+
+Properties of vector space multiplication:
+```
+Distributive property: c * (v + w) = cv + cw
+Associative: c * (d * v) = (c * d) * v
+```
+Now we have only been considering real numbers for the scalars above. If we expand
+this to include complex number that is a vector space!
+
+#### Linear space
+
+
