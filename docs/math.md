@@ -1527,6 +1527,45 @@ Changing both can be done by multplying with `-1`:
 If we only change the imaginary part of the complex number this is called a 
 conjugation
 
+### Complex Conjugates
+Take the following complex number:
+```
+z = a + bi
+
+a is the real part of the complex number
+bi is the imaginary number
+
+If we had functions that returned the real and imaginary part they would be:
+Re(z) = a
+Im(z) = b             notice that this is only the scalar of the imaginary number.
+```
+The conjugate of `z`, which is denoted z_bar (bar ontop of the z):
+```
+z = a - bi
+```
+So lets think of this graphically and if we have:
+```
+         Im
+           ^
+           |
+           |         * (a + bi)
+         1 -
+           |
+ --------------|-----|-----> Re
+           |   1
+        -1 -
+           |         * (a - bi)
+           |
+           |
+```
+Also notice that if we to z + z_bar we get 2a:
+```
+a + bi + a + -b = a + a = 2a.
+```
+And you can also see this graphically by taking the origin of the conjugate and
+placing it on the tip of a, this will now be on the Re line double the lenght
+of a.
+
 
 ### Linear algebra
 Vectors play an important part in linear algebra. A vector is a tuple.
