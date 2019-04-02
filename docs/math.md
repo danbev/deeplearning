@@ -1566,7 +1566,6 @@ And you can also see this graphically by taking the origin of the conjugate and
 placing it on the tip of a, this will now be on the Re line double the lenght
 of a.
 
-
 ### Linear algebra
 Vectors play an important part in linear algebra. A vector is a tuple.
 v = (v1, v2, v3)
@@ -3673,5 +3672,21 @@ Now we have only been considering real numbers for the scalars above. If we expa
 this to include complex number that is a vector space!
 
 #### Linear space
+
+
+#### Hermitian Matrix
+Is the conjugate of a matric and then the matrix transposed. This can be specified
+using A*, A_dagger, A_bar.
+```
+             Conjugate                Transpose
+             ---------->             ----------->
+⌈p    a+ib⌉              ⌈p    a-bi⌉              ⌈p    a+bi⌉
+⌊a-bi    q⌋              ⌊a+bi    q⌋              ⌊a-bi    q⌋
+
+This is also called a conjugate transpose which is what is used in linear algebra.
+A^H is also used to denote a conjugate transpose in linear algebra.
+A_dagger is used in quantum mechanics.
+A^+ is used in the Moore-Penrose psuedoinverse.
+```
 
 
