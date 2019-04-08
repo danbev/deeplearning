@@ -3702,6 +3702,89 @@ In = an n-by-n identity matrix
 
 
 ### Modular arithmetic
+```
+A
+- = Q remainder R
+B
+
+A is the dividend
+B is the divisor
+Q is the quotent
+R is the remainder
+```
+For the cases where we are only interested in the reminder there is the operator
+modulo (mod).
+```
+A mod B = R
+```
+`B` is referred to the modulus in this case.
+
+You can think of a clock starting from zero and up to the modulus. For example
+8 mod 4:
+```
+                 0
+              3     1
+                 2
+
+8/4 = 2 remainder 0
+Notice that this is doing around twice and then landing on one.
+7/4 = 1 remainder 3
+
+Notice that if we increase A with a multiple of B we end up in the same spot:
+A ≡ B = (A + K * B) mod B
+
+(8 + 2 * 4) mod 4
+16 mod 4 = 4 remainder 0
+```
+
+
+#### Congruence Modulo
+```
+A ≡ B (mod C)
+```
+`A` is congruent to `B` module `C`.
+
+≡ means the values A and B are in the same equivalence class
+
+So what is an equivalence class?
+```
+               12
+                8
+                4
+                0 
+         11 7 3   1 5 9
+                2 
+                6
+               10
+
+```
+We have four classes 0, 1, 2, and 3 with the following members:
+```
+0) 0, 4, 8, 12
+1) 1, 5, 9
+2) 2, 6, 10
+3) 3, 7, 11
+```
+
+```
+5 ≡ 9 mod 4 
+```
+Both 5 and 9 are in the equivalence class for 1.
+
+Notice the relationship between the values in each class/group/slice:
+```
+C = 4
+
+                  (0 + 3*4)
+                  (0 + 2*4)
+                  (0 + 1*4)
+                      0   
+(3 + 2*4) (3 + 1*4) 3   1 (1 + 1*4) (1 + 2*4)
+                      2 
+                   (2 + 1*4)
+                   (2 + 2*4)
+```
+Each member in each slice is related to each other. 
 
 
 #### Cyclic patterns
