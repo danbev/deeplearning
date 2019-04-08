@@ -3715,7 +3715,8 @@ Notice that there is an repeating patterns in their ending digits:
 2, 4, 8, 6 and then it starts over:
 32, 64, 128, 256, 512
 ```
-This cycle of four continues forever.
+This cycle of four continues forever. We say that it cycles with a period
+of 4.
 
 The last digit of a decimal integer, the ones place, is the remainder of the 
 division:
@@ -3729,5 +3730,21 @@ The last digit is the result of the operation number mod 10:
 If you want the two last digits the you use 100:
 ```
 2 mod 100 = 2, 15 mod 100 = 15, 315 mod 100 = 15
+```
+But why do the last number repeat that we saw ealier?
+```
+1) 2¹ = 2 mod 10                     = 2
+2) 2² = 2¹ * 2 = 2 * 2 = 4 mod 10    = 4
+3) 2³ = 2² * 2 = 4 * 2 = 8 mod 10    = 8
+4) 2⁴ = 2³ * 2 = 8 * 2 = 16 mod 10   = 6
+5) 2⁵ = 2⁴ * 2 = 16 * 2 = 32 mod 10  = 2
+```
+This means that powers of two with the same ending digit are related. Their 
+exponents will differ by a multiple of 4:
+```
+2: 2¹, 2⁵, 2⁹, ...
+4: 2², 2⁶, 2¹⁰, ...
+8: 2³, 2⁷, 2¹¹, ...
+6: 2⁴, 2⁸, 2¹², ...
 ```
 
