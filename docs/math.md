@@ -3689,4 +3689,45 @@ A_dagger is used in quantum mechanics.
 A^+ is used in the Moore-Penrose psuedoinverse.
 ```
 
+If A is hermitian then the operation that it represents, think the transformation
+that it represents, is called self-adjoint.
+
+#### Unitary Matrix
+A matrix is said to be invertable if there exists a matrix A^-1 such that:
+```
+A * A^-1 = A^-1 * A = In
+
+In = an n-by-n identity matrix 
+```
+
+
+### Modular arithmetic
+
+
+#### Cyclic patterns
+Take the power of twos:
+```
+2, 4, 8, 16, 32, 64, 128, 256, 512
+```
+Notice that there is an repeating patterns in their ending digits:
+```
+2, 4, 8, 16
+2, 4, 8, 6 and then it starts over:
+32, 64, 128, 256, 512
+```
+This cycle of four continues forever.
+
+The last digit of a decimal integer, the ones place, is the remainder of the 
+division:
+```
+2/10 = 0.2, 15/10 = 1.5, 315/10=31.5
+```
+The last digit is the result of the operation number mod 10:
+```
+2 mod 10 = 2, 15 mod 10 = 5, 315 mod 10 = 5
+```
+If you want the two last digits the you use 100:
+```
+2 mod 100 = 2, 15 mod 100 = 15, 315 mod 100 = 15
+```
 
