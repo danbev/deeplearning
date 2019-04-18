@@ -3831,3 +3831,37 @@ exponents will differ by a multiple of 4:
 6: 2⁴, 2⁸, 2¹², ...
 ```
 
+### Kronecker delta
+
+```
+         ⌈1 0 0⌉  ⌈S₁₁ S₁₂ S₁₃⌉   ⌈            ⌉                    ⌈0⌉
+S = I₃ = |0 1 0| =|S₂₁ S₂₂ S₂₃| = |e₁ | e₂ | e₃|    e_n = e_hat_n = |0|
+         ⌊0 0 1⌋  ⌊S₃₁ S₃₂ S₃₃⌋   ⌊            ⌋                    |1|
+                                                                    |.|
+                                                                    |.|
+                                                                    |.|
+                                                                    ⌊n⌋
+
+
+Sij = {0 i != j          For example, S₁₂ = 0 as i != j
+       1 i = j           For example, S₃₃ = 1 as i = j
+
+i,j = 1, 2, 3
+
+
+    3 
+S = ∑  e_i e_i^T = I₃ = e₁ + e₁^T + e₂ + e₂^T + e₃ + e₃^T
+   i=1
+
+e_i is a unit vector with a 1 in the i:th position:
+
+ e₁   e₁^T
+⌈1⌉ [1 0 0]     ⌈0⌉ [0 1 0]    ⌈0⌉ [0 0 1]
+|0|          +  |1|          + |0|
+⌊0⌋             ⌊0⌋            ⌊1⌋
+
+  ⌈1 0 0⌉       ⌈0 0 0⌉        ⌈0 0 0⌉    ⌈1 0 0⌉
+  |0 0 0|    +  |0 1 0|      + |0 0 0|  = |0 1 0|
+  ⌊0 0 0⌋       ⌊0 0 0⌉        ⌊0 0 1⌋    ⌊0 0 1⌋
+```
+
