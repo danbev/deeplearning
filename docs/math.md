@@ -1509,6 +1509,21 @@ r e^iθ
 ```
 Means that there is a complex number of radius `r` at angle `θ`.
 
+A point can be identified using the cartensian coordinates or the polar coordinates:
+```
+(a, b) -> (p, Θ)     p = magnitude
+p = √(a² + b²)
+Θ = arctan(b/a)
+
+a = p cos(Θ)  b = p sin(Θ)
+a = 3, b = 4
+Θ = arctan(4/3) = 53,13
+a = 5 * cos(53,13)
+a = 5 * 0.6000014291
+b = 5 * sin(53,13)
+b = 5 * 0,799989281
+```
+
 We can add complex numbers together by using the follwing:
 Lets take two complex numbers,
 ```
