@@ -1405,8 +1405,7 @@ Z = a - bi
         -b|        Z (a - bi) This should be an arroa from origin (vector)
           |
 ```
-                           _
-Notice that we can add Z + Z which would be a vector from Z down to the 
+Notice that we can add Z + Z_bar which would be a vector from Z down to the 
 real number line. And that will be a straight line the length of a * 2. 
 ```
 a + bi + a - ib = a + a = 2a
@@ -1446,7 +1445,7 @@ z = a + bi
           |   r  /  |
           |    /    |  4
           |  /      |
-          |/ φ      |
+          |/ θ      |
 --------------------|-------->
           |   3     a   Re
           |
@@ -1459,7 +1458,7 @@ a certain direction and telling them how far to go in that direction. We call
 the "how far" r.
 ```
 r = magnitude, or modulus. We can use the pythagorien theorm to get the length.
-φ = (phi) is the angle and the argument of the complex number. How do we get this? 
+θ = (theta) is the angle and the argument of the complex number. How do we get this? 
 ```
 
 Let make this concrete and use a = 3, b = 4
@@ -1470,52 +1469,52 @@ We have a right sided triangle, and to calculate the angle we can use a trig
 function (SOH CAH TOA). We know the oppisite side of φ is 4 and the adjacent is
 3, and the hypo is 5.
 ```
-tan(φ) = 4/3
-φ = arctan(4/3)
+tan(θ) = 4/3
+θ = arctan(4/3)
 
-tan φ = opposite/adjacent = 4/3
-      = arctan(tan φ) = arctan 4/3
+tan θ = opposite/adjacent = 4/3
+      = arctan(tan θ) = arctan 4/3
       = arctan(4/3) = 53.130    (set calc to degree mode)
 ```
 
-If you only have r and φ you and you want to find a you can use:
+If you only have `r` and `θ` you and you want to find a you can use:
 ```
 
-cos φ = a/r
-r cos(φ) = a
-cos φ = a/5
-r cos(φ) = a
+cos θ = a/r
+r cos(θ) = a
+cos θ = a/5
+r cos(θ) = a
 5 cos(53.13) = 3
 ```
 
 And if we want to find b:
 ```
-sin φ = opp/hypo
-sin φ = b/r
-r sin φ = b
-5 sin φ = 3.9999 ~ 4
+sin θ = opp/hypo
+sin θ = b/r
+r sin θ = b
+5 sin θ = 3.9999 ~ 4
 ```
 
 So we could write the coordinates as:
 ```
-(r cos φ, r sin φ) 
+(r cos θ, r sin θ) 
 ```
 
 And if we write this as a complex number:
 ```
     (Re axis) + (Im axis) * i
-z = r cos φ + r sin φ i
+z = r cos θ + r sin θ i
 ```
 
 We can factor out r:
 ```
-z = r (cos φ + sin φ i)
-z = r (cos φ + i sin φ)
+z = r (cos θ + sin θ i)
+z = r (cos θ + i sin θ)
 ```
 Notice that this is Eulers forumla so we can rewrite this as:
 ```
-(cos φ + i sin φ) = e^iφ
-z = r e^iφ 
+(cos θ + i sin θ) = e^iθ
+z = r e^iθ 
 ```
 This is called the exponential form of a complex number.
 `r e^iθ` means the same thing as `cosθ + sinθ` which is just one of two ways
