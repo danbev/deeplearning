@@ -1452,58 +1452,74 @@ z = a + bi
           |
           |
           |
+```
 
 We can represent this as polar coordinates which is like pointing someone in 
 a certain direction and telling them how far to go in that direction. We call
 the "how far" r.
-
+```
 r = magnitude, or modulus. We can use the pythagorien theorm to get the length.
 φ = (phi) is the angle and the argument of the complex number. How do we get this? 
+```
 
 Let make this concrete and use a = 3, b = 4
+```
 r = √3²+4² = √9+16 = √25 = 5 
+```
 We have a right sided triangle, and to calculate the angle we can use a trig 
 function (SOH CAH TOA). We know the oppisite side of φ is 4 and the adjacent is
 3, and the hypo is 5.
-
+```
 tan(φ) = 4/3
 φ = arctan(4/3)
 
 tan φ = opposite/adjacent = 4/3
       = arctan(tan φ) = arctan 4/3
       = arctan(4/3) = 53.130    (set calc to degree mode)
+```
 
 If you only have r and φ you and you want to find a you can use:
+```
 
 cos φ = a/r
 r cos(φ) = a
 cos φ = a/5
 r cos(φ) = a
 5 cos(53.13) = 3
+```
 
 And if we want to find b:
+```
 sin φ = opp/hypo
 sin φ = b/r
 r sin φ = b
 5 sin φ = 3.9999 ~ 4
+```
 
 So we could write the coordinates as:
+```
 (r cos φ, r sin φ) 
+```
 
 And if we write this as a complex number:
+```
     (Re axis) + (Im axis) * i
 z = r cos φ + r sin φ i
+```
 
 We can factor out r:
+```
 z = r (cos φ + sin φ i)
 z = r (cos φ + i sin φ)
+```
 Notice that this is Eulers forumla so we can rewrite this as:
+```
 (cos φ + i sin φ) = e^iφ
 z = r e^iφ 
-This is called the exponential form of a complex number.
-r e^iθ means the same thing as cosθ + sinθ which is just one of two ways
-of writing we can write complex numbers.
 ```
+This is called the exponential form of a complex number.
+`r e^iθ` means the same thing as `cosθ + sinθ` which is just one of two ways
+of writing we can write complex numbers.
 ```
 r e^iθ 
 ```
@@ -3498,6 +3514,7 @@ e^iπ = -1
 Think about multiplication as a transformation, if you multiply by 2 you are stretching
 the number and it becomes double of what it currently is. If you multiply by i
 you are rotating. So multiplication takes something and moves it around (stretches/rotates).
+
 Remember that exponential growth e is the continuous growth of something on the 
 number line, well sort of. What I mean is that it is growth added continously in
 the quantity growing. But if imaginary exponential growth is instead rotation.
