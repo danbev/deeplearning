@@ -1539,19 +1539,22 @@ a = 5 * 0.6000014291
 b = 5 * sin(53,13)
 b = 5 * 0,799989281
 
-```
 ````
    |
    |     /
    |   /
    | / Θ (angle/phase)
    +----------
+```
 
 Real numbers are just phase 0 (no angle):
+```
 -------|-|-|-|----
        0 1 2 3
+```
 
 Negative numbers are phase π (180 agrees):
+```
 -|-|-|-|-|-|-|----
   -2-1 0 
 ```
