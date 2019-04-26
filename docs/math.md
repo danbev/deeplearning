@@ -2550,7 +2550,7 @@ Change in x
 ```
 
 Take a triangle with a base of 3 and a hight of 2. Find the change by:
-````
+```
 2/3 = 0.66666
 ```
 So the hight will increase with 0.66 percent for x.
@@ -2564,7 +2564,9 @@ A sphere is the most space-efficient shape — it gives the most volume for the 
 
 ### Activation functions
 #### Identity
+```
 f(x) = x
+```
 
 #### Binary step
 ```
