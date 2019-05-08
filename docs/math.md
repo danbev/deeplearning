@@ -3973,3 +3973,77 @@ e_i is a unit vector with a 1 in the i:th position:
   ⌊0 0 0⌋       ⌊0 0 0⌉        ⌊0 0 1⌋    ⌊0 0 1⌋
 ```
 
+### Maclaren series
+Is a way of approximating a function using a polynominal, adding more and more
+terms to get more accurate approxiamations.
+We do this by taking the first derivative at some point, then the second derivative
+and so on, adding them.
+
+```
+p = polynominal 
+
+p(0) = f(x)
+```
+In this case we can just set it to:
+```
+p(x) = f(0)
+```
+So for any value we pass in for x we get the same value (the value of f(x) which 
+is a constant value)) so this would be a straight horizontal line (there is no slope).
+
+```           1           1               1                   1                        x^n
+p(x) = f(0) * - + f`(x) * - x¹ + f``(0) * - * x² + f```(0) * --- * x³ + ... + f^n(0) * ---
+              0!          1!              2!                 3!                        n!
+             (1)         (1)             (1*2)              (2*3) 
+```
+
+
+Now, lets take f(x) = cos(x)
+```
+d                        d                        d              1
+-- [sin(x)] = cos(x)     -- [cos(x)] = -sin(x)    -- [tan(x)] = ------- = sec(x)²
+dx                       dx                       dx            cos(x)²
+```
+
+```
+d
+-- [e^x] = e^x
+dx
+            ^
+            |
+          1 -                e⁰ = 1
+            |
+            |
+ <---------------------->
+        
+e⁰ = 1 and the slope of the tangent line is also 1.
+e¹ = e and the slope of the tangent line is also e.
+
+```
+
+```
+d           1
+-- [ln x] = -- = x^-1
+dx          x
+```
+
+```
+f(x)      =  cos(x)          f(0)     =  cos(0)   = 1    
+f`(x)     = -sin(x)          f`(0)    = -sin(x)   = 0 
+f``(x)    = -cos(x)          f``(0)   = -cos(0)   = -1 
+f```(x)   =  sin(x)          f```(0)  =  sin(0)   = 0 
+f````(x)  =  cos(x)          f````(0) =  cos(0)   = 1 
+
+p(x) =  
+
+Now, lets take a look at f(x) = sin(x):
+
+           x³   x⁵   x⁷   x⁹
+p(x) = x - -- + -- - -- + -- - ...
+           3!   5!   7!   9!
+      
+
+                (ix)²   (ix)³    (ix)⁴   (ix)⁵
+e^ix = 1 + ix + ----  + ----- +  ----  + ----
+                 2!      3!       4!     5!
+```
