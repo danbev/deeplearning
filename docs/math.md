@@ -3141,11 +3141,11 @@ And that would give:
 So the sign of each term in the group is changed.
 
 ### Theorm
-For any integer x ≥ 0 and any list of n + 1 points (x₀, y₀),(x₁, y₁),...(xn,yn)
-in R² with x₀ < x₁ < ... < xn, there exists a unique degree n polynomial p(x)
+For any integer `x ≥ 0` and any list of n + 1 points `(x₀, y₀),(x₁, y₁),...(xn,yn)`
+in R² with `x₀ < x₁ < ... < xn`, there exists a unique degree n polynomial p(x)
 such that p(xi) = yi, for all i.
 
-So we have an list of pairs of... 
+TODO: So we have an list of pairs of... 
 
 ### E
 If we think of something that doubles in growth for a time period it will go
