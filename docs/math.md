@@ -768,7 +768,7 @@ Examples:
 10x^7 - 9x^2 + 15x^3 + 9
 6
 ```
-A polynomial cannot have a negative power in a polynomial. Why?
+A polynomial cannot have a negative power in a polynomial by definition.
 
 Not a polynominal:
 ```
@@ -1004,7 +1004,7 @@ Compare this to a list that is an ordered collection of values of the _same type
 
 
 ### Vector
-The word vector comes from latin vhere and means means to carry. A vector [1,2] takes the point at 
+The word vector comes from latin and means means to carry. A vector [1,2] takes the point at 
 [0,0] and carries it to [1,2].
 Vectors are built from components which are ordinary numbers.
 Is a tuple of values (one or more) called scalars.
@@ -1149,26 +1149,29 @@ x^2 + y^2 = c^2
 Cross product:
 ```
                         (first column * first row)    (second colum * first row)
-[a₁₁ a₁₂  [b₁₁ b₁₂   = [a₁₁*b₁₁ + a₁₂*b₂₁             a₁₁*b₁₂ + a₁₂*b₂₂
- a₂₁ a₂₂]  b₂₁ b₂₂]     a₂₁*b₁₁ + a₂₂*b₂1             a₂₁*b₁₂ + a₂₂*b₂₂ ]
+⌈a₁₁ a₁₂⌉  ⌈b₁₁ b₁₂⌉  = [a₁₁*b₁₁ + a₁₂*b₂₁             a₁₁*b₁₂ + a₁₂*b₂₂
+⌊a₂₁ a₂₂⌋  ⌊b₂₁ b₂₂⌋     a₂₁*b₁₁ + a₂₂*b₂1             a₂₁*b₁₂ + a₂₂*b₂₂ ]
 ```
 
-```
 Is only defined for three-dimensional vectors like (ux, ux, uz)
+```
 ->
 u = (ux, uy, uz)
 ->
 v = (vx, vy, vz)
 
 (uy*vz - uz*vy, uz*vx - ux*uz, ux*vy - uy*vx) 
+```
 
 TODO: figure out what we are actually calculating here. The output of the cross product is vector that is prependicular to 
 both vectors.
 Hmm, thinking about this we have two vectors a and b in a plane. If a is pointing in the x direction, and b in the y direction
 then the resulting vector will be pointing in the z direction:
+```
 
 ^   ^   ^
 i x j = k
+```
 
 So the new vector is supposted to be a new 90 degree angle vector drawn from both a and b. But that is not really possible
 to do with a two dimensional plane. But if it can go out towards you, or in away from you then it is possible.
@@ -1176,9 +1179,11 @@ to do with a two dimensional plane. But if it can go out towards you, or in away
 Why is this computing the way it does. If we think about the coordinates (x,y,z) I would have guessed that
 we would be multiplying x with x and y with y etc. This is because the cross product is the interaction 
 between different dimensions (so not x with x etc).
+
 We are trying to measure cross-interactions. Take the Area of which is a*b, this is actually using two
 different dimensions a and b, or if you can see them as x and y. The cross product is using three 
 dimensions.
+```
 
 ^   ^   ^
 i x j = k
@@ -1208,12 +1213,13 @@ i x k = j
 	+-----+-----+-----+
     az	|  0  |  0  |  1  |
 	+-----+-----+-----+
+```
 
 We are crossing something in the x dimension with something in the y dimension which gives something in the
 z dimension.
 
 We can write down the pattern: xyzxyz
-
+```
 ->  ->   ->  ->    -> ->
 a * b  = b * a  = |a||b| cos theta
 ->  ->             -> ->           ->                                                       ->   ->
@@ -1225,6 +1231,7 @@ a x b           = |a||b| sin theta n       // n = unit vector that is perpendicu
        /
       /------------>
                    b
+```
 Now a and b are on the same plane, for something to be perpendicular to both of them this vector would have
 to either coming out upwards or downwards.
 
