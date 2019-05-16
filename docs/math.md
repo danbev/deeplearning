@@ -742,6 +742,23 @@ AND(x,y) = xy
 NOT(x,y) = 1-x 
  OR(x,y) = 1-(1-x)(1-y)
 ```
+I've never thought about these operators in this way before:
+```
+AND(0, 0) = 0 * 0 = 0
+AND(1, 0) = 1 * 0 = 0
+AND(0, 1) = 0 * l = 1
+AND(1, 1) = 1 * l = 1
+
+NOT(0, 0) = 0 - 0 = 0
+NOT(1, 0) = 1 - 0 = 1
+NOT(0, 1) = 0 - 1 = 1
+NOT(1, 1) = 1 - 1 = 0
+
+OR(0, 0) = 1 - (1-0) * (1-0) = 1 - (1 * 1) = 1 - 1 = 0
+OR(1, 0) = 1 - (1-1) * (1-0) = 1 - (0 * 1) = 1 - 0 = 1
+OR(0, 1) = 1 - (1-0) * (1-1) = 1 - (1 * 0) = 1 - 0 = 1
+OR(1, 1) = 1 - (1-1) * (1-1) = 1 - (1 * 1) = 1 - 0 = 0
+```
 
 So any `AND/NOT/OR` operation can be represented by using a combination of the
 above three polynomials.
