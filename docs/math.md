@@ -1262,6 +1262,7 @@ This is the same as a b^T (transpose):
 ⌈1⌉  [5 -7 6]⌉ = ⌈1 * 5   2 * 5   3 * 5 ⌉   ⌈ 5   10   15⌉
 |2|              |1 * -7  2 * -7  3 * -7| = |-7  -14  -21|
 ⌊3⌋              ⌊1 * 6   2 * 6   3 * 6 ⌋   ⌊ 6   12   18⌋
+```
 
 Notice that the diagonal add up to the inner product!
 
