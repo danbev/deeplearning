@@ -680,17 +680,19 @@ It is this value that we will try to find a value for which the loss is minimum.
 This point is called a minima for the loss function.
 
 Cost function: 
-
+```
            1
 J(w, b) = --- ∑( L(y-hat(i), y(i)))
            m
+```
 
 Remember that if you expand the loss function L you will see that it used the
 input parameters w and b (used in the computation of y_hat):
-    
+```    
              1
 J(w, b) = - --- ∑( ( y * log(y_hat) + (1 - y) log(1 - y_hat)) )
              m
+```
 
 The cost function meanures how well our parameters w and b doing on the training
 data set.
@@ -702,16 +704,18 @@ expand `y_hat` w anb e are used to predict this value:
 ```
 y_hat = σ(W^T * X + b)
 ```
-
+```
 loop {
   w = w - learning_rate * dj(w)/dw
 }
+```
 The learning_rate is denoted as alpha, and we take that times the derivative at point w.
 Notice that if the dirivative/slope is postive we will be subtracting w.
 
 
 ### Sigmoid
 The forumla for the sigmoid function is:
+```
    1
  ------
  1 + e^-x
@@ -723,6 +727,7 @@ sigmoid(0)  = 0.5
 sigmoid(1)  = 0.73
 sigmoid(2)  = 0.88
 sigmoid(20) = 0.9999..
+```
 
 If we visualize this the curve will be S-shaped. So higher are closer to 1 and lower values
 are closer to 0. This mapping of input values to output values between 0 and 1 can be useful
@@ -731,25 +736,31 @@ when doing binary classification.
 If we want to find out the rate of change for a particular point we can take the derivative:
 So we nudge the x value of interest, say 0 just a little, like 0.001 and then calculate the
 slope of the tanget line between these two points:
-
+```
          f(x + dx) - f(x)     f(0 + 0.001) - f(0)    0.50025 - 0.5
 df/dx =  ---------------- =   ------------------- =  ------------- = 0.25
               dx                   0.0001               0.0001
+```
 
 We want a function that we can plug in any x value and get the rate of change at that point, this
 is where we want have a derivative function. How do we derive that for the sigmoid function?
 
 We can rewrite the sigmoid function like this if we like:
+```
     1
 ----------  = (1 + e^-x)^-1
 (1 + e^-x)
 
 f(x) = (1 + e^-x)^-1
+```
 
 We can use the chain rule here: 
+```
 f(g(x)) is f`(g(x)) * g`(x)
+```
 
 So lets break this up in to the outer/inner functions:
+```
 outer = (1 + e^-x )^-1
 inner = (1 + e^-x)
 f`(x) = outer`(x) * inner`(x)
@@ -767,51 +778,53 @@ inner`(x) = (1 + e^-x)            // 1 is a constant and has not slope so it is 
                                  // would be -1
           = e^-x * (-1)
           = -e^-x
-
+```
 So that would leave us with:
+```
 f`(x) = -1(1 + e^-x)^-2 * (-e^-x)
 or
               -1
 f`(x) =  ------------- * -e^-x
           (1 + e^-x)^2
-
+```
 We can multiply -e^x-x with -1 and get:
-
+```
               e^-x
       =  ------------- 
           (1 + e^-x)^2
-
+```
 We can add 1 and subtract one to the numerator. 
-
+```
 
           e^-x + 1 - 1
       =  ------------- 
           (1 + e^-x)^2
-
+```
 This will not change the result as this is zero but it does allow us to 
 rewrite this as:
-
+```
            1 + e^-x             1
       =  -------------  -  ------------
           (1 + e^-x)^2     (1 + e^-x)^2
-
+```
 Now, we can cancel out one of the (1 + e^-x) from the denominator:
-
+```
               1                  1
       =  -------------  -  ------------
           (1 + e^-x)       (1 + e^-x)^2
-
-And notice that we have the sigmoid formula - the sigmoid forula squared!
- 
+```
+And notice that we have the sigmoid formula - the sigmoid formula squared!
+``` 
      =  sigmoid(x) - sigmoid(x)^2
-              
+```            
 So we can write this as:
+```
 sigmoid(x)(1 - sigmoid(x)) as that would expand to
 
               1                  1
       =  -------------  -  ------------
           (1 + e^-x)       (1 + e^-x)^2
-
+```
 
 One thing to note is that the derivative of the sigmoid function can be expressed
 in terms of the function itself. This is useful as it means when the derivative is
@@ -821,10 +834,11 @@ reused without having to calculate it again, improving the performance.
 ### Computation graph
 In a neural network we have two stages, a forward stage where the output of the network
 is computed. This is followed by a backward stage which is where we compute gradients/derivatives.
-
+```
 J(a, b, c) = 3(a + bc)
-
+```
 Lets named the following functions for the above:
+```
 u = bc
 v = a + u
 J = 3 v
@@ -835,39 +849,47 @@ a ----------------------+
 b \     +----------+    +-->+-----------+        +---------+
    ---->| u = bc   | ------>| v = a + u | -----> | J = 3v  |
 c /     +----------+        +-----------+        +---------+
-
+```
 So lets say 
+```
 a = 5 
 b = 3
 c = 2 
+```
 That would give us:
+```
 u = 3 * 2 = 6
 v = 5 + u = 11
 J = 3 * v = 33
-
+```
 In this case J would be the cost function that we are trying to minimize and this is done in the 
 forward phase. 
-
+```
 a ----------------------+
                         |   
 b \     +----------+    +-->+-----------+        +---------+
    ---->| u = bc   | ------>| v = a + u | -----> | J = 3v  |
 c /     +----------+        +-----------+        +---------+
+```
 
 Now, lets say we want to compute the J`(v)
+```
 J`(v) = 3
+```
 Take the value of v and nudge it a little, how would that change the value of J?
+```
 J = 3v
 v = 11 and if we nudge it to 11.001 that will make J become 33.003
 
 dJ
 -- = 3
 dv
-
+```
 After doing this we have gone back one step in the computation graph.
 
 Now, lets see what happens if we change a. Well this will change v which in turn 
 will change J. So if we nudge a:
+```
 a = 5.001
 v = 11.001
 J = 33.001
@@ -875,15 +897,18 @@ J = 33.001
 dJ       dJ dJ
 -- = 3 = -- -- = (3)(1)
 da       dv da
+```
 
 (This is the chain rule in work here).
 The reason that dj/da is one is because when we increase a, v changes by the same amount, hence 1:
+```
 dv
 -- = 1
 da 
-
+```
 Now, lets see what happens if we change a. Well this will change v which in turn 
 will change J. So if we nudge a:
+```
 u = 6.001
 v = 11.001
 J = 33.001
@@ -891,8 +916,9 @@ J = 33.001
 dJ        dJ  dJ
 -- = 3 =  --  -- = (3)(1)
 du        dv  du
-
+```
 Let's now change the value of b to see how that affects the slope of J:
+```
 dJ   dJ  dJ
 -- = --  -- = (3)(2) = 6
 db   du  dd
@@ -901,30 +927,32 @@ b = 3.001
 u = bc = (3.001)(2) = 6.002
 v = 5 + 6.002
 J = (11.002)(3) = 33.006 
-
+```
 Notice that we are using the derivative computed in previous steps (in the back propagation that is)
 for ones earlier in the computation graph. I think this is the whole reason for the 
 back propagation phase.
 So the forward phase computes the cost and the back propagation to compute derivatives.
 
 What have we got so far:
+```
 z = w^Tx + b
 y-hat = a = sigmoid(z)       // note that a is the output of the logistic regression
 loss(a, y) = -(y log(a) + (1 - y) log( 1 - a)) // y is the expected value/target value
-
+```
 Note that w^T is the transpose of the weights and then taking the dot product with x, so that
 becomes (w(1) * x(1) + w(2) + x(2)) + b.
-
+```
 X(1) ---->
 W(1) ---->  +-----------------------------+       +------------------------+      +------------+
 X(2) ---->  | z = w(1)x(1) + w(2)x(2) + b | ----> | y-hat = a = sigmoid(z) | ---> | loss(a, y) |
 W(2) ---->  +-----------------------------|       +------------------------+      +------------+
 b    ---->
-
+```
 The paremeters in the above case are w anb b, and these are the values that we want to modify in
 order to reduce the output value of the loss function.
 
 Derivative of dL/da:
+```
 dL(a, y)    y    1 - y
 -------- =  - +  -----
    da       a    1 - a
@@ -932,12 +960,13 @@ dL(a, y)    y    1 - y
 dL(a, y)    dL(sigmid(w(1)*x(1) + w(2)*x(2) + b))
 -------- =  -------------------------------------
    da                      da
-
+```
 Recall that the derivative of 'a' was:
+```
 sigmoid(x) - sigmoid(x)^2
-
+```
 How is that derived from -(y log(a) + (1 - y) log( 1 - a)) ? 
-
+```
 Derivative of dL/dz:
 dL(a, y)    dl    da
 -------- =  -- *  --  = a - y
@@ -958,11 +987,14 @@ db
 w(1) = w(1) - learning_rate * dw(1)
 w(2) = w(2) - learning_rate * dw(2)
 b = b - learning_rate * db
+```
 
 Cost function
+```
             1
 J(w, b) =  --- Sum(loss(y_hat^i, y^i))
             m 
+```
 
 ### Logistic regression 
 Tries to predict the probability for a given input that it belongs to a certain class. 
@@ -975,12 +1007,16 @@ The predicted values of the dependant variable is between 0 and 1 since it is a 
 The assumption here is that the input space can be divided into two regions which is separated
 by a linear border. In two dimensions that would be a straight line, in three dimentions it would
 be a plane.
+```
 P\ -> the probability that a certain data point belongs to class `\'.
 P/ -> would then be (1 - P\)
+```
 
 ### Input data
 You input for logistic regresion will be the training samples in the format
+```
 {(x¹, y¹), ... ,(x^m, y^m), 
+```
 
 Now, x is a vector of input values, think of the case of an image which would just
 be numbers between 0-255. This looks like a pretty flat structure to the computer
@@ -1013,6 +1049,7 @@ double LogisticRegression::loss(double y_hat, double y) const {
   return y * log(y_hat) + (1 - y) * log(1 - y_hat) * -1;
 }
 ```
+```
 y_hat = 0.75951091694911099
 y     = 1
 
@@ -1021,19 +1058,21 @@ y     = 1
 log(0.75951091694911099) -1;
 
 ln(0.7595103) = -0.2750813955
+```
 And the - sign is before log function call so this will be positive instead.
 
 Now, remember that the sigmoid function will return a value between 0 and 1, but
 the loss function does not (at least I got confused about this for some reason).
-reason.
-So this is was just a single entry. Using a larger training set we would call
-the loss functio from a cost function. This function will take the average of 
-all the calculated loss function results.
 
+So this is was just a single entry. Using a larger training set we would call
+the loss function from a cost function. This function will take the average of 
+all the calculated loss function results.
+```
 X(1) ---->
 X(2) ---->  
 X(3) ---->  
 X(4) ---->  
+```
 When you see input data like this remember that they are one single input, this could be the pixels
 of a single image, or each item could be some value like the size of a house, the number of rooms, etc, 
 like a row from a table in a database where each value would represent a column.
@@ -1050,7 +1089,7 @@ If training_data was a data structure with the first entry the vector of feature
 second value the expected output value (y).
 
 Think of w and b on horizontal axis in a diagram:
-
+```
      J(w, b) cost_function(w, b)
       ^
       |
@@ -1063,13 +1102,14 @@ Think of w and b on horizontal axis in a diagram:
    /
  /
 w
-
+```
 So the output of the cost function of w and b will be some position above the horizonal plane.
 The cost function in our case is a convex function and looks like a bowl. So we can bascially give
 w and b whatever values we like to initialize them and that will give some cordinate in the third
 dimension (the height). The goal is for this hight to be also low as possible.
 
 Lets take b out of the picture for a moment to simpilfy this a little:
+```
       J(w) 
       ^  \            /
       |   \          /
@@ -1078,10 +1118,11 @@ Lets take b out of the picture for a moment to simpilfy this a little:
       |
       |-----------------> w
 
+```
 We start with a random value for w which we pass to J(w) which will land somewhere in the
 graph above. Then we can find the derivative of that point. If this value is positive then 
 this slope is going upwards. In this case we take that value -w as we want to go downwards.
-
+```
 double rate = 0.01;
 double w = 0.0;
 do {
@@ -1089,9 +1130,10 @@ do {
   w += w - α ----- 
               dw
 } while (w <= lowest_point);
+```
 
 Alpha (α) is the learning_rate which is how much we should step with each iteration
-
+```
       J(w) 
       ^  \            /
      4|   \          *
@@ -1100,9 +1142,11 @@ Alpha (α) is the learning_rate which is how much we should step with each itera
      1|              
       |-----------------> w
                      ^
+```
 Looking at the point above you can imaging a tangent line touching the point marked with an *.
 The slope of this line would be positive.
 We also have to update b in the same way so really the loop would look like:
+```
 do {
              ∂J(w, b)
   w += w - α ----- 
@@ -1112,23 +1156,25 @@ do {
   b += b - α ----- 
               db
 } while (w <= lowest_point);
+```
 
 ∂ is the sign for partial derivatives.
 
 So I've thinking how does the x values (the features come into play here) and they do via
 the cost function. We are taking the derivatives of J, our cost function,  which is:
-
+```
             1
 J(w, b) =  --- Sum(loss(y_hat^i, y^i))
             m 
-
-And to 
+```
 
 ### Nearest Neighbor classifiers
 
 #### L2 (Euclidean) distance
 This is the shortest distance between two points a an b:
+```
 c = √a² + b²
+```
 
 You can remember this L2 because we are raising to the power of two.
 
@@ -1141,6 +1187,7 @@ I believe this is call L1 as it is raised to the first power.
 ### L1 (Euclidean) distance
 
 The formula for L1 is:
+```
 d₁(I₁, I₂) = ∑|I₁^p - I₂^p|
 
  Test image           Training data        pixel-wise absolute value difference
@@ -1148,6 +1195,7 @@ d₁(I₁, I₂) = ∑|I₁^p - I₂^p|
 |56 | 32| 10|18 |    |10 |20 |24 |17 |   |46 |12 |14 |18 |  add
 +---+---+---+---+ -  +---+---+---+---+ = +---+---+---+---+ -----> 456
 ...                  ...                 ....
+```
 
 Notice that we are simply taking the difference of the pixel value, and summing
 them up. If it was an exact match we would get 0. Notice that we take the absolue
@@ -1186,6 +1234,7 @@ This will result in a 28*28
 
 This purpose of this process is to extract features from the image (like lines,
 curves etc). This process preserves the spatial relationship between pixels.
+```
        Image (x)              Filter/Kernel/feature detection (w)
 +---+---+---+---+---+             +---+---+---+
 | 1 | 1 | 1 | 0 | 0 |             | 1 | 0 | 1 |
@@ -1198,10 +1247,10 @@ curves etc). This process preserves the spatial relationship between pixels.
 +---+---+---+---+---+
 | 0 | 1 | 1 | 0 | 0 |
 +---+---+---+---+---+
-
+```
 The filter will then start at the top left corner and move across one step to
 the right, then down on step and so on. This is called the stride.
-
+```
 +----------------------------------------------------------------------+---+----+
 | x₀*w₀ + x₁*w₁ + x₂*w₂ + x₃*w₃ + x₄*w₄ + x₅*w₅ + x₆*w₆ + x₇*w₇ + x₈*w₈|   |    |
 +----------------------------------------------------------------------+---+----+
@@ -1209,13 +1258,16 @@ the right, then down on step and so on. This is called the stride.
 +----------------------------------------------------------------------+---+----+
 | ...                                                                  |   |    |
 +----------------------------------------------------------------------+---+----+
-
+```
 Imaging overlaying the filter over the image and then computing the above for
 each overlay.
+```
 1*1 + 1*0 + 1*1 + 0*0 + 1*1 + 1*0 + 0*1 + 0*0 + 1*1 = 4
 ...
+```
 
 Below output after the completion of the convolution phase
+```
 +-----+-----+-----+
 |  4  |  3  |  4  |
 +-----+-----+-----+
@@ -1223,7 +1275,7 @@ Below output after the completion of the convolution phase
 +-----+-----+-----+
 |  2  |  3  |  4  |
 +-----+-----+-----+
-
+```
 This output is called "Convoluted Feature"/"Activation Map"/"Feature Map".
 So the idea here is that the filter would detect some sort of patten, like a line,
 curve or something pretty basic. If the area that the filter is over matches/almost
@@ -1241,7 +1293,7 @@ rest.
 
 
 #### Zero Padding
-
+```
      Input                      Filter
 +-----+-----+-----+----+   +----+----+----+
 |  4  |  3  |  1  | 10 |   |    |    |    |
@@ -1252,10 +1304,12 @@ rest.
 +-----+-----+-----+----+
 |  2  |  0  |  8  | -1 |
 +-----+-----+-----+----+
+```
 
 How many times can we convolve the 4x4 input using the 3x3 filter.
 There are two possiblities from the first row, and the same for the second
 row resulting in a 2x2 output.
+```
 +----+----+
 |    |    |
 +----+----+
@@ -1270,10 +1324,11 @@ output size = (4 - 3 + 1) x (4 - 3 + 1)
             = (1 + 1) x (1 + 1)
             = 2x2
 
+```
 What happens if we have meaningful information close to the edges that are not
 getting included?
 Zero padding allows us to preserve the original input size.
-
+```
      Input                                  Filter
 +-----+-----+-----+-----+----+----+
 |  0  |  0  |  0  |  0  |  0 |  0 |
@@ -1293,6 +1348,7 @@ Zero padding allows us to preserve the original input size.
 3x3 filter
 output size = (6 - 3 + 1)x(6 - 3 + 1)
             = (4)x(4)
+```
 So we can move our filter 4 times across the first row and the output size is
 the same as our original input size. You might need more than a single border of
 padding but this will depend on the size of the original image.
@@ -1304,7 +1360,7 @@ In this stage/phase/layer we create something similar to a filter/kernal like we
 did for the filter stage but this time we are computing the max operation to
 all the values covered by the filter. In this case it just taking the max value
 hence the name max pooling. This is added after a convolutional layer.
-
+```
  Conv output                 Max pooling/filter       Stride
 +-----+-----+-----+----+   +----+----+
 |  4  |  3  |  1  | 10 |   |    |    |                  2
@@ -1321,6 +1377,7 @@ hence the name max pooling. This is added after a convolutional layer.
 +-----+-----+
 |  2  |  8  |
 +-----+-----+
+```
 Notice that we have reduced the matrix to a 2x2 matrix from a 4x4.
 The 2x2 blocks in the convolution layer output are called pools (pools of numbers)
 which is why it is called pooling. So we have reduced out input by a factor of
