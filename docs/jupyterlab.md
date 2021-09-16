@@ -14,6 +14,9 @@ Install
 
 ```console
 $ npm install -g ijavascript
+$ conda activate jupiterlab
+(jupiterlab) $ ijsinstall
+```
 
 
 ### Starting
