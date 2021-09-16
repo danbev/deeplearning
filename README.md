@@ -247,9 +247,11 @@ Now, what the neuron does is it computes/determines whether is should output a v
 layer. It does so using an activation function, for example ReLu or Sigmoid or any of the others.
 
 So, take the following network that does not use biases:
+```
 Input     Weights        Neuron (inside the function)
 x1 = 1 ---(-0,55)---->   double sum = 1 * (-0,55) + 2 * 0.1; // -0,35   
 x2 = 2 ---(0.1)------>   double output = relu(sum); // 0
+```
 
 Without a bias this neuron would not activate (well the output will be 0 and the will not affect
 the next layer as anything weight multipled with it will be 0, and that 0 will be added to the 
